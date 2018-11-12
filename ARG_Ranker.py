@@ -5,11 +5,11 @@ import csv
 ############################################ Arguments and declarations ##############################################
 parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter)
 parser.add_argument('-i',
-                    default="All_sample_cellnumber.txt", action='store', type=str, metavar='All_sample_cellnumber.txt',
+                    default="example/All_sample_cellnumber.txt", action='store', type=str, metavar='All_sample_cellnumber.txt',
                     help="input directory or folder of the mother table containing the ARGs abundance of your samples\n"+
                     "recommend unit of ARG abundance is copy per cell")
 parser.add_argument('-m',
-                    default="All_sample_metadata.txt", action='store', type=str, metavar='All_sample_metadata.txt',
+                    default="example/All_sample_metadata.txt", action='store', type=str, metavar='All_sample_metadata.txt',
                     help="input directory or folder of the table containing the metadata of your samples\n"+
                          "\'None\' for no metadata input")
 parser.add_argument('-o',
@@ -29,7 +29,7 @@ except OSError:
 
 
 ################################################### Decalration #######################################################
-print "\
+print ("\
 ------------------------------------------------------------------------\n\
 Sample_ranking.py evaluates and assigns the risk and priority levels to environmental samples\n\
 based on their profile of antibiotic resistant genes (ARGs).\n\
@@ -51,30 +51,16 @@ pipeline for antibiotic resistance genes detection from metagenomic data using a
 structured ARG-database. Bioinformatics 2016. (optional: antibiotic resistance database)\n\
 Contact caozhichongchong@gmail.com\n\
 ------------------------------------------------------------------------\n\
-"
+")
 
 
 ################################################## Function ########################################################
 def Rank_num(rank,RKN):
-    if rank == 'I':
-        RKN[0] += 1.0
-    elif rank == 'II':
-        RKN[1] += 1.0
-    elif rank == 'III':
-        RKN[2] += 1.0
-    elif rank == 'IV':
-        RKN[3] += 1.0
-    elif rank == 'V':
-        RKN[4] += 1.0
-    # un-ranked ARGs
-    elif rank == 'MGD_A':
-        RKN[5] += 1.0
-    elif rank == 'MGD_N':
-        RKN[5] += 1.0
-    elif rank == 'WGD':
-        RKN[5] += 1.0
-    elif rank == 'ND':
-        RKN[5] += 1.0
+    # calculate the nuber of genes in each rank
+    try:
+        RKN[RK_profile[rank]] += 1.0
+    except KeyError or IndexError:
+        pass
 
 
 def Level_ranking(lines,ARGlist,RK,RKN,fout):
@@ -84,31 +70,13 @@ def Level_ranking(lines,ARGlist,RK,RKN,fout):
     for ARG in ARGlist:
         rank=RK.get(ARG,'None')
         if rank == 'None':
-            print 'ARGs in mothertable do not match with the ARGs in ARG_rank.txt.\nPlease check '\
-                  + ARG + ' in ' + args.i +'!\n'
+            print ('ARGs in mothertable do not match with the ARGs in ARG_rank.txt.\nPlease check '\
+                  + ARG + ' in ' + args.i +'!\n')
         else:
-            if rank == 'I':
-                Abu[0] += float(lines.split('\t')[ARGposition])
-            elif rank == 'II':
-                Abu[1] += float(lines.split('\t')[ARGposition])
-            elif rank == 'III':
-                Abu[2] += float(lines.split('\t')[ARGposition])
-            elif rank == 'IV':
-                Abu[3] += float(lines.split('\t')[ARGposition])
-            elif rank == 'V':
-                Abu[4] += float(lines.split('\t')[ARGposition])
-            elif rank == 'MGD_A':
-                Abu[5] += float(lines.split('\t')[ARGposition])
-            elif rank == 'MGD_N':
-                Abu[5] += float(lines.split('\t')[ARGposition])
-            elif rank == 'WGD':
-                Abu[5] += float(lines.split('\t')[ARGposition])
-            elif rank == 'ND':
-                Abu[5] += float(lines.split('\t')[ARGposition])
-                if float(lines.split('\t')[ARGposition]) > 0:
-                    print str(ARG) + ' is not detected before!'
-            else:
-                print [rank, ARG, ARGposition]
+            try:
+                Abu[RK_profile[rank]] += float(lines.split('\t')[ARGposition])
+            except KeyError or IndexError:
+                pass
         ARGposition += 1
     total_abu_all=sum(Abu)
     total_abu_I_V=sum(Abu[0:5])
@@ -153,7 +121,8 @@ def Level_ranking(lines,ARGlist,RK,RKN,fout):
 
 ################################################### Programme #######################################################
 # set output file
-fout=open(os.path.join(args.o, args.i + '_sample_ranking_results.txt'),'wb')
+infolder, infile=os.path.split(args.i)
+fout=open(os.path.join(args.o, infile + '_sample_ranking_results.txt'),'wb')
 
 
 # input metadata
@@ -180,6 +149,8 @@ else:
 
 # input ARG ranks
 RK=dict()
+RK_profile={'I':0,'II':1,'III':2,'IV':3,'V':4,
+'MGD_A':5,'MGD_N':5,'WGD':5,'ND':5}
 RKN=[0.0,0.0,0.0,0.0,0.0,0.0]
 for lines in open(ARGranks,'rb'):
     lines = lines.split('\r')[0].split('\n')[0]
