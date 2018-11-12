@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="arg_ranker",
-    packages=['arg_ranker'],
+    #packages=['arg_ranker'],
     version="1,0",
     description="Ranking the risk of antibiotic resistance for metagenomes",
     author='Anni Zhang',
@@ -12,7 +12,7 @@ setup(
     install_requires=['python>=3.0'],
     #include_package_data=True,
     long_description=open('README.md').read(),
-    packages=find_packages(exclude=['argparse', 'os', 'csv']),
+    #packages=find_packages(),
     package_data={  # Optional
         'ARG_rank': ['arg_ranker/ARG_rank.txt'],
     },
