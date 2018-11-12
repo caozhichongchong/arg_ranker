@@ -12,7 +12,7 @@ setup(
     install_requires=['python>=3.0'],
     #include_package_data=True,
     long_description=open('README.md').read(),
-    packages=find_packages(exclude=['argparse', 'os', 'csv'])
+    packages=find_packages(exclude=['argparse', 'os', 'csv']),
     package_data={  # Optional
         'ARG_rank': ['arg_ranker/ARG_rank.txt'],
     },
