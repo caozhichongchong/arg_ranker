@@ -14,7 +14,7 @@ setup(
     long_description=open('README.md').read(),
     packages=find_packages(exclude=['argparse', 'os', 'csv'])
     package_data={  # Optional
-        'ARG_rank': ['ARG_rank.txt'],
+        'ARG_rank': ['arg_ranker/ARG_rank.txt'],
     },
     #entry_points={'console_scripts': ['pyinstrument = pyinstrument.__main__:main']},
     #zip_safe=False,
