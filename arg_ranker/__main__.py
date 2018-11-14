@@ -1,8 +1,8 @@
 import argparse
 import os
-import csv
 import arg_ranker
 import sys
+import pandas as pd
 
 ################################################### Decalration #######################################################
 print ("\
@@ -38,15 +38,15 @@ def main():
     ############################################ Arguments and declarations ##############################################
     parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('-i',
-                        default="example/All_sample_cellnumber.txt", action='store', type=str, metavar='All_sample_cellnumber.txt',
+                        default="example/ARGprofile_example_1.txt", action='store', type=str, metavar='ARGprofile.txt',
                         help="input directory or folder of the mother table containing the ARGs abundance of your samples\n"+
                         "recommend unit of ARG abundance is copy per cell")
     parser.add_argument('-m',
-                        default="example/All_sample_metadata.txt", action='store', type=str, metavar='All_sample_metadata.txt',
+                        default="None", action='store', type=str, metavar='metadata.txt',
                         help="input directory or folder of the table containing the metadata of your samples\n"+
                              "\'None\' for no metadata input")
     parser.add_argument('-o',
-                        default="Ranking", action='store', type=str, metavar='Ranking',
+                        default="ranking", action='store', type=str, metavar='ranking',
                         help="output directory to store the ranking result")
     ################################################## Definition ########################################################
     args = parser.parse_args()
@@ -72,7 +72,8 @@ def main():
             lines=str(lines).split('\r')[0].split('\n')[0]
             # output the lable in output file
             if i == 0:
-                fout.write(str(lines)+'\tLevel\tRank_code\tRank_I\tRank_II\tRank_III\tRank_IV\tRank_V\tARGs_unranked\tTotal_abu\n')
+                fout.write(str(lines)+
+                           '\tLevel\tRank_code\tRank_I\tRank_II\tRank_III\tRank_IV\tRank_V\tARGs_unranked\tTotal_abu\n')
             else:
                 try:
                     # valid metadata input
@@ -99,52 +100,43 @@ def main():
 
     # input ARG mothertable
     # transpose the mothertable
-    with open(Mothertable,'r') as fin:
-        next(fin)
-        rows = csv.reader(fin, delimiter='\t', skipinitialspace=True)
-        transposed = zip(*rows)
-        with open(Mothertable+'.t.txt', 'w') as ft:
-            w = csv.writer(ft, delimiter='\t')
-            w.writerows(transposed)
-    Mothertable=Mothertable+'.t.txt'
+    df=pd.read_csv(Mothertable, index_col=None, header=None, skipinitialspace=True,sep='\t')
+    df.dropna(axis=0, thresh=2, subset=None, inplace=True)
+    df=df.T
     i = 0
-    ARGlist=[]
-    for lines in open (Mothertable,'r'):
-        lines = str(lines).split('\r')[0].split('\n')[0]
-        # input ARG list
+    for row in df.itertuples(index=True, name='Pandas'):
         if i == 0:
-            ARGlist=lines.split('\t')[1:]
-        elif i > 2:
-        ###elif i > 0:
-            # sample ranking
-            Level_ranking(lines,ARGlist,RK,RKN,fout, RK_profile,MD)
-        i += 1
+            ARGlist = row[2:]
+        else:
+            Level_ranking(row[1:],ARGlist,RK,RKN,fout, RK_profile,MD, args.i)
+        i+=1
     fout.close()
-    print('Finished ranking ARGs\nPlease check your results in
-    '+str(os.path.join(args.o, infile + '_sample_ranking_results.txt'))
+    print('Finished ranking ARGs\nPlease check your results in ' +
+          str(os.path.join(args.o, infile + '_sample_ranking_results.txt')))
 
 ################################################## Function ########################################################
 def Rank_num(rank,RKN,RK_profile):
     # calculate the nuber of genes in each rank
     try:
         RKN[RK_profile[rank]] += 1.0
-    except KeyError or IndexError or TypeError:
+    except (KeyError, IndexError, TypeError, ValueError):
         pass
 
 
-def Level_ranking(lines,ARGlist,RK,RKN,fout,RK_profile,MD):
+def Level_ranking(row,ARGlist,RK,RKN,fout,RK_profile,MD,inputfile):
     Abu=[0.0,0.0,0.0,0.0,0.0,0.0]
     ARGposition = 1
     # calculate the overall rank-based contribution by each rank
     for ARG in ARGlist:
         rank=RK.get(ARG,'None')
         if rank == 'None':
+            pass
             print ('ARGs in mothertable do not match with the ARGs in ARG_rank.txt.\nPlease check '\
-                  + ARG + ' in ' + args.i +'!\n')
+                  + ARG + ' in ' + inputfile +'!\n')
         else:
             try:
-                Abu[RK_profile[rank]] += float(str(lines).split('\t')[ARGposition])
-            except KeyError or IndexError or TypeError:
+                Abu[RK_profile[rank]] += float(row[ARGposition])
+            except (KeyError, IndexError, TypeError, ValueError):
                 pass
         ARGposition += 1
     total_abu_all=sum(Abu)
@@ -175,7 +167,7 @@ def Level_ranking(lines,ARGlist,RK,RKN,fout,RK_profile,MD):
             Level = 7
             Abu2=[0.0,0.0,0.0,0.0,0.0,0.0] #considering un-ranked ARGs
         # output results
-        samplename = str(lines).split('\t')[0]
+        samplename = row[0]
         if MD != {}:
             metadata_sample=MD.get(samplename,'None')
             fout.write(str(samplename) + '\t' + str(metadata_sample) + '\tLevel ' + str(Level) + '\t' +

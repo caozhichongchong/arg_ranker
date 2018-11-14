@@ -1,6 +1,11 @@
 # ARG_Ranker
 Install
 pip install arg_ranker
+anaconda download caozhichongchong/arg_ranker
+
+Availability
+https://anaconda.org/caozhichongchong/arg_ranker
+https://pypi.org/project/arg-ranker/
 
 Sample_ranking.py evaluates and assigns the risk and priority levels to environmental samples
 based on their profile of antibiotic resistant genes (ARGs).
