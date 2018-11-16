@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name="arg_ranker",
     packages=['arg_ranker'],
-    version="1.0",
+    version="1.0.1",
     description="Ranking the risk of antibiotic resistance for metagenomes",
     author='Anni Zhang',
     author_email='anniz44@mit.edu',
