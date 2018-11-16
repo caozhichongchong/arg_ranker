@@ -9,7 +9,7 @@ print ("\
 ------------------------------------------------------------------------\n\
 Sample_ranking.py evaluates and assigns the risk and priority levels to environmental samples\n\
 based on their profile of antibiotic resistant genes (ARGs).\n\
-Requirement: python packages (os, pandas, argparse)\n\
+Requirement: python packages (os, csv, argparse)\n\
 Requirement: a mothertable of the ARG abundance in all your samples \n\
 annotated by ARGs-OAP v1.0 (see example/All_sample_cellnumber.txt).\n\
 Optimal: a table of the metadata of your samples (see example/All_sample_metadata.txt).\n\

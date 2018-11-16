@@ -1,0 +1,3 @@
+[console_scripts]
+arg_ranker = arg_ranker.__main__:main
+
