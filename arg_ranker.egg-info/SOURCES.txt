@@ -1,9 +1,0 @@
-README.md
-setup.py
-arg_ranker/__init__.py
-arg_ranker/__main__.py
-arg_ranker.egg-info/PKG-INFO
-arg_ranker.egg-info/SOURCES.txt
-arg_ranker.egg-info/dependency_links.txt
-arg_ranker.egg-info/entry_points.txt
-arg_ranker.egg-info/top_level.txt
