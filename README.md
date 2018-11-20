@@ -47,7 +47,6 @@ Requirement: a mothertable of the ARG abundance in all your samples
 annotated by ARGs-OAP v1.0 (see example/All_sample_cellnumber.txt).
 
 Optimal: a table of the metadata of your samples (see example/All_sample_metadata.txt).
-Recommend unit of ARG abundance is copy per cell.
 
 ## Copyright
 Copyright:An-Ni Zhang, Prof. Tong Zhang, University of Hong Kong
