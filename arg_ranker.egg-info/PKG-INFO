@@ -1,10 +1,10 @@
 Metadata-Version: 1.1
 Name: arg-ranker
-Version: 1.0
+Version: 1.0.3
 Summary: Ranking the risk of antibiotic resistance for metagenomes
 Home-page: https://github.com/caozhichongchong/ARG_Ranker
-Author:: Anni Zhang
-Author-email:: anniz44@mit.edu
+Author: Anni Zhang
+Author-email: anniz44@mit.edu
 License: MIT
 Description: # arg_ranker
         ##Install
