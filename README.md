@@ -1,7 +1,7 @@
 # arg_ranker
 ##Install
 pip install arg_ranker
-anaconda download caozhichongchong/arg_ranker
+conda install -c caozhichongchong arg_ranker 
 
 ##Test (any of these two commands)
 arg_ranker -i example/ARGprofile_example_1.txt -m example/metadata.txt
