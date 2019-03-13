@@ -73,9 +73,12 @@ annotated by ARGs-OAP v1.0 (see example/All_sample_cellnumber.txt).
 Optimal: a table of the metadata of your samples (see example/All_sample_metadata.txt).
 
 ## Copyright
-Copyright: An-Ni Zhang (MIT), Prof. Tong Zhang (University of Hong Kong)\
-Citation:
+Copyright: An-Ni Zhang (MIT), Prof. Tong Zhang (University of Hong Kong)
+
+## Citation
 1. Zhang AN, ..., Alm EJ, Zhang T: Whom to Fight: Top Risk Antibiotic Resistances for Global Action (Under Review)
 2. (optional: antibiotic resistance database)\
-Yang Y, ..., Tiedje JM, Zhang T: ARGs-OAP: online analysis pipeline for antibiotic resistance genes detection from metagenomic data using an integrated structured ARG-database. Bioinformatics 2016.\
-Contact anniz44@mit.edu or caozhichongchong@gmail.com
+Yang Y, ..., Tiedje JM, Zhang T: ARGs-OAP: online analysis pipeline for antibiotic resistance genes detection from metagenomic data using an integrated structured ARG-database. Bioinformatics 2016.
+
+##Contact
+anniz44@mit.edu or caozhichongchong@gmail.com
