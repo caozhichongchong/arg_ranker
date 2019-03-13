@@ -74,7 +74,7 @@ Optimal: a table of the metadata of your samples (see example/All_sample_metadat
 
 ## Copyright
 Copyright: An-Ni Zhang, Prof. Tong Zhang, University of Hong Kong\
-Citation:\
+Citation:
 1. Zhang AN, ..., Alm EJ, Zhang T: Whom to Fight: Top Risk Antibiotic Resistances for Global Action (Under Review)
 2. (optional: antibiotic resistance database)\
 Yang Y, ..., Tiedje JM, Zhang T: ARGs-OAP: online analysis pipeline for antibiotic resistance genes detection from metagenomic data using an integrated structured ARG-database. Bioinformatics 2016.
