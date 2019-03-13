@@ -73,7 +73,7 @@ annotated by ARGs-OAP v1.0 (see example/All_sample_cellnumber.txt).
 Optimal: a table of the metadata of your samples (see example/All_sample_metadata.txt).
 
 ## Copyright
-Copyright: An-Ni Zhang, Prof. Tong Zhang, University of Hong Kong
+Copyright: An-Ni Zhang, Prof. Tong Zhang, University of Hong Kong\
 Citation:\
 1. Zhang AN, ..., Alm EJ, Zhang T: Whom to Fight: Top Risk Antibiotic Resistances for Global Action (Under Review)
 2. (optional: antibiotic resistance database)\
