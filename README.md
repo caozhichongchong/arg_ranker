@@ -30,15 +30,15 @@ https://github.com/caozhichongchong/arg_ranker/tree/master/arg_ranker/data/SARG.
 1. Download ARGs-OAP v1.0 pipeline and run the pipeline\
     https://github.com/biofuture/Ublastx_stageone/archive/Ublastx_stageone.tar.gz\
     https://github.com/biofuture/Ublastx_stageone/archive/Ublastx_stageone.zip
-    
+
     A brief introduction on how to use ARGs-OAP v1.0\
     Please refer to the README.md of ARGs-OAP v1.0 for more details
-    
+
     Prepare your metadata for your samples into example/metadata.txt (separated by tab)\
     SampleID (a number for the sample) | Name (metagenomic samples name) | Category (metadata of habitat, or group)\
     `./ublastx_stage_one  -i inputfqs -o testoutdir -m meta-data.txt -n 2`
 
-        Usage: ./ublastx_stage_one -i <Fq input dir> -m <Metadata_map.txt> -o <output dir> 
+        Usage: ./ublastx_stage_one -i <Fq input dir> -m <Metadata_map.txt> -o <output dir>
         -n [number of threads] -f [fa|fq] -z -h  -c   
             -i Input files directory, required\
             -m meta data file, required
@@ -73,8 +73,8 @@ annotated by ARGs-OAP v1.0 (see example/All_sample_cellnumber.txt).
 Optimal: a table of the metadata of your samples (see example/All_sample_metadata.txt).
 
 ## Copyright
-Copyright:An-Ni Zhang, Prof. Tong Zhang, University of Hong Kong
-Citation:
+Copyright: An-Ni Zhang, Prof. Tong Zhang, University of Hong Kong
+Citation:\
 1. Zhang AN, ..., Alm EJ, Zhang T: Whom to Fight: Top Risk Antibiotic Resistances for Global Action (Under Review)
 2. (optional: antibiotic resistance database)\
 Yang Y, ..., Tiedje JM, Zhang T: ARGs-OAP: online analysis pipeline for antibiotic resistance genes detection from metagenomic data using an integrated structured ARG-database. Bioinformatics 2016.
