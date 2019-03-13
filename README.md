@@ -6,13 +6,11 @@ pip install arg_ranker
 conda install -c caozhichongchong arg_ranker
 
 ## Test (any of these two commands)
-arg_ranker -i example/ARGprofile_example_1.txt -m example/metadata.txt
-
-arg_ranker -i example/ARGprofile_example_2.txt -m example/metadata.txt
+`arg_ranker -i example/ARGprofile_example_1.txt -m example/metadata.txt`\
+`arg_ranker -i example/ARGprofile_example_2.txt -m example/metadata.txt`
 
 ## Availability
-https://anaconda.org/caozhichongchong/arg_ranker
-
+https://anaconda.org/caozhichongchong/arg_ranker\
 https://pypi.org/project/arg-ranker/
 
 ## How to use it
@@ -20,21 +18,47 @@ https://pypi.org/project/arg-ranker/
 
 arg_ranker is suitable for the units of ppm, gene copy per 16S or gene copy per cell
 
-Option 1: Run your own pipeline against our database ()
+#### Option 1: Run your own pipeline against our database
 
-Format your results into example/ARGprofile_example_1.txt or example/ARGprofile_example_2.txt
+1. Download the ARGs-OAP v1.0 database\
+https://github.com/caozhichongchong/arg_ranker/tree/master/arg_ranker/data/SARG.db.fasta*
 
-Option 2: Run ARGs-OAP v1.0 () and one more step:
+2. Format your results into example/ARGprofile_example_1.txt or example/ARGprofile_example_2.txt
 
-'perl dir_to_ARGs_OAP/database/DB/gene_subtype_type_ppm_16s_cellnumber_differentversion.pl dir_to_your_result/extracted.fa.blast6out.txt dir_to_your_result/meta_data_online.txt 25 1e-7 80 your_output_name dir_to_ARGs_OAP/database/DB/other/structure_20160422.list dir_to_ARGs_OAP/database/DB/other/SARG-20160422.mod.fasta'
-The ARG profile to input is your_output_name.normalize_cellnumber.gene.tab
+#### Option 2: Run ARGs-OAP v1.0 and format the results by ARG_Ranker
 
-### Prepare your metadata (optional)
+1. Download ARGs-OAP v1.0 pipeline and run the pipeline\
+    https://github.com/biofuture/Ublastx_stageone/archive/Ublastx_stageone.tar.gz\
+    https://github.com/biofuture/Ublastx_stageone/archive/Ublastx_stageone.zip
+    
+    A brief introduction on how to use ARGs-OAP v1.0\
+    Please refer to the README.md of ARGs-OAP v1.0 for more details
+    
+    Prepare your metadata for your samples into example/metadata.txt (separated by tab)\
+    SampleID (a number for the sample) | Name (metagenomic samples name) | Category (metadata of habitat, or group)\
+    `./ublastx_stage_one  -i inputfqs -o testoutdir -m meta-data.txt -n 2`
 
-Format your metadata of metagenomic samples into example/metadata.txt (not necessarily the same)
+        Usage: ./ublastx_stage_one -i <Fq input dir> -m <Metadata_map.txt> -o <output dir> 
+        -n [number of threads] -f [fa|fq] -z -h  -c   
+            -i Input files directory, required\
+            -m meta data file, required
+            -o Output files directory, default current directory
+            -n number of threads used for usearch, default 1
+            -f the format of processed files, default fq
+            -z whether the fq files were .gz format, if -z, then firstly gzip -d, default(none)
+            -c This option fulfill copy number correction by Copywriter database to transfrom 16S information into cell number [ direct searching hyper variable region database by usearch; default 1]
+            -h print this help information
 
-First column matches the sample ID in your ARG profile;
+2. Check the "extracted.fa.blast6out.txt" and "meta_data_online.txt" in the output_dir
 
+3. Run\
+`arg_ranker -f True -fo output_dir`\
+`arg_ranker -i formated_table.normalize_cellnumber.gene.tab -m metadata.txt`
+
+### Prepare your metadata for your samples (optional)
+
+Format your metadata of metagenomic samples into example/metadata.txt (not necessarily the same)\
+First column matches the sample ID in your ARG profile;\
 Other columns contain the metadata of your samples (such as habitat/eco-type, accession number, group...)
 
 ## Introduction
@@ -51,6 +75,7 @@ Optimal: a table of the metadata of your samples (see example/All_sample_metadat
 ## Copyright
 Copyright:An-Ni Zhang, Prof. Tong Zhang, University of Hong Kong
 Citation:
-1. This study
-2. Yang Y, Jiang X, Chai B, Ma L, Li B, Zhang A, Cole JR, Tiedje JM, Zhang T: ARGs-OAP: online analysis pipeline for antibiotic resistance genes detection from metagenomic data using an integrated structured ARG-database. Bioinformatics 2016. (optional: antibiotic resistance database)
+1. Zhang AN, ..., Alm EJ, Zhang T: Whom to Fight: Top Risk Antibiotic Resistances for Global Action (Under Review)
+2. (optional: antibiotic resistance database)\
+Yang Y, ..., Tiedje JM, Zhang T: ARGs-OAP: online analysis pipeline for antibiotic resistance genes detection from metagenomic data using an integrated structured ARG-database. Bioinformatics 2016.
 Contact caozhichongchong@gmail.com
