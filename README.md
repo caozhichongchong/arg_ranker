@@ -28,7 +28,7 @@ https://github.com/caozhichongchong/arg_ranker/tree/master/arg_ranker/data/SARG.
 #### Option 2: Run ARGs-OAP v1.0 and format the results by ARG_Ranker
 
 1. Download ARGs-OAP v1.0 pipeline and run the pipeline\
-    https://github.com/biofuture/Ublastx_stageone/archive/Ublastx_stageone.tar.gz\
+    https://github.com/biofuture/Ublastx_stageone/archive/Ublastx_stageone.tar.gz
     https://github.com/biofuture/Ublastx_stageone/archive/Ublastx_stageone.zip
 
     A brief introduction on how to use ARGs-OAP v1.0\
