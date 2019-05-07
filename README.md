@@ -9,10 +9,6 @@ conda install -c caozhichongchong arg_ranker
 `arg_ranker -i example/ARGprofile_example_1.txt -m example/metadata.txt`\
 `arg_ranker -i example/ARGprofile_example_2.txt -m example/metadata.txt`
 
-## Availability
-https://anaconda.org/caozhichongchong/arg_ranker\
-https://pypi.org/project/arg-ranker/
-
 ## How to use it
 ### Prepare your ARG profile
 
