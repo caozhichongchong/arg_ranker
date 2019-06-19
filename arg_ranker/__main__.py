@@ -9,7 +9,7 @@ print ("\
 ------------------------------------------------------------------------\n\
 Sample_ranking.py evaluates and assigns the risk and priority levels to environmental samples\n\
 based on their profile of antibiotic resistant genes (ARGs).\n\
-Requirement: python packages (os, pandas, argparse)\n\
+Requirement: python packages (pandas, argparse)\n\
 Requirement: a mothertable of the ARG abundance in all your samples \n\
 annotated by ARGs-OAP v1.0 (see example/All_sample_cellnumber.txt).\n\
 Optimal: a table of the metadata of your samples (see example/All_sample_metadata.txt).\n\
@@ -103,6 +103,7 @@ def main():
     df=pd.read_csv(Mothertable, index_col=None, header=None, skipinitialspace=True,sep='\t')
     df.dropna(axis=0, thresh=2, subset=None, inplace=True)
     df=df.T
+    df.to_csv(str(Mothertable)+'.t', header=None, index=None, sep='\t', mode='a')
     i = 0
     for row in df.itertuples(index=True, name='Pandas'):
         if i == 0:

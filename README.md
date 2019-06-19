@@ -9,23 +9,44 @@ conda install -c caozhichongchong arg_ranker
 `arg_ranker -i example/ARGprofile_example_1.txt -m example/metadata.txt`\
 `arg_ranker -i example/ARGprofile_example_2.txt -m example/metadata.txt`
 
-## Availability
-https://anaconda.org/caozhichongchong/arg_ranker\
-https://pypi.org/project/arg-ranker/
-
 ## How to use it
 ### Prepare your ARG profile
 
 arg_ranker is suitable for the units of ppm, gene copy per 16S or gene copy per cell
 
-#### Option 1: Run your own pipeline against our database
+#### Option 1: Use our pipeline
 
-1. Download the ARGs-OAP v1.0 database\
+1. Search ARGs-OAP v1.0 database (amino acids) in your data using diamond or blast\
 https://github.com/caozhichongchong/arg_ranker/tree/master/arg_ranker/data/SARG.db.fasta*
 
 2. Format your results into example/ARGprofile_example_1.txt or example/ARGprofile_example_2.txt
 
-#### Option 2: Run ARGs-OAP v1.0 and format the results by ARG_Ranker
+3. Run\
+`arg_ranker -i ARG.profile.txt -m metadata.txt`\
+`arg_ranker -i ARG.profile.txt`\
+If you see a lot of errors saying: "ARGs in mothertable do not match with the ARGs in ARG_rank.txt.\
+Please check something something in ARG.summary.cell.txt!"\
+It means that the samples are placed as row names instead of colomn names (which arg_ranker expects).\
+Don't worry, please try: `arg_ranker -i ARG.profile.txt.t`\
+As we automatically transpose your table to make it work.
+
+#### Option 2: Run your own pipeline using our database
+
+1. Search ARGs-OAP v1.0 database (amino acids) in your data using diamond or blast\
+https://github.com/caozhichongchong/arg_ranker/tree/master/arg_ranker/data/SARG.db.fasta*
+
+2. Format your results into example/ARGprofile_example_1.txt or example/ARGprofile_example_2.txt
+
+3. Run\
+`arg_ranker -i ARG.profile.txt -m metadata.txt`\
+`arg_ranker -i ARG.profile.txt`\
+If you see a lot of errors saying: "ARGs in mothertable do not match with the ARGs in ARG_rank.txt.\
+Please check something something in ARG.summary.cell.txt!"\
+It means that the samples are placed as row names instead of colomn names (which arg_ranker expects).\
+Don't worry, please try: `arg_ranker -i ARG.profile.txt.t`\
+As we automatically transpose your table to make it work.
+
+#### Option 3: Run ARGs-OAP v1.0 and format the results by ARG_Ranker
 
 1. Download ARGs-OAP v1.0 pipeline and run the pipeline\
     https://github.com/biofuture/Ublastx_stageone/archive/Ublastx_stageone.tar.gz\
