@@ -1,13 +1,14 @@
 # arg_ranker
 
 ## Install
-pip install arg_ranker
+`pip install arg_ranker`
 
-conda install -c caozhichongchong arg_ranker
+`conda install -c caozhichongchong arg_ranker`
 
-## Test (any of these two commands)
+## Test (download examples and use any of these commands)
 `arg_ranker -i example/ARGprofile_example_1.txt -m example/metadata.txt`\
-`arg_ranker -i example/ARGprofile_example_2.txt -m example/metadata.txt`
+`arg_ranker -i example/ARGprofile_example_2.txt -m example/metadata.txt`\
+`arg_ranker -i test`
 
 ## How to use it
 ### Prepare your ARG profile

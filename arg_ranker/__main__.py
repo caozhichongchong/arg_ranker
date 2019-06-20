@@ -38,7 +38,9 @@ def main():
     ############################################ Arguments and declarations ##############################################
     parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('-i',
-                        default="example/ARGprofile_example_1.txt", action='store', type=str, metavar='ARGprofile.txt',
+                        default="test",
+                        action='store', type=str,
+                        metavar='ARGprofile.txt',
                         help="input directory or folder of the mother table containing the ARGs abundance of your samples\n"+
                         "recommend unit of ARG abundance is copy per cell")
     parser.add_argument('-m',
@@ -52,6 +54,9 @@ def main():
     args = parser.parse_args()
     Metadata=args.m
     Mothertable=args.i
+    if Mothertable == 'test':
+        Mothertable = os.getcwd()+'/example/ARGprofile_example_1.txt'
+        Metadata = os.getcwd()+'/example/metadata.txt'
     ARGranks=os.path.join(os.path.abspath(os.path.dirname(__file__)),
     'data', 'ARG_rank.txt')
     try:
@@ -60,7 +65,7 @@ def main():
         pass
     ################################################### Programme #######################################################
     # set output file
-    infolder, infile=os.path.split(args.i)
+    infolder, infile=os.path.split(Mothertable)
     fout=open(os.path.join(args.o, infile + '_sample_ranking_results.txt'),'w')
 
 
@@ -109,7 +114,7 @@ def main():
         if i == 0:
             ARGlist = row[2:]
         else:
-            Level_ranking(row[1:],ARGlist,RK,RKN,fout, RK_profile,MD, args.i)
+            Level_ranking(row[1:],ARGlist,RK,RKN,fout, RK_profile,MD, Mothertable)
         i+=1
     fout.close()
     print('Finished ranking ARGs\nPlease check your results in ' +
