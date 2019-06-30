@@ -159,7 +159,7 @@ def Level_ranking(row,ARGlist,RK,RKN,fout,RK_profile,MD,inputfile):
             # Level assign
             if Abu2[0] >= 4.5:
                 Level = 1
-            elif Abu2[0] >= 2.0:
+            elif Abu2[0] >= 2.5:
                 Level = 2
             elif Abu2[0] > 0.3:
                 Level = 3
