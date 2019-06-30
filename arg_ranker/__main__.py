@@ -93,9 +93,9 @@ def main():
 
     # input ARG ranks
     RK=dict()
-    RK_profile={'I':0,'II':1,'III':2,'IV':3,'V':4,
-    'MGD_A':5,'MGD_N':5,'WGD':5,'ND':5}
-    RKN=[0.0,0.0,0.0,0.0,0.0,0.0]
+    RK_profile={'I':0,'II':1,'III':2,'IV':3,
+    'Unaccessed':4}
+    RKN=[0.0,0.0,0.0,0.0,0.0]
     for lines in open(ARGranks,'r'):
         lines = str(lines).split('\r')[0].split('\n')[0]
         RK.setdefault(lines.split('\t')[0],lines.split('\t')[-1])
@@ -130,7 +130,7 @@ def Rank_num(rank,RKN,RK_profile):
 
 
 def Level_ranking(row,ARGlist,RK,RKN,fout,RK_profile,MD,inputfile):
-    Abu=[0.0,0.0,0.0,0.0,0.0,0.0]
+    Abu=[0.0,0.0,0.0,0.0,0.0]
     ARGposition = 1
     # calculate the overall rank-based contribution by each rank
     for ARG in ARGlist:
@@ -146,32 +146,30 @@ def Level_ranking(row,ARGlist,RK,RKN,fout,RK_profile,MD,inputfile):
                 pass
         ARGposition += 1
     total_abu_all=sum(Abu)
-    total_abu_I_V=sum(Abu[0:5])
+    total_abu_I_IV=sum(Abu[0:4])
     if total_abu_all > 0 :
         Abu1 = []
         Abu2 = []
-        for abu in range(0, 6):
+        for abu in range(0, 5):
             Abu1.append(float(Abu[abu])/ total_abu_all)
-        Num_all = sum(RKN[0:6]) #considering un-ranked ARGs
-        if total_abu_I_V > 0:
-            for abu in range(0,6): #considering un-ranked ARGs
+        Num_all = sum(RKN[0:5]) #considering un-ranked ARGs
+        if total_abu_I_IV > 0:
+            for abu in range(0,5): #considering un-ranked ARGs
                 Abu2.append((Abu[abu]/RKN[abu])/(total_abu_all / Num_all)) #considering un-ranked ARGs
             # Level assign
-            if Abu2[0] >= 3.0:
+            if Abu2[0] >= 4.5:
                 Level = 1
-            elif Abu2[0] >= 0.5:
+            elif Abu2[0] >= 2.0:
                 Level = 2
-            elif Abu2[0] > 0.0:
+            elif Abu2[0] > 0.3:
                 Level = 3
-            elif Abu2[1] >= 1.0:
+            elif Abu2[0] > 0.0 or Abu2[1] >= 2.5:
                 Level = 4
-            elif Abu2[1] > 0.0:
-                Level = 5
             else:
-                Level = 6
+                Level = 5
         else:
-            Level = 7
-            Abu2=[0.0,0.0,0.0,0.0,0.0,0.0] #considering un-ranked ARGs
+            Level = 6
+            Abu2=[0.0,0.0,0.0,0.0,0.0] #considering un-ranked ARGs
         # output results
         samplename = row[0]
         if MD != {}:
