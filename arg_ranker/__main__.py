@@ -78,7 +78,7 @@ def main():
             # output the lable in output file
             if i == 0:
                 fout.write(str(lines)+
-                           '\tLevel\tRank_code\tRank_I\tRank_II\tRank_III\tRank_IV\tRank_V\tARGs_unranked\tTotal_abu\n')
+                           '\tLevel\tRank_code\tRank_I\tRank_II\tRank_III\tRank_IV\tARGs_unranked\tTotal_abu\n')
             else:
                 try:
                     # valid metadata input
@@ -88,7 +88,7 @@ def main():
             i += 1
     else:
         fout.write('Sample\tLevel\tRank_code\tRank_I\tRank_II\tRank_III\tRank_IV' +
-                   '\tRank_V\tARGs_unranked\tTotal_abu\n')
+                   '\tARGs_unranked\tTotal_abu\n')
 
 
     # input ARG ranks
