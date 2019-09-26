@@ -18,7 +18,7 @@ arg_ranker is suitable for the units of ppm, gene copy per 16S or gene copy per 
 #### Option 1: Use our pipeline
 
 1. Use my traits_finder to search ARGs in genomes and metagenomes (in preparation)\
-Now we have both nucleotides and amino acids databases!\ 
+Now we have both nucleotides and amino acids databases!\
 https://github.com/caozhichongchong/traits_finder
 
 2. Run\
