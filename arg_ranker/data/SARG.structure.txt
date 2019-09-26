@@ -170,7 +170,7 @@ AAK53982	vancomycin__vanS	vancomycin
 AAK58490	vancomycin__vanY	vancomycin
 AAK58492	vancomycin__vanR	vancomycin
 AAK58493	vancomycin__vanS	vancomycin
-AAK62562	aminoglycoside__aph(3¡®)-III	aminoglycoside
+AAK62562	aminoglycoside__aph(3ï¿½ï¿½)-III	aminoglycoside
 AAK63223	beta-lactam__class A beta-lactamase	beta-lactam
 AAK64454	beta-lactam__ampC	beta-lactam
 AAK69027	macrolide-lincosamide-streptogramin__mefA	macrolide-lincosamide-streptogramin
@@ -1318,7 +1318,7 @@ BAE73191	trimethoprim__dfrA1	trimethoprim
 BAE96115	vancomycin__vanY	vancomycin
 BAE96116	vancomycin__vanD	vancomycin
 BAE96117	vancomycin__vanD	vancomycin
-BAE98117	aminoglycoside__aph(3¡®)-III	aminoglycoside
+BAE98117	aminoglycoside__aph(3ï¿½ï¿½)-III	aminoglycoside
 BAF36555	sulfonamide__sul1	sulfonamide
 BAF47404	beta-lactam__metallo-beta-lactamase	beta-lactam
 BAF95849	beta-lactam__SHV	beta-lactam
@@ -1352,7 +1352,7 @@ CAA54738	beta-lactam__class A beta-lactamase	beta-lactam
 CAA63057	multidrug__mdtH	multidrug
 CAA63519	aminoglycoside__streptomycin resistance protein	aminoglycoside
 CAA66307	macrolide-lincosamide-streptogramin__ermN	macrolide-lincosamide-streptogramin
-CAA67773	aminoglycoside__aph(3¡®)-III	aminoglycoside
+CAA67773	aminoglycoside__aph(3ï¿½ï¿½)-III	aminoglycoside
 CAA67774	chloramphenicol__cat_chloramphenicol acetyltransferase	chloramphenicol
 CAA70206	macrolide-lincosamide-streptogramin__ermC	macrolide-lincosamide-streptogramin
 CAA70207	macrolide-lincosamide-streptogramin__ermC	macrolide-lincosamide-streptogramin
@@ -1409,7 +1409,7 @@ CAD11594	trimethoprim__dfrA1	trimethoprim
 CAD11599	tetracycline__tetA	tetracycline
 CAD13485	tetracycline__tetW	tetracycline
 CAD20591	beta-lactam__class A beta-lactamase	beta-lactam
-CAD36021	aminoglycoside__aph(3¡®)-III	aminoglycoside
+CAD36021	aminoglycoside__aph(3ï¿½ï¿½)-III	aminoglycoside
 CAD55935	beta-lactam__IMP-13	beta-lactam
 CAD57182	trimethoprim__dfrA16	trimethoprim
 CAD57199	chloramphenicol__catA	chloramphenicol
@@ -2702,7 +2702,7 @@ P08457	aminoglycoside__streptothricin acetyltransferase	aminoglycoside
 P09757	tetracycline__tetM	tetracycline
 P0A0H1	macrolide-lincosamide-streptogramin__ermA	macrolide-lincosamide-streptogramin
 P0A0U8	beta-lactam__penA	beta-lactam
-P0A3Y6	aminoglycoside__aph(3¡®)-III	aminoglycoside
+P0A3Y6	aminoglycoside__aph(3ï¿½ï¿½)-III	aminoglycoside
 P10425	beta-lactam__class A beta-lactamase	beta-lactam
 P10952	tetracycline__tetO	tetracycline
 P12055	aminoglycoside__streptomycin resistance protein	aminoglycoside
@@ -3528,7 +3528,7 @@ YP_410000	multidrug__emrD	multidrug
 YP_410369	multidrug__mdtO	multidrug
 YP_410370	multidrug__mdtN	multidrug
 YP_416126	bacitracin__bacA	bacitracin
-YP_424819	aminoglycoside__aph(3¡®)-III	aminoglycoside
+YP_424819	aminoglycoside__aph(3ï¿½ï¿½)-III	aminoglycoside
 YP_440294	multidrug__mexE	multidrug
 YP_442964	multidrug__oprA	multidrug
 YP_454364	multidrug__acrB	multidrug
@@ -4048,3 +4048,4 @@ ZP_04668102	tetracycline__tetO	tetracycline
 ZP_04677690	multidrug__norA	multidrug
 ZP_04677702	bacitracin__bacA	bacitracin
 ZP_04679156	multidrug__mepA	multidrug
+WP_049589868.1_1	colistin__mcr1	colistin

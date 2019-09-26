@@ -77,8 +77,10 @@ def main():
             lines=str(lines).split('\r')[0].split('\n')[0]
             # output the lable in output file
             if i == 0:
-                fout.write(str(lines)+
-                           '\tLevel\tRank_code\tRank_I\tRank_II\tRank_III\tRank_IV\tARGs_unranked\tTotal_abu\n')
+                fout.write('Sample\tRank_I\tRank_II\tRank_III\tRank_IV' +
+                   '\tARGs_unassessed\tTotal_abu\tRank_code\t' +
+                   'Rank_I_risk\tRank_II_risk\tRank_III_risk\tRank_IV_risk' +
+                   '\tARGs_unassessed_risk\t%s\n' % '\t'.join(str(lines).split('\t')[1:]))
             else:
                 try:
                     # valid metadata input
@@ -87,14 +89,16 @@ def main():
                     pass
             i += 1
     else:
-        fout.write('Sample\tLevel\tRank_code\tRank_I\tRank_II\tRank_III\tRank_IV' +
-                   '\tARGs_unranked\tTotal_abu\n')
+        fout.write('Sample\tRank_I\tRank_II\tRank_III\tRank_IV' +
+                   '\tARGs_unassessed\tTotal_abu\tRank_code\t' +
+                   'Rank_I_risk\tRank_II_risk\tRank_III_risk\tRank_IV_risk' +
+                   '\tARGs_unassessed_risk\n')
 
 
     # input ARG ranks
     RK=dict()
     RK_profile={'I':0,'II':1,'III':2,'IV':3,
-    'Unaccessed':4}
+    'Unassessed':4}
     RKN=[0.0,0.0,0.0,0.0,0.0]
     for lines in open(ARGranks,'r'):
         lines = str(lines).split('\r')[0].split('\n')[0]
@@ -152,10 +156,10 @@ def Level_ranking(row,ARGlist,RK,RKN,fout,RK_profile,MD,inputfile):
         Abu2 = []
         for abu in range(0, 5):
             Abu1.append(float(Abu[abu])/ total_abu_all)
-        Num_all = sum(RKN[0:5]) #considering un-ranked ARGs
+        Num_all = sum(RKN[0:5]) #considering un-assessed ARGs
         if total_abu_I_IV > 0:
-            for abu in range(0,5): #considering un-ranked ARGs
-                Abu2.append((Abu[abu]/RKN[abu])/(total_abu_all / Num_all)) #considering un-ranked ARGs
+            for abu in range(0,5): #considering un-assessed ARGs
+                Abu2.append((Abu[abu]/RKN[abu])/(total_abu_all / Num_all)) #considering un-assessed ARGs
             # Level assign
             if Abu2[0] >= 4.5:
                 Level = 1
@@ -163,25 +167,29 @@ def Level_ranking(row,ARGlist,RK,RKN,fout,RK_profile,MD,inputfile):
                 Level = 2
             elif Abu2[0] > 0.3:
                 Level = 3
-            elif Abu2[0] > 0.0 or Abu2[1] >= 2.5:
+            elif Abu2[0] > 0.0 or Abu2[1] >= 2.1:
                 Level = 4
             else:
                 Level = 5
         else:
             Level = 6
-            Abu2=[0.0,0.0,0.0,0.0,0.0] #considering un-ranked ARGs
+            Abu2=[0.0,0.0,0.0,0.0,0.0] #considering un-assessed ARGs
         # output results
         samplename = row[0]
         if MD != {}:
             metadata_sample=MD.get(samplename,'None')
-            fout.write(str(samplename) + '\t' + str(metadata_sample) + '\tLevel ' + str(Level) + '\t' +
+            fout.write(str(samplename)  + '\t' +
+                       '\t'.join(str('%.1E' % abu) for abu in Abu1) +
+                       '\t' + str('%.1E' % total_abu_all) +'\t' +
                        str('-'.join(str("%.1f" % abu) for abu in Abu2)) +
-                       '\t' + '\t'.join(str('%.1E' % abu) for abu in Abu1) +
-                       '\t' + str('%.1E' % total_abu_all) + '\n')
+                       '\t' +'\t'.join(str('%.1f' % abu) for abu in Abu2) +
+                        '\t' + str(metadata_sample) +'\n')
         else:
-            fout.write(str(samplename) + '\tLevel ' + str(Level) + '\t' + str('-'.join(str("%.1f" % abu) for abu in Abu2)) +
-                       '\t' + '\t'.join(str('%.1E' % abu) for abu in Abu1) +
-                       '\t' + str('%.1E' % total_abu_all) + '\n')
+            fout.write(str(samplename)  + '\t' +
+                       '\t'.join(str('%.1E' % abu) for abu in Abu1) +
+                       '\t' + str('%.1E' % total_abu_all) +'\t' +
+                       str('-'.join(str("%.1f" % abu) for abu in Abu2)) +
+                       '\t' +'\t'.join(str('%.1f' % abu) for abu in Abu2) + '\n')
 
 
 if __name__ == '__main__':
