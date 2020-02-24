@@ -1,5 +1,5 @@
 Reference	Genotype	Phenotype
-0910185A	aminoglycoside__aph(3'')-IV	aminoglycoside
+0910185A	aminoglycoside__aph(3)-IV	aminoglycoside
 1112175A	macrolide-lincosamide-streptogramin__ermE	macrolide-lincosamide-streptogramin
 1405331A	aminoglycoside__streptomycin resistance protein	aminoglycoside
 1411197A	beta-lactam__class D beta-lactamase	beta-lactam
@@ -49,7 +49,7 @@ AAA25465	beta-lactam__penA	beta-lactam
 AAA25979	beta-lactam__PSE-1	beta-lactam
 AAA26087	beta-lactam__SHV-1	beta-lactam
 AAA26492	macrolide-lincosamide-streptogramin__ermE	macrolide-lincosamide-streptogramin
-AAA26700	aminoglycoside__aph(3')-I	aminoglycoside
+AAA26700	aminoglycoside__aph(3)-I	aminoglycoside
 AAA26779	macrolide-lincosamide-streptogramin__ermO	macrolide-lincosamide-streptogramin
 AAA27431	macrolide-lincosamide-streptogramin__ermF	macrolide-lincosamide-streptogramin
 AAA48273	rifamycin__rifampin resistance protein	rifamycin
@@ -58,7 +58,7 @@ AAA62061	multidrug__mdtL	multidrug
 AAA65958	vancomycin__vanY	vancomycin
 AAA67509	tetracenomycin_C__tcmA	tetracenomycin_C
 AAA83416	beta-lactam__class C beta-lactamase	beta-lactam
-AAA88337	aminoglycoside__aph(3')-I	aminoglycoside
+AAA88337	aminoglycoside__aph(3)-I	aminoglycoside
 AAA91586	beta-lactam__OXA-1	beta-lactam
 AAA92254	aminoglycoside__aadD	aminoglycoside
 AAA98228	macrolide-lincosamide-streptogramin__ermC	macrolide-lincosamide-streptogramin
@@ -74,7 +74,7 @@ AAB20441	aminoglycoside__aac(3)-I	aminoglycoside
 AAB20442	aminoglycoside__aac(3)-II	aminoglycoside
 AAB22638	beta-lactam__CTX-M-1	beta-lactam
 AAB23456	macrolide-lincosamide-streptogramin__lmrB	macrolide-lincosamide-streptogramin
-AAB34257	aminoglycoside__aph(3')-I	aminoglycoside
+AAB34257	aminoglycoside__aph(3)-I	aminoglycoside
 AAB37395	beta-lactam__SHV-5	beta-lactam
 AAB47993	multidrug__multidrug_transporter	multidrug
 AAB51122	tetracycline__tetQ	tetracycline
@@ -153,7 +153,7 @@ AAG14406	macrolide-lincosamide-streptogramin__mphA	macrolide-lincosamide-strepto
 AAG21695	macrolide-lincosamide-streptogramin__vatE	macrolide-lincosamide-streptogramin
 AAG34685	vancomycin__vanB	vancomycin
 AAG34691	vancomycin__vanB	vancomycin
-AAG45714	aminoglycoside__aac(6')-I	aminoglycoside
+AAG45714	aminoglycoside__aac(6)-I	aminoglycoside
 AAK08976	beta-lactam__class A beta-lactamase	beta-lactam
 AAK12088	aminoglycoside__aac(3)-I	aminoglycoside
 AAK14791	beta-lactam__NPS-1	beta-lactam
@@ -163,14 +163,14 @@ AAK28907	macrolide-lincosamide-streptogramin__ermX	macrolide-lincosamide-strepto
 AAK32688	beta-lactam__CMY-78	beta-lactam
 AAK38457	multidrug__qacB	multidrug
 AAK49460	beta-lactam__OXA-35	beta-lactam
-AAK51920	aminoglycoside__aac(6')-I	aminoglycoside
+AAK51920	aminoglycoside__aac(6)-I	aminoglycoside
 AAK53751	beta-lactam__class A beta-lactamase	beta-lactam
 AAK53979	vancomycin__vanY	vancomycin
 AAK53982	vancomycin__vanS	vancomycin
 AAK58490	vancomycin__vanY	vancomycin
 AAK58492	vancomycin__vanR	vancomycin
 AAK58493	vancomycin__vanS	vancomycin
-AAK62562	aminoglycoside__aph(3��)-III	aminoglycoside
+AAK62562	aminoglycoside__aph(3)-III	aminoglycoside
 AAK63223	beta-lactam__class A beta-lactamase	beta-lactam
 AAK64454	beta-lactam__ampC	beta-lactam
 AAK69027	macrolide-lincosamide-streptogramin__mefA	macrolide-lincosamide-streptogramin
@@ -185,7 +185,7 @@ AAL14440	multidrug__adeB	multidrug
 AAL14441	multidrug__adeC	multidrug
 AAL30847	tetracycline__tetW	tetracycline
 AAL40899	beta-lactam__SHV-1	beta-lactam
-AAL51021	aminoglycoside__ant(3'')-Ih-aac(6')-IId	aminoglycoside
+AAL51021	aminoglycoside__ant(3)-Ih-aac(6)-IId	aminoglycoside
 AAL57765	beta-lactam__class A beta-lactamase	beta-lactam
 AAL73823	rifamycin__rifampin resistance protein	rifamycin
 AAL75564	tetracycline__tetD	tetracycline
@@ -316,12 +316,12 @@ AAT45026	beta-lactam__KLUY-2	beta-lactam
 AAT45231	trimethoprim__dfrA12	trimethoprim
 AAT49071	trimethoprim__dfrB2	trimethoprim
 AAT60435	beta-lactam__class A beta-lactamase	beta-lactam
-AAT70791	aminoglycoside__aac(6')-I	aminoglycoside
+AAT70791	aminoglycoside__aac(6)-I	aminoglycoside
 AAT90846	beta-lactam__class B beta-lactamase	beta-lactam
 AAT90847	beta-lactam__class B beta-lactamase	beta-lactam
 AAT97115	beta-lactam__SHV-5	beta-lactam
 AAU01314	rifamycin__rifampin resistance protein	rifamycin
-AAU89126	aminoglycoside__ant(3'')-Ih-aac(6')-IId	aminoglycoside
+AAU89126	aminoglycoside__ant(3)-Ih-aac(6)-IId	aminoglycoside
 AAV37206	beta-lactam__CfxA2	beta-lactam
 AAV58812	vancomycin__vanS	vancomycin
 AAV58814	vancomycin__vanW	vancomycin
@@ -387,7 +387,7 @@ AB023477.1.gene1.p01	beta-lactam__SHV-24	beta-lactam
 AB028210.1.gene2.p01	aminoglycoside__aac(3)-X	aminoglycoside
 AB040994.1.gene1.p1	beta-lactam__IMP-6	beta-lactam
 AB049569.1.gene1.p01	beta-lactam__TEM-91	beta-lactam
-AB061794.1.gene2.p01	aminoglycoside__aac(6')-I	aminoglycoside
+AB061794.1.gene2.p01	aminoglycoside__aac(6)-I	aminoglycoside
 AB061794.1.gene7.p01	beta-lactam__CMY-9	beta-lactam
 AB074433.1.gene1.p01	beta-lactam__IMP-10	beta-lactam
 AB074436.1.gene1.p01	beta-lactam__IMP-11	beta-lactam
@@ -397,15 +397,15 @@ AB083212.gene.p01	aminoglycoside__rmtA	aminoglycoside
 AB084246.gene.p01	tetracycline__tetA	tetracycline
 AB0890	multidrug__TolC	multidrug
 AB104852.1.gene2.p01	beta-lactam__IMP-1	beta-lactam
-AB104852.1.gene3.p01	aminoglycoside__aac(6')-I	aminoglycoside
+AB104852.1.gene3.p01	aminoglycoside__aac(6)-I	aminoglycoside
 AB104852.1.gene4.p01	aminoglycoside__aadA	aminoglycoside
 AB104852.1.gene6.p01	sulfonamide__sul1	sulfonamide
 AB107899.1.gene2.p01	beta-lactam__CFE-1	beta-lactam
 AB114632.1.gene2.p01	aminoglycoside__aadA	aminoglycoside
-AB116646.1.gene1.p01	aminoglycoside__aac(6')-I	aminoglycoside
-AB119105.1.gene1.p01	aminoglycoside__aac(6')-I	aminoglycoside
+AB116646.1.gene1.p01	aminoglycoside__aac(6)-I	aminoglycoside
+AB119105.1.gene1.p01	aminoglycoside__aac(6)-I	aminoglycoside
 AB158573.gene.p01	unclassified__rpsD_(ramA_or_sud2)	unclassified
-AB164230.1.gene1.p01	aminoglycoside__aac(6')-I	aminoglycoside
+AB164230.1.gene1.p01	aminoglycoside__aac(6)-I	aminoglycoside
 AB176534.1.gene1.p01	beta-lactam__CTX-M-35	beta-lactam
 AB177384.1.gene1.p01	beta-lactam__CTX-M-36	beta-lactam
 AB194410.1.gene1.p01	beta-lactam__CMY-19	beta-lactam
@@ -420,7 +420,7 @@ AB302939.1.gene1.p01	beta-lactam__SHV-60	beta-lactam
 AB364006.1.gene1.p01	beta-lactam__KHM-1	beta-lactam
 AB372224.1.gene1.p01	beta-lactam__CMY-39	beta-lactam
 AB429270.1.gene1.p01	beta-lactam__CMY-41	beta-lactam
-AB462903.1.gene2.p01	aminoglycoside__aac(6')-I	aminoglycoside
+AB462903.1.gene2.p01	aminoglycoside__aac(6)-I	aminoglycoside
 AB529520.1.gene1.p01	beta-lactam__IND-7	beta-lactam
 AB551737.1.gene1.p01	beta-lactam__SHV-133	beta-lactam
 AB563173.1.gene1.p01	beta-lactam__IND-15	beta-lactam
@@ -430,7 +430,7 @@ AB636283.1.gene1.p01	beta-lactam__SMB-1	beta-lactam
 AB699171.1.gene1.p01	beta-lactam__CMY-87	beta-lactam
 AB700703.1.gene1.p01	beta-lactam__TEM-198	beta-lactam
 AB703103.1.gene1.p01	beta-lactam__CTX-M-126	beta-lactam
-AB715422.1.gene3.p01	aminoglycoside__aac(6')-I	aminoglycoside
+AB715422.1.gene3.p01	aminoglycoside__aac(6)-I	aminoglycoside
 AB715422.1.gene4.p01	beta-lactam__IMP	beta-lactam
 AB733453.1.gene1.p01	beta-lactam__SHV-167	beta-lactam
 AB737978.1.gene1.p01	beta-lactam__ACT-16	beta-lactam
@@ -472,7 +472,7 @@ ABC33904	beta-lactam__class C beta-lactamase	beta-lactam
 ABC36050	multidrug__ceoB	multidrug
 ABC38311	multidrug__amrB	multidrug
 ABC38359	multidrug__mexX	multidrug
-ABC54722	aminoglycoside__aac(6')-I	aminoglycoside
+ABC54722	aminoglycoside__aac(6)-I	aminoglycoside
 ABC60093	macrolide-lincosamide-streptogramin__mefA	macrolide-lincosamide-streptogramin
 ABC60094	macrolide-lincosamide-streptogramin__mefA	macrolide-lincosamide-streptogramin
 ABC69169	chloramphenicol__catB	chloramphenicol
@@ -495,7 +495,7 @@ ABG56269	quinolone__qnrB	quinolone
 ABG69871	multidrug__emrE	multidrug
 ABG71110	multidrug__TolC	multidrug
 ABG71850	multidrug__emrD	multidrug
-ABG77519	aminoglycoside__aac(6')-I	aminoglycoside
+ABG77519	aminoglycoside__aac(6)-I	aminoglycoside
 ABG77965	multidrug__acrA	multidrug
 ABG77966	multidrug__acrB	multidrug
 ABG81258	tetracycline__tetW	tetracycline
@@ -594,9 +594,9 @@ ACA23192	tetracycline__tetW	tetracycline
 ACA23195	tetracycline__tetW	tetracycline
 ACA34343	beta-lactam__KPC-4	beta-lactam
 ACA34904	beta-lactam__VEB-6	beta-lactam
-ACA35067	aminoglycoside__aph(3')-I	aminoglycoside
+ACA35067	aminoglycoside__aph(3)-I	aminoglycoside
 ACA42497	tetracycline__tetS	tetracycline
-ACA48663	aminoglycoside__ant(2'')-I	aminoglycoside
+ACA48663	aminoglycoside__ant(2)-I	aminoglycoside
 ACA48664	chloramphenicol__catB	chloramphenicol
 ACB16010	bacitracin__bacA	bacitracin
 ACB17069	multidrug__mdtO	multidrug
@@ -617,7 +617,7 @@ ACC95408	chloramphenicol__cmlA	chloramphenicol
 ACC96132	aminoglycoside__aadD	aminoglycoside
 ACD01409	quinolone__qnrB	quinolone
 ACD03314	chloramphenicol__catB	chloramphenicol
-ACD76089	aminoglycoside__aph(3')-I	aminoglycoside
+ACD76089	aminoglycoside__aph(3)-I	aminoglycoside
 ACD88490	macrolide-lincosamide-streptogramin__mefA	macrolide-lincosamide-streptogramin
 ACE78320	macrolide-lincosamide-streptogramin__mphB	macrolide-lincosamide-streptogramin
 ACE95087	quinolone__qnrA	quinolone
@@ -663,7 +663,7 @@ ACQ66105	vancomycin__vanB	vancomycin
 ACR56331	beta-lactam__CTX-M-89	beta-lactam
 ACR66837	beta-lactam__OXA-17	beta-lactam
 ACR66838	trimethoprim__dfrA21	trimethoprim
-AE000516.2.gene277.p01	aminoglycoside__aac(2')-I	aminoglycoside
+AE000516.2.gene277.p01	aminoglycoside__aac(2)-I	aminoglycoside
 AE000516.2.gene3301.p01	multidrug__emrE	multidrug
 AE015929.1.gene1105.p01	unclassified__histidine kinase	unclassified
 AE015929.1.gene1106.p01	unclassified__truncated putative response regulator ArlR	unclassified
@@ -677,32 +677,32 @@ AF010416.1.gene1.p01	beta-lactam__VEB-1	beta-lactam
 AF015087.1.gene1.p01	chloramphenicol__cmrA	chloramphenicol
 AF015628.1.gene1.p01	macrolide-lincosamide-streptogramin__vgbB	macrolide-lincosamide-streptogramin
 AF015628.1.gene2.p01	macrolide-lincosamide-streptogramin__vatC	macrolide-lincosamide-streptogramin
-AF016483.gene.p01	aminoglycoside__aph(2'')-IV	aminoglycoside
+AF016483.gene.p01	aminoglycoside__aph(2)-IV	aminoglycoside
 AF024602.1.gene3.p01	beta-lactam__OXA-20	beta-lactam
-AF024602.1.gene5.p01	aminoglycoside__aph(3')-I	aminoglycoside
+AF024602.1.gene5.p01	aminoglycoside__aph(3)-I	aminoglycoside
 AF024602.1.gene6.p01	aminoglycoside__aph(6)-I	aminoglycoside
 AF024666.2.gene33.p01	chloramphenicol__chloramphenicol exporter	chloramphenicol
-AF024666.2.gene42.p01	aminoglycoside__aph(3')-I	aminoglycoside
+AF024666.2.gene42.p01	aminoglycoside__aph(3)-I	aminoglycoside
 AF024666.2.gene6.p01	tetracycline__tetA	tetracycline
 AF024666.2.gene7.p01	tetracycline__tetB	tetracycline
 AF030344.gene.p01	tetracycline__tetV	tetracycline
 AF030945.1.gene1.p01	beta-lactam__CARB-6	beta-lactam
-AF031326.1.gene1.p1	aminoglycoside__aac(6')-I	aminoglycoside
-AF031327.1.gene1.p1	aminoglycoside__aac(6')-I	aminoglycoside
-AF031328.1.gene1.p1	aminoglycoside__aac(6')-I	aminoglycoside
-AF031329.1.gene1.p1	aminoglycoside__aac(6')-I	aminoglycoside
-AF031330.1.gene1.p1	aminoglycoside__aac(6')-I	aminoglycoside
-AF031331.1.gene1.p1	aminoglycoside__aac(6')-I	aminoglycoside
-AF031332.1.gene1.p1	aminoglycoside__aac(6')-I	aminoglycoside
+AF031326.1.gene1.p1	aminoglycoside__aac(6)-I	aminoglycoside
+AF031327.1.gene1.p1	aminoglycoside__aac(6)-I	aminoglycoside
+AF031328.1.gene1.p1	aminoglycoside__aac(6)-I	aminoglycoside
+AF031329.1.gene1.p1	aminoglycoside__aac(6)-I	aminoglycoside
+AF031330.1.gene1.p1	aminoglycoside__aac(6)-I	aminoglycoside
+AF031331.1.gene1.p1	aminoglycoside__aac(6)-I	aminoglycoside
+AF031332.1.gene1.p1	aminoglycoside__aac(6)-I	aminoglycoside
 AF034958.gene.p01	chloramphenicol__chloramphenicol exporter	chloramphenicol
 AF036933.1.gene1.p01	chloramphenicol__cat_chloramphenicol acetyltransferase	chloramphenicol
 AF038993.gene.p01	tetracycline__tetJ	tetracycline
-AF043381.1.gene2.p01	aminoglycoside__aac(6')-I	aminoglycoside
+AF043381.1.gene2.p01	aminoglycoside__aac(6)-I	aminoglycoside
 AF043381.1.gene3.p01	beta-lactam__OXA-19	beta-lactam
 AF047171.1.gene1.p01	beta-lactam__TEM-60	beta-lactam
 AF047479.2.gene10.p01	aminoglycoside__aadA	aminoglycoside
 AF047479.2.gene11.p01	chloramphenicol__catB	chloramphenicol
-AF047556.1.gene1.p01	aminoglycoside__aac(6')-I	aminoglycoside
+AF047556.1.gene1.p01	aminoglycoside__aac(6)-I	aminoglycoside
 AF064820.3.gene2.p01	beta-lactam__OXA-22	beta-lactam
 AF070999.gene.p01	tetracycline__tetY	tetracycline
 AF071555.1.gene10.p01	sulfonamide__sul1	sulfonamide
@@ -727,9 +727,9 @@ AF133139.gene.p01	tetracycline__tetG	tetracycline
 AF133140.gene.p01	tetracycline__tetG	tetracycline
 AF135373.1.gene1.p01	beta-lactam__CARB-5	beta-lactam
 AF139725.gene.p01	macrolide-lincosamide-streptogramin__vatE	macrolide-lincosamide-streptogramin
-AF140221.1.gene1.p1	aminoglycoside__aac(6')-I	aminoglycoside
+AF140221.1.gene1.p1	aminoglycoside__aac(6)-I	aminoglycoside
 AF143804.1.gene1.p1	beta-lactam__TEM-92	beta-lactam
-AF144880.1.gene1.p01	aminoglycoside__aac(6')-I	aminoglycoside
+AF144880.1.gene1.p01	aminoglycoside__aac(6)-I	aminoglycoside
 AF148850.1.gene1.p01	beta-lactam__SHV-1	beta-lactam
 AF148851.1.gene1.p01	beta-lactam__SHV-2	beta-lactam
 AF155139.2.gene2.p01	vancomycin__vanR	vancomycin
@@ -746,7 +746,7 @@ AF162694.1.gene3.p01	vancomycin__vanY	vancomycin
 AF162694.1.gene4.p01	vancomycin__vanT	vancomycin
 AF162694.1.gene5.p01	vancomycin__vanR	vancomycin
 AF162694.1.gene6.p01	vancomycin__vanS	vancomycin
-AF162771.1.gene2.p01	aminoglycoside__aac(6')-II	aminoglycoside
+AF162771.1.gene2.p01	aminoglycoside__aac(6)-II	aminoglycoside
 AF164577.1.gene1.p01	beta-lactam__SHV-13	beta-lactam
 AF167990.3.gene1.p01	beta-lactam__ampC	beta-lactam
 AF170880.4.gene1.p01	multidrug__multidrug_ABC_transporter	multidrug
@@ -770,7 +770,7 @@ AF205943.1.gene12.p01	rifamycin__ADP-ribosylating transferase_arr	rifamycin
 AF205943.1.gene13.p01	chloramphenicol__cmlA	chloramphenicol
 AF205943.1.gene15.p01	aminoglycoside__aadA	aminoglycoside
 AF205943.1.gene7.p01	aminoglycoside__aadB	aminoglycoside
-AF207840.gene.p01	aminoglycoside__aph(2'')-II	aminoglycoside
+AF207840.gene.p01	aminoglycoside__aph(2)-II	aminoglycoside
 AF208529.2.gene1.p2	beta-lactam__class A beta-lactamase	beta-lactam
 AF208796.2.gene1.p01	beta-lactam__SHV	beta-lactam
 AF219127.1.gene1.p1	beta-lactam__IND-12	beta-lactam
@@ -781,7 +781,7 @@ AF226276.1.gene3.p01	chloramphenicol__catD	chloramphenicol
 AF226622.1.gene1.p01	beta-lactam__SHV-14	beta-lactam
 AF227204.1.gene1.p01	beta-lactam__SHV	beta-lactam
 AF227521.gene.p01	macrolide-lincosamide-streptogramin__mefA	macrolide-lincosamide-streptogramin
-AF231133.1.gene2.p01	aminoglycoside__aac(6')-I	aminoglycoside
+AF231133.1.gene2.p01	aminoglycoside__aac(6)-I	aminoglycoside
 AF231133.1.gene3.p01	beta-lactam__OXA-28	beta-lactam
 AF231986.2.gene2.p01	chloramphenicol__floR	chloramphenicol
 AF242872.1.gene2.p01	macrolide-lincosamide-streptogramin__ermB	macrolide-lincosamide-streptogramin
@@ -793,8 +793,8 @@ AF255298.1.gene1.p1	beta-lactam__CTX-M-10	beta-lactam
 AF259520.1.gene4.p01	beta-lactam__cephalosporinase DHA-2	beta-lactam
 AF261825.2.gene36.p01	chloramphenicol__floR	chloramphenicol
 AF261825.2.gene41.p01	beta-lactam__PSE-1	beta-lactam
-AF263519.1.gene2.p01	aminoglycoside__aac(6')-I	aminoglycoside
-AF263519.1.gene4.p01	aminoglycoside__aac(6')-I	aminoglycoside
+AF263519.1.gene2.p01	aminoglycoside__aac(6)-I	aminoglycoside
+AF263519.1.gene4.p01	aminoglycoside__aac(6)-I	aminoglycoside
 AF275256.gene.p01	beta-lactam__SME-2	beta-lactam
 AF277571.gene.p01	vancomycin__vanD	vancomycin
 AF290912.1.gene1.p01	beta-lactam__IMP-5	beta-lactam
@@ -807,12 +807,12 @@ AF305837.gene.p01	beta-lactam__CTX-M	beta-lactam
 AF310956.2.gene5.p01	vancomycin__vanH	vancomycin
 AF310956.2.gene7.p01	vancomycin__vanX	vancomycin
 AF313471.1.gene2.p01	beta-lactam__PSE-4	beta-lactam
-AF313472.2.gene15.p01	aminoglycoside__aph(3')-I	aminoglycoside
+AF313472.2.gene15.p01	aminoglycoside__aph(3)-I	aminoglycoside
 AF313472.2.gene8.p01	chloramphenicol__cmlA	chloramphenicol
 AF315351.1.gene2.p01	beta-lactam__OXA-32	beta-lactam
 AF317511.1.gene2.p01	beta-lactam__VIM-1	beta-lactam
 AF317511.1.gene5.p01	beta-lactam__OXA-46	beta-lactam
-AF318077.1.gene1.p01	aminoglycoside__aac(6')-I	aminoglycoside
+AF318077.1.gene1.p01	aminoglycoside__aac(6)-I	aminoglycoside
 AF318077.1.gene2.p01	beta-lactam__IMP-7	beta-lactam
 AF319779.2.orf0.gene.p01	macrolide-lincosamide-streptogramin__erm(35)	macrolide-lincosamide-streptogramin
 AF322577.2.gene2.p01	beta-lactam__IMP-8	beta-lactam
@@ -830,13 +830,13 @@ AF336095.1.gene1.p01	multidrug__omp36	multidrug
 AF336096.1.gene1.p01	multidrug__omp36	multidrug
 AF336097.1.gene1.p01	multidrug__omp36	multidrug
 AF336098.1.gene1.p01	multidrug__omp36	multidrug
-AF337947.1.gene1.p01	aminoglycoside__aph(2'')-II	aminoglycoside
-AF337947.1.gene2.p01	aminoglycoside__aac(6')-I	aminoglycoside
+AF337947.1.gene1.p01	aminoglycoside__aph(2)-II	aminoglycoside
+AF337947.1.gene2.p01	aminoglycoside__aac(6)-I	aminoglycoside
 AF347054.1.gene1.p1	beta-lactam__TEM-80	beta-lactam
 AF350424.1.gene1.p01	beta-lactam__OXA-34	beta-lactam
 AF351241.1.gene1.p01	beta-lactam__TEM-90	beta-lactam
 AF353562.gene.p01	tetracycline__tet35	tetracycline
-AF355189.1.gene2.p01	aminoglycoside__aac(3)-Ib-aac(6')-Ib	aminoglycoside
+AF355189.1.gene2.p01	aminoglycoside__aac(3)-Ib-aac(6)-Ib	aminoglycoside
 AF357597.1.gene1.p01	beta-lactam__CMY-10	beta-lactam
 AF357599.1.gene1.p01	beta-lactam__CMY-11	beta-lactam
 AF367983.gene.p01	beta-lactam__class A beta-lactamase	beta-lactam
@@ -854,7 +854,7 @@ AF441286.1.gene1.p01	beta-lactam__MUS-1	beta-lactam
 AF441287.1.gene1.p01	beta-lactam__TUS-1	beta-lactam
 AF445082.1.gene5.p01	chloramphenicol__catB	chloramphenicol
 AF452105.1.gene1.p1	beta-lactam__LEN-15	beta-lactam
-AF453998.2.gene4.p01	aminoglycoside__ant(3'')-Ih-aac(6')-IId	aminoglycoside
+AF453998.2.gene4.p01	aminoglycoside__ant(3)-Ih-aac(6)-IId	aminoglycoside
 AF458080.1.gene3.p01	chloramphenicol__cmlA	chloramphenicol
 AF462019.1.gene1.p01	chloramphenicol__cat_chloramphenicol acetyltransferase	chloramphenicol
 AF462611.1.orf0.gene.p01	macrolide-lincosamide-streptogramin__erm(36)	macrolide-lincosamide-streptogramin
@@ -862,7 +862,7 @@ AF467947.1.gene1.p1	beta-lactam__SHV-36	beta-lactam
 AF467948.1.gene1.p1	beta-lactam__SHV-37	beta-lactam
 AF468003.1.gene1.p1	beta-lactam__TEM-111	beta-lactam
 AF472622.2.gene1.p01	beta-lactam__CfxA2	beta-lactam
-AF479774.1.gene5.p01	aminoglycoside__aac(6')-I	aminoglycoside
+AF479774.1.gene5.p01	aminoglycoside__aac(6)-I	aminoglycoside
 AF479774.1.gene7.p01	beta-lactam__OXA-9	beta-lactam
 AF488377.1.gene1.p1	beta-lactam__CTX-M	beta-lactam
 AF491278.1.gene1.p01	beta-lactam__OXY-3	beta-lactam
@@ -943,9 +943,9 @@ AJ567827.1.gene1.p01	aminoglycoside__aadA	aminoglycoside
 AJ579365.gene.p01	macrolide-lincosamide-streptogramin__lsa	macrolide-lincosamide-streptogramin
 AJ584652.2.gene10.p01	sulfonamide__sul1	sulfonamide
 AJ584652.2.gene3.p01	beta-lactam__IMP-16	beta-lactam
-AJ584652.2.gene5.p01	aminoglycoside__aac(6')-30-aac(6')-Ib'	aminoglycoside
-AJ584700.2.gene1.p01	aminoglycoside__aac(6')-II	aminoglycoside
-AJ584701.2.gene1.p01	aminoglycoside__aac(6')-II	aminoglycoside
+AJ584652.2.gene5.p01	aminoglycoside__aac(6)-30-aac(6)-Ib	aminoglycoside
+AJ584700.2.gene1.p01	aminoglycoside__aac(6)-II	aminoglycoside
+AJ584701.2.gene1.p01	aminoglycoside__aac(6)-II	aminoglycoside
 AJ631966.1.gene1.p01	beta-lactam__OXA-57	beta-lactam
 AJ632249.1.gene1.p01	beta-lactam__OXA-59	beta-lactam
 AJ634602.gene.p01	beta-lactam__TEM-135	beta-lactam
@@ -1018,8 +1018,8 @@ AM183304.1.gene1.p01	beta-lactam__TEM-171	beta-lactam
 AM231719.1.gene1.p01	beta-lactam__OXA-90	beta-lactam
 AM261837.1.gene1.p01	aminoglycoside__aadA	aminoglycoside
 AM279652.1.gene1.p01	beta-lactam__OXA-98	beta-lactam
-AM283489.1.gene3.p01	aminoglycoside__aac(6')-31	aminoglycoside
-AM283490.1.gene4.p01	aminoglycoside__aac(6')-31	aminoglycoside
+AM283489.1.gene3.p01	aminoglycoside__aac(6)-31	aminoglycoside
+AM283490.1.gene4.p01	aminoglycoside__aac(6)-31	aminoglycoside
 AM286274.1.gene1.p01	beta-lactam__TEM-137	beta-lactam
 AM296480.1.gene1.p01	chloramphenicol__floR	chloramphenicol
 AM296481.1.gene2.p01	chloramphenicol__chloramphenicol exporter	chloramphenicol
@@ -1088,14 +1088,14 @@ AY082011.1.gene8.p01	vancomycin__vanX	vancomycin
 AY092401.1.gene1.p1	beta-lactam__TEM-96	beta-lactam
 AY101578.1.gene1.p01	beta-lactam__TEM-106	beta-lactam
 AY101764.1.gene1.p01	beta-lactam__TEM-107	beta-lactam
-AY114142.1.gene1.p01	aminoglycoside__ant(4')-IIa	aminoglycoside
+AY114142.1.gene1.p01	aminoglycoside__ant(4)-IIa	aminoglycoside
 AY115475.1.gene2.p01	beta-lactam__OXA-10	beta-lactam
 AY115475.1.gene4.p01	chloramphenicol__cmlA	chloramphenicol
 AY123251.gene2.p01	chloramphenicol__catB	chloramphenicol
 AY130282.1.gene1.p1	beta-lactam__TEM-117	beta-lactam
 AY130284.1.gene1.p1	beta-lactam__TEM-75	beta-lactam
 AY130285.1.gene1.p1	beta-lactam__TEM-118	beta-lactam
-AY136758.1.gene3.p01	aminoglycoside__aac(6')-I	aminoglycoside
+AY136758.1.gene3.p01	aminoglycoside__aac(6)-I	aminoglycoside
 AY138986.1.gene1.p01	aminoglycoside__aadA	aminoglycoside
 AY139598.1.gene3.p01	beta-lactam__OXA-119	beta-lactam
 AY139603.1.gene1.p01	aminoglycoside__aadA	aminoglycoside
@@ -1137,7 +1137,7 @@ AY288523.1.gene1.p01	beta-lactam__OXA-49	beta-lactam
 AY288915.1.gene1.p01	beta-lactam__SHV-50	beta-lactam
 AY289548.1.gene1.p01	beta-lactam__SHV-51	beta-lactam
 AY289608.1.gene2.p01	beta-lactam__OXA-53	beta-lactam
-AY289608.1.gene3.p01	aminoglycoside__aac(6')-I	aminoglycoside
+AY289608.1.gene3.p01	aminoglycoside__aac(6)-I	aminoglycoside
 AY292654.1.gene1.p1	beta-lactam__CTX-M	beta-lactam
 AY306130.1.gene1.p01	beta-lactam__OXA-50	beta-lactam
 AY307100.1.gene1.p1	beta-lactam__TEM-1	beta-lactam
@@ -1227,7 +1227,7 @@ AY853593.1.gene1.p1	beta-lactam__TEM-138	beta-lactam
 AY859529.1.gene1.p01	beta-lactam__OXA-75	beta-lactam
 AY862132.1.gene1.p01	beta-lactam__OXA-78	beta-lactam
 AY874537.1.gene1.p01	beta-lactam__TEM-11	beta-lactam
-AY939911.1.gene1.p01	aminoglycoside__aph(2'')-Ie	aminoglycoside
+AY939911.1.gene1.p01	aminoglycoside__aph(2)-Ie	aminoglycoside
 AY949202.1.gene1.p01	beta-lactam__OXA-77	beta-lactam
 AY949203.1.gene1.p01	beta-lactam__OXA-76	beta-lactam
 AY954516.1.gene1.p1	beta-lactam__CTX-M-89	beta-lactam
@@ -1261,7 +1261,7 @@ BAA06252	beta-lactam__class A beta-lactamase	beta-lactam
 BAA07084	beta-lactam__class A beta-lactamase	beta-lactam
 BAA07390	tetracycline__tcr3	tetracycline
 BAA07922	beta-lactam__class C beta-lactamase	beta-lactam
-BAA08271	aminoglycoside__aph(3')-I	aminoglycoside
+BAA08271	aminoglycoside__aph(3)-I	aminoglycoside
 BAA12916	beta-lactam__class C beta-lactamase	beta-lactam
 BAA31456	multidrug__mdtK	multidrug
 BAA32077	beta-lactam__ampC	beta-lactam
@@ -1275,7 +1275,7 @@ BAB71966	tetracycline__tetP	tetracycline
 BAB71968	tetracycline__tetM	tetracycline
 BAB82500	tetracycline__tetM	tetracycline
 BAB86942	beta-lactam__penA	beta-lactam
-BAB93733	aminoglycoside__aph(3')-I	aminoglycoside
+BAB93733	aminoglycoside__aph(3)-I	aminoglycoside
 BAC00986	aminoglycoside__aadD	aminoglycoside
 BAC06841	beta-lactam__metallo-beta-lactamase	beta-lactam
 BAC12781	fosfomycin__fosB	fosfomycin
@@ -1310,7 +1310,7 @@ BAD77822	trimethoprim__dfrA17	trimethoprim
 BAD86537	macrolide-lincosamide-streptogramin__msrA	macrolide-lincosamide-streptogramin
 BAD86538	macrolide-lincosamide-streptogramin__mphC	macrolide-lincosamide-streptogramin
 BAD86539	macrolide-lincosamide-streptogramin__ermG	macrolide-lincosamide-streptogramin
-BAD95814	aminoglycoside__aph(3')-V	aminoglycoside
+BAD95814	aminoglycoside__aph(3)-V	aminoglycoside
 BAE54319	macrolide-lincosamide-streptogramin__ereB	macrolide-lincosamide-streptogramin
 BAE66664	trimethoprim__dfrA15	trimethoprim
 BAE71359	beta-lactam__PSE-1	beta-lactam
@@ -1318,12 +1318,12 @@ BAE73191	trimethoprim__dfrA1	trimethoprim
 BAE96115	vancomycin__vanY	vancomycin
 BAE96116	vancomycin__vanD	vancomycin
 BAE96117	vancomycin__vanD	vancomycin
-BAE98117	aminoglycoside__aph(3��)-III	aminoglycoside
+BAE98117	aminoglycoside__aph(3)-III	aminoglycoside
 BAF36555	sulfonamide__sul1	sulfonamide
 BAF47404	beta-lactam__metallo-beta-lactamase	beta-lactam
 BAF95849	beta-lactam__SHV	beta-lactam
 BAG06200	beta-lactam__mecA	beta-lactam
-BAG17078	aminoglycoside__aph(3')-I	aminoglycoside
+BAG17078	aminoglycoside__aph(3)-I	aminoglycoside
 BAG24378	beta-lactam__mecR1	beta-lactam
 BAG76424	multidrug__mdfA	multidrug
 BAG80136	multidrug__mdtM	multidrug
@@ -1352,7 +1352,7 @@ CAA54738	beta-lactam__class A beta-lactamase	beta-lactam
 CAA63057	multidrug__mdtH	multidrug
 CAA63519	aminoglycoside__streptomycin resistance protein	aminoglycoside
 CAA66307	macrolide-lincosamide-streptogramin__ermN	macrolide-lincosamide-streptogramin
-CAA67773	aminoglycoside__aph(3��)-III	aminoglycoside
+CAA67773	aminoglycoside__aph(3)-III	aminoglycoside
 CAA67774	chloramphenicol__cat_chloramphenicol acetyltransferase	chloramphenicol
 CAA70206	macrolide-lincosamide-streptogramin__ermC	macrolide-lincosamide-streptogramin
 CAA70207	macrolide-lincosamide-streptogramin__ermC	macrolide-lincosamide-streptogramin
@@ -1363,7 +1363,7 @@ CAA73547	beta-lactam__mecA	beta-lactam
 CAA74376	beta-lactam__mecA	beta-lactam
 CAA75611	beta-lactam__CMY-31	beta-lactam
 CAA76069	tetracycline__tetH	tetracycline
-CAA88266	aminoglycoside__aph(3')-I	aminoglycoside
+CAA88266	aminoglycoside__aph(3)-I	aminoglycoside
 CAA90431	fusidic-acid__fusH	fusidic-acid
 CAA90687	trimethoprim__dfrA14	trimethoprim
 CAA90688	trimethoprim__dfrA14	trimethoprim
@@ -1409,11 +1409,11 @@ CAD11594	trimethoprim__dfrA1	trimethoprim
 CAD11599	tetracycline__tetA	tetracycline
 CAD13485	tetracycline__tetW	tetracycline
 CAD20591	beta-lactam__class A beta-lactamase	beta-lactam
-CAD36021	aminoglycoside__aph(3��)-III	aminoglycoside
+CAD36021	aminoglycoside__aph(3)-III	aminoglycoside
 CAD55935	beta-lactam__IMP-13	beta-lactam
 CAD57182	trimethoprim__dfrA16	trimethoprim
 CAD57199	chloramphenicol__catA	chloramphenicol
-CAD60196	aminoglycoside__aph(3')-I	aminoglycoside
+CAD60196	aminoglycoside__aph(3)-I	aminoglycoside
 CAD69003	beta-lactam__metallo-beta-lactamase	beta-lactam
 CAD70592	beta-lactam__penA	beta-lactam
 CAD89787	macrolide-lincosamide-streptogramin__ermG	macrolide-lincosamide-streptogramin
@@ -1429,7 +1429,7 @@ CAE55180	beta-lactam__ampC	beta-lactam
 CAF05908	beta-lactam__GIM-1	beta-lactam
 CAF18336	sulfonamide__sul1	sulfonamide
 CAF21854	multidrug__norA	multidrug
-CAF29483	aminoglycoside__aph(3')-I	aminoglycoside
+CAF29483	aminoglycoside__aph(3)-I	aminoglycoside
 CAF31623	trimethoprim__dfrA23	trimethoprim
 CAF31839	aminoglycoside__aph(4)-I	aminoglycoside
 CAF33325	aminoglycoside__aac(3)-VIII	aminoglycoside
@@ -1439,7 +1439,7 @@ CAG30567	tetracycline__tetO	tetracycline
 CAG30572	macrolide-lincosamide-streptogramin__mefA	macrolide-lincosamide-streptogramin
 CAG34024	aminoglycoside__aac(3)-VIII	aminoglycoside
 CAG34107	beta-lactam__OXY-2	beta-lactam
-CAG34229	aminoglycoside__ant(2'')-I	aminoglycoside
+CAG34229	aminoglycoside__ant(2)-I	aminoglycoside
 CAG34249	multidrug__smeD	multidrug
 CAG34250	multidrug__multidrug_transporter	multidrug
 CAG34251	multidrug__smeF	multidrug
@@ -1448,7 +1448,7 @@ CAG34257	multidrug__smeE	multidrug
 CAG34264	multidrug__smeD	multidrug
 CAG34265	multidrug__smeE	multidrug
 CAG34266	multidrug__smeF	multidrug
-CAG34724	aminoglycoside__aph(3')-I	aminoglycoside
+CAG34724	aminoglycoside__aph(3)-I	aminoglycoside
 CAG74079	multidrug__acrB	multidrug
 CAH58703	aminoglycoside__aac(3)-VIII	aminoglycoside
 CAH94334	aminoglycoside__aph(6)-I	aminoglycoside
@@ -1486,7 +1486,7 @@ CAJ77026	aminoglycoside__aph(6)-I	aminoglycoside
 CAJ77843	multidrug__adeC	multidrug
 CAJ77844	multidrug__adeB	multidrug
 CAJ77891	trimethoprim__dfrA5	trimethoprim
-CAJ85716	aminoglycoside__aph(3')-I	aminoglycoside
+CAJ85716	aminoglycoside__aph(3)-I	aminoglycoside
 CAJ88549	tetracycline__tetracycline_resistance_protein	tetracycline
 CAJ93947	bacitracin__bacA	bacitracin
 CAK55562	beta-lactam__IMP-1	beta-lactam
@@ -1684,7 +1684,7 @@ CP004022.1.gene546.p01	multidrug__emrB	multidrug
 CP004022.1.gene547.p01	multidrug__emrA	multidrug
 CP004022.1.gene757.p01	macrolide-lincosamide-streptogramin__macA	macrolide-lincosamide-streptogramin
 CP004022.1.gene834.p01	multidrug__ompF	multidrug
-CP004067.1.gene46.p01	aminoglycoside__aph(2'')-Ie	aminoglycoside
+CP004067.1.gene46.p01	aminoglycoside__aph(2)-Ie	aminoglycoside
 D13210.1.gene1.p01	beta-lactam__CARB-12	beta-lactam
 D13304.2.gene1.p01	beta-lactam__MOX-1	beta-lactam
 D16171.1.gene1.p01	chloramphenicol__cat_chloramphenicol acetyltransferase	chloramphenicol
@@ -1737,13 +1737,13 @@ DQ268764.2.gene6.p01	beta-lactam__CTX-M-53	beta-lactam
 DQ279850.1.gene1.p1	beta-lactam__TEM-147	beta-lactam
 DQ286729.1.gene1.p1	beta-lactam__TEM-55	beta-lactam
 DQ294299.gene.p01	tetracycline__tetW	tetracycline
-DQ303918.1.gene1.p01	aminoglycoside__aac(6')-I	aminoglycoside
+DQ303918.1.gene1.p01	aminoglycoside__aac(6)-I	aminoglycoside
 DQ309276.1.gene1.p01	beta-lactam__OXA-84	beta-lactam
 DQ309277.1.gene1.p01	beta-lactam__OXA-83	beta-lactam
 DQ322460.1.gene1.p1	beta-lactam__SHV-85	beta-lactam
 DQ328802.1.gene1.p01	beta-lactam__SHV-86	beta-lactam
 DQ335566.1.gene1.p01	beta-lactam__OXA-92	beta-lactam
-DQ336355.1.gene5.p01	aminoglycoside__aph(3'')-I	aminoglycoside
+DQ336355.1.gene5.p01	aminoglycoside__aph(3)-I	aminoglycoside
 DQ348075.1.gene1.p01	beta-lactam__OXA-87	beta-lactam
 DQ351241.gene.p01	quinolone__qnrB	quinolone
 DQ361087.2.gene1.p01	beta-lactam__IMP-22	beta-lactam
@@ -1758,7 +1758,7 @@ DQ445683.1.gene1.p01	beta-lactam__OXA-89	beta-lactam
 DQ449578.gene.p01	quinolone__qnrS	quinolone
 DQ463751.1.gene1.p01	beta-lactam__CMY-23	beta-lactam
 DQ464881.1.gene2.p01	sulfonamide__sul2	sulfonamide
-DQ464881.1.gene4.p01	aminoglycoside__aph(3')-I	aminoglycoside
+DQ464881.1.gene4.p01	aminoglycoside__aph(3)-I	aminoglycoside
 DQ489307.1.gene2.p01	beta-lactam__OCH-8	beta-lactam
 DQ491200.1.gene1.p01	beta-lactam__OXA-67	beta-lactam
 DQ519086.1.gene2.p01	beta-lactam__OXA-91	beta-lactam
@@ -1812,14 +1812,14 @@ EF426798.1.gene1.p1	beta-lactam__CTX-M-79	beta-lactam
 EF468463.1.gene1.p01	beta-lactam__TEM-157	beta-lactam
 EF534256.2.gene1.p01	beta-lactam__OXA-72	beta-lactam
 EF534736.1.gene1.p01	beta-lactam__TEM-158	beta-lactam
-EF540343.1.gene1.p01	aminoglycoside__ant(4')-Ia	aminoglycoside
+EF540343.1.gene1.p01	aminoglycoside__ant(4)-Ia	aminoglycoside
 EF540343.1.gene2.p01	beta-lactam__blaI	beta-lactam
 EF540343.1.gene3.p01	beta-lactam__blaR1	beta-lactam
 EF552405.1.gene1.p01	beta-lactam__OXA-141	beta-lactam
 EF561644.1.gene1.p01	beta-lactam__ampC	beta-lactam
 EF581285.1.gene1.p01	beta-lactam__OXA-104	beta-lactam
 EF581888.1.gene1.p01	beta-lactam__CTX-M-14	beta-lactam
-EF614235.1.gene3.p01	aminoglycoside__aac(6')-II	aminoglycoside
+EF614235.1.gene3.p01	aminoglycoside__aac(6)-II	aminoglycoside
 EF622224.1.gene1.p01	beta-lactam__CMY-31	beta-lactam
 EF650032.1.gene1.p01	beta-lactam__OXA-106	beta-lactam
 EF650033.1.gene1.p01	beta-lactam__OXA-107	beta-lactam
@@ -1838,7 +1838,7 @@ EU019536.1.gene1.p01	beta-lactam__OXA-82	beta-lactam
 EU024485.1.gene1.p01	beta-lactam__SHV-102	beta-lactam
 EU029998.1.gene2.p01	beta-lactam__OXA-115	beta-lactam
 EU032604.1.gene1.p01	beta-lactam__SHV-1	beta-lactam
-EU085533.1.gene1.p01	aminoglycoside__aac(6')-I	aminoglycoside
+EU085533.1.gene1.p01	aminoglycoside__aac(6)-I	aminoglycoside
 EU086830.1.gene1.p01	beta-lactam__OXA-136	beta-lactam
 EU086834.1.gene1.p01	beta-lactam__OXA-137	beta-lactam
 EU136031.3.gene1.p3	beta-lactam__CTX-M	beta-lactam
@@ -1894,7 +1894,7 @@ EU675686.2.gene7.p01	sulfonamide__sul1	sulfonamide
 EU729727.1.gene1.p1	beta-lactam__KPC-7	beta-lactam
 EU748544.1.gene1.p1	beta-lactam__PER-4	beta-lactam
 EU815939.1.gene1.p1	beta-lactam__TEM-163	beta-lactam
-EU886977.1.gene2.p01	aminoglycoside__aac(6')-I	aminoglycoside
+EU886977.1.gene2.p01	aminoglycoside__aac(6)-I	aminoglycoside
 FJ194494.1.gene1.p01	beta-lactam__OXA-146	beta-lactam
 FJ194944.1.gene1.p01	beta-lactam__SHV-105	beta-lactam
 FJ197316.1.gene1.p1	beta-lactam__TEM-166	beta-lactam
@@ -1921,7 +1921,7 @@ FJ405211.1.gene1.p01	beta-lactam__TEM-57	beta-lactam
 FJ437066.1.gene1.p1	beta-lactam__CMY-44	beta-lactam
 FJ460181.2.gene2.p01	chloramphenicol__catB	chloramphenicol
 FJ460181.2.gene3.p01	aminoglycoside__aadA	aminoglycoside
-FJ503047.1.gene1.p01	aminoglycoside__aac(6')-I	aminoglycoside
+FJ503047.1.gene1.p01	aminoglycoside__aac(6)-I	aminoglycoside
 FJ534512.1.gene1.p01	beta-lactam__OKP-A	beta-lactam
 FJ534513.1.gene1.p01	beta-lactam__OKP-A	beta-lactam
 FJ617207.1.gene1.p01	beta-lactam__OXA-226	beta-lactam
@@ -2015,7 +2015,7 @@ GU207844.1.gene1.p01	beta-lactam__GES-14	beta-lactam
 GU208678.1.gene1.p01	beta-lactam__GES-15	beta-lactam
 GU371926.1.gene94.p01	beta-lactam__TEM-33	beta-lactam
 GU550123.1.gene1.p1	beta-lactam__TEM-176	beta-lactam
-GU565967.1.gene31.p01	aminoglycoside__aph(3')-I	aminoglycoside
+GU565967.1.gene31.p01	aminoglycoside__aph(3)-I	aminoglycoside
 GU827715.1.gene1.p01	beta-lactam__SHV	beta-lactam
 GU831575.1.gene1.p01	beta-lactam__OXA-164	beta-lactam
 GU932590.1.gene1.p1	beta-lactam__SHV-128	beta-lactam
@@ -2091,7 +2091,7 @@ HQ336940.1.gene1.p01	beta-lactam__CMY-2	beta-lactam
 HQ342889.1.gene1.p01	beta-lactam__KPC-13	beta-lactam
 HQ398214.1.gene1.p01	beta-lactam__CTX-M-101	beta-lactam
 HQ398215.1.gene1.p01	beta-lactam__CTX-M-102	beta-lactam
-HQ424460.1.gene1.p01	aminoglycoside__aph(3')-IIb	aminoglycoside
+HQ424460.1.gene1.p01	aminoglycoside__aph(3)-IIb	aminoglycoside
 HQ425492.1.gene1.p01	beta-lactam__OXA-194	beta-lactam
 HQ425493.1.gene1.p01	beta-lactam__OXA-195	beta-lactam
 HQ425494.1.gene1.p01	beta-lactam__OXA-196	beta-lactam
@@ -2164,7 +2164,7 @@ JN227085.1.gene1.p01	beta-lactam__CTX-M-15	beta-lactam
 JN248564.1.gene1.p01	beta-lactam__OXA-223	beta-lactam
 JN254627.1.gene1.p01	beta-lactam__TEM-189	beta-lactam
 JN416112.1.gene1.p01	beta-lactam__TEM-190	beta-lactam
-JN596280.1.gene2.p01	aminoglycoside__aac(6')-I	aminoglycoside
+JN596280.1.gene2.p01	aminoglycoside__aac(6)-I	aminoglycoside
 JN596280.1.gene3.p01	beta-lactam__GES-19	beta-lactam
 JN596280.1.gene4.p01	beta-lactam__GES-20	beta-lactam
 JN596991.2.gene4.p01	beta-lactam__OXA-4	beta-lactam
@@ -2210,7 +2210,7 @@ JQ733577.1.gene2.p01	beta-lactam__CMY-80	beta-lactam
 JQ734687.1.gene1.p01	beta-lactam__NDM-3	beta-lactam
 JQ768046.1.gene8.p1	multidrug__major_facilitator_superfamily_transporter	multidrug
 JQ772478.1.gene1.p1	beta-lactam__GES-21	beta-lactam
-JQ808129.1.gene1.p01	aminoglycoside__aac(6')-I	aminoglycoside
+JQ808129.1.gene1.p01	aminoglycoside__aac(6)-I	aminoglycoside
 JQ808129.1.gene2.p01	aminoglycoside__rmtF	aminoglycoside
 JQ808129.1.gene4.p01	chloramphenicol__cat_chloramphenicol acetyltransferase	chloramphenicol
 JQ820241.1.gene1.p01	beta-lactam__OXA-237	beta-lactam
@@ -2263,7 +2263,7 @@ JX893517.1.gene1.p01	beta-lactam__OXA-247	beta-lactam
 JX896165.1.gene1.p01	beta-lactam__CTX-M-134	beta-lactam
 JX982635.1.gene1.p01	beta-lactam__VIM-2	beta-lactam
 JX982636.1.gene1.p01	beta-lactam__metallo-beta-lactamase	beta-lactam
-K00432.1.gene1.p1	aminoglycoside__aph(3')-V	aminoglycoside
+K00432.1.gene1.p1	aminoglycoside__aph(3)-V	aminoglycoside
 K00544.gene.p01	chloramphenicol__cat_chloramphenicol acetyltransferase	chloramphenicol
 KC107824.1.gene1.p1	beta-lactam__CTX-M-15	beta-lactam
 KC149518.1.gene1.p01	beta-lactam__TEM-153	beta-lactam
@@ -2377,23 +2377,23 @@ KJ188748.1.gene1.p01	beta-lactam__SME-5	beta-lactam
 KJ363320.1.gene3.p01	aminoglycoside__aadA	aminoglycoside
 KJ427797.1.gene1.p01	beta-lactam__OXA-391	beta-lactam
 KJ461948.1.gene1.p1	beta-lactam__CTX-M-152	beta-lactam
-L06156.1.gene1.p01	aminoglycoside__aac(2')-I	aminoglycoside
+L06156.1.gene1.p01	aminoglycoside__aac(2)-I	aminoglycoside
 L06157.1.gene1.p01	aminoglycoside__aac(3)-I	aminoglycoside
 L06160.1.gene1.p01	aminoglycoside__aac(3)-IIIa	aminoglycoside
 L06161.1.gene1.p01	aminoglycoside__aac(3)-IIIa	aminoglycoside
-L06163.1.gene1.p01	aminoglycoside__aac(6')-II	aminoglycoside
+L06163.1.gene1.p01	aminoglycoside__aac(6)-II	aminoglycoside
 L06798.gene.p01	tetracycline__tetD	tetracycline
 L06940.gene.p01	tetracycline__tetE	tetracycline
 L07778.gene.p01	macrolide-lincosamide-streptogramin__vatA	macrolide-lincosamide-streptogramin
 L07945.1.gene1.p01	beta-lactam__OXA-3	beta-lactam
-L09246.1.gene1.p01	aminoglycoside__aac(6')-I	aminoglycoside
+L09246.1.gene1.p01	aminoglycoside__aac(6)-I	aminoglycoside
 L09756.gene.p01	tetracycline__tetS	tetracycline
-L12710.gene.p01	aminoglycoside__aac(6')-I	aminoglycoside
+L12710.gene.p01	aminoglycoside__aac(6)-I	aminoglycoside
 L20800.gene.p01	tetracycline__tetP	tetracycline
 L22689.1.gene1.p01	macrolide-lincosamide-streptogramin__ermA	macrolide-lincosamide-streptogramin
-L29044.1.gene1.p01	aminoglycoside__aac(6')-I	aminoglycoside
-L29045.1.gene1.p01	aminoglycoside__aac(6')-I	aminoglycoside
-L29510.1.gene1.p01	aminoglycoside__aac(6')-I	aminoglycoside
+L29044.1.gene1.p01	aminoglycoside__aac(6)-I	aminoglycoside
+L29045.1.gene1.p01	aminoglycoside__aac(6)-I	aminoglycoside
+L29510.1.gene1.p01	aminoglycoside__aac(6)-I	aminoglycoside
 L42544.gene.p01	tetracycline__tetT	tetracycline
 M11036.gene.p01	tetracycline__tetL	tetracycline
 M11587.1.gene1.p1	chloramphenicol__catA	chloramphenicol
@@ -2402,16 +2402,16 @@ M14730.gene.p01	macrolide-lincosamide-streptogramin__ermF	macrolide-lincosamide-
 M15332.gene.p01	macrolide-lincosamide-streptogramin__ermG	macrolide-lincosamide-streptogramin
 M16217.gene.p01	tetracycline__tetracycline_resistance_protein	tetracycline
 M20129.gene.p01	macrolide-lincosamide-streptogramin__vgbA	macrolide-lincosamide-streptogramin
-M20305.1.gene1.p1	aminoglycoside__aph(3')-I	aminoglycoside
-M22126.1.gene1.p01	aminoglycoside__aph(3')-I	aminoglycoside
+M20305.1.gene1.p1	aminoglycoside__aph(3)-I	aminoglycoside
+M22126.1.gene1.p01	aminoglycoside__aph(3)-I	aminoglycoside
 M22614.1.gene1.p1	chloramphenicol__chloramphenicol exporter	chloramphenicol
 M22999.1.gene2.p01	aminoglycoside__aac(3)-VII	aminoglycoside
-M23634.1.gene1.p1	aminoglycoside__aac(6')-I	aminoglycoside
+M23634.1.gene1.p1	aminoglycoside__aac(6)-I	aminoglycoside
 M26879.gene.p01	aminoglycoside__aadK	aminoglycoside
 M27459.1.gene1.p01	beta-lactam__OXY-1	beta-lactam
-M29695.1.gene2.p01	aminoglycoside__aac(6')-II	aminoglycoside
+M29695.1.gene2.p01	aminoglycoside__aac(6)-II	aminoglycoside
 M29832.gene.p01	macrolide-lincosamide-streptogramin__ermA	macrolide-lincosamide-streptogramin
-M29953.1.gene1.p1	aminoglycoside__aph(3')-VII	aminoglycoside
+M29953.1.gene1.p1	aminoglycoside__aph(3)-VII	aminoglycoside
 M35190.gene.p01	chloramphenicol__cat_chloramphenicol acetyltransferase	chloramphenicol
 M36726.gene.p01	macrolide-lincosamide-streptogramin__ermX	macrolide-lincosamide-streptogramin
 M37699.gene1.p01	tetracycline__tetX	tetracycline
@@ -2432,9 +2432,9 @@ M85225.gene.p01	tetracycline__tetM	tetracycline
 M88012.1.gene2.p01	aminoglycoside__aac(3)-VI	aminoglycoside
 M90091.1.gene2.p01	chloramphenicol__cat_chloramphenicol acetyltransferase	chloramphenicol
 M93113.gene.p01	chloramphenicol__catB	chloramphenicol
-M94066.1.gene1.p01	aminoglycoside__aac(6')-I	aminoglycoside
+M94066.1.gene1.p01	aminoglycoside__aac(6)-I	aminoglycoside
 M97172.1.gene1.p01	aminoglycoside__aac(3)-II	aminoglycoside
-M98270.1.orf0.gene.p01	aminoglycoside__ant(4')-IIa	aminoglycoside
+M98270.1.orf0.gene.p01	aminoglycoside__ant(4)-IIa	aminoglycoside
 NC_002096.2598307.p01	chloramphenicol__cat_chloramphenicol acetyltransferase	chloramphenicol
 NC_002516.2.877851.p01	multidrug__oprM	multidrug
 NC_002516.2.877852.p01	multidrug__mexB	multidrug
@@ -2591,7 +2591,7 @@ NC_011595.7060378.p01	multidrug__mdtK	multidrug
 NC_011595.7060598.p01	multidrug__mdtL	multidrug
 NC_012469.1.7687230.p01	multidrug__mdtG	multidrug
 NP_040462	macrolide-lincosamide-streptogramin__ermC	macrolide-lincosamide-streptogramin
-NP_044301	aminoglycoside__aph(3')-I	aminoglycoside
+NP_044301	aminoglycoside__aph(3)-I	aminoglycoside
 NP_044444	chloramphenicol__chloramphenicol exporter	chloramphenicol
 NP_266279	multidrug__multidrug_transporter	multidrug
 NP_268322	macrolide-lincosamide-streptogramin__lmrP	macrolide-lincosamide-streptogramin
@@ -2671,7 +2671,7 @@ NP_840140	bacitracin__bacA	bacitracin
 NP_843860	bacitracin__bacA	bacitracin
 NP_862291	tetracycline__tetM	tetracycline
 NP_862543	macrolide-lincosamide-streptogramin__ermT	macrolide-lincosamide-streptogramin
-NP_863005	aminoglycoside__aac(6')-I	aminoglycoside
+NP_863005	aminoglycoside__aac(6)-I	aminoglycoside
 NP_863621	aminoglycoside__aadD	aminoglycoside
 NP_878013	vancomycin__vanR	vancomycin
 NP_878015	vancomycin__vanH	vancomycin
@@ -2690,7 +2690,7 @@ O87866	multidrug__qacG	multidrug
 P00383	trimethoprim__dfrB1	trimethoprim
 P00384	trimethoprim__dfrB2	trimethoprim
 P00484	chloramphenicol__catA	chloramphenicol
-P00553	aminoglycoside__aph(3'')-IV	aminoglycoside
+P00553	aminoglycoside__aph(3)-IV	aminoglycoside
 P00808	beta-lactam__class A beta-lactamase	beta-lactam
 P00809	beta-lactam__class A beta-lactamase	beta-lactam
 P04190	beta-lactam__class A beta-lactamase	beta-lactam
@@ -2702,7 +2702,7 @@ P08457	aminoglycoside__streptothricin acetyltransferase	aminoglycoside
 P09757	tetracycline__tetM	tetracycline
 P0A0H1	macrolide-lincosamide-streptogramin__ermA	macrolide-lincosamide-streptogramin
 P0A0U8	beta-lactam__penA	beta-lactam
-P0A3Y6	aminoglycoside__aph(3��)-III	aminoglycoside
+P0A3Y6	aminoglycoside__aph(3)-III	aminoglycoside
 P10425	beta-lactam__class A beta-lactamase	beta-lactam
 P10952	tetracycline__tetO	tetracycline
 P12055	aminoglycoside__streptomycin resistance protein	aminoglycoside
@@ -2768,7 +2768,7 @@ Q01166	beta-lactam__class A beta-lactamase	beta-lactam
 Q02607	macrolide-lincosamide-streptogramin__ermF	macrolide-lincosamide-streptogramin
 Q02652	tetracycline__tetM	tetracycline
 Q03377	fosfomycin__fosB	fosfomycin
-Q03447	aminoglycoside__aph(3')-I	aminoglycoside
+Q03447	aminoglycoside__aph(3)-I	aminoglycoside
 Q03680	beta-lactam__class D beta-lactamase	beta-lactam
 Q04720	macrolide-lincosamide-streptogramin__ermA	macrolide-lincosamide-streptogramin
 Q06240	vancomycin__vanS	vancomycin
@@ -2855,7 +2855,7 @@ Q9KIN5	bacitracin__bacA	bacitracin
 S00464	beta-lactam__SHV-1	beta-lactam
 S46063.1.gene1.p2	beta-lactam__CARB-3	beta-lactam
 S48276.1.gene1.p01	chloramphenicol__cat_chloramphenicol acetyltransferase	chloramphenicol
-S81599.1.gene1.p01	aminoglycoside__aph(3')-V	aminoglycoside
+S81599.1.gene1.p01	aminoglycoside__aph(3)-V	aminoglycoside
 T44117	beta-lactam__mecR1	beta-lactam
 U09991.1.gene2.p01	chloramphenicol__chloramphenicol exporter	chloramphenicol
 U10251.1.gene1.p01	beta-lactam__OXA-12	beta-lactam
@@ -2866,18 +2866,18 @@ U19459.gene.p01	macrolide-lincosamide-streptogramin__vatB	macrolide-lincosamide-
 U20270.1.gene1.p01	beta-lactam__SHV	beta-lactam
 U37195.1.gene1.p1	beta-lactam__TEM-28	beta-lactam
 U38243.1.gene1.p01	beta-lactam__CfxA2	beta-lactam
-U41471.1.gene1.p01	aminoglycoside__aac(2')-I	aminoglycoside
+U41471.1.gene1.p01	aminoglycoside__aac(2)-I	aminoglycoside
 U50278.1.gene2.p01	beta-lactam__IMI-1	beta-lactam
-U51479.gene.p01	aminoglycoside__aph(2'')-III	aminoglycoside
+U51479.gene.p01	aminoglycoside__aph(2)-III	aminoglycoside
 U56415.1.orf0.gene.p01	rifamycin__rifampin monooxygenase	rifamycin
 U57969.gene.p01	multidrug__mexD	multidrug
 U58210.1.gene4.p01	beta-lactam__penA	beta-lactam
 U58495.2.gene1.p2	beta-lactam__ACT-1	beta-lactam
-U59183.1.gene2.p01	aminoglycoside__aac(6')-I	aminoglycoside
+U59183.1.gene2.p01	aminoglycoside__aac(6)-I	aminoglycoside
 U59183.1.gene3.p01	beta-lactam__OXA-13	beta-lactam
 U63835.1.gene1.p01	beta-lactam__OXA-15	beta-lactam
 U70376.2.gene7.p01	spectinomycin__spcN	spectinomycin
-U72743.1.gene1.p01	aminoglycoside__aac(2')-I	aminoglycoside
+U72743.1.gene1.p01	aminoglycoside__aac(2)-I	aminoglycoside
 U75299.gene.p01	chloramphenicol__cat_chloramphenicol acetyltransferase	chloramphenicol
 U82085.gene.p01	macrolide-lincosamide-streptogramin__vgaB	macrolide-lincosamide-streptogramin
 U83488.1.gene4.p01	chloramphenicol__cat_chloramphenicol acetyltransferase	chloramphenicol
@@ -2896,17 +2896,17 @@ X02872.1.gene2.p1	chloramphenicol__cat_chloramphenicol acetyltransferase	chloram
 X03615.1.gene1.p1	aminoglycoside__aph(4)-I	aminoglycoside
 X04388.gene.p01	tetracycline__tetM	tetracycline
 X04515.1.gene1.p1	beta-lactam__LEN-1	beta-lactam
-X04555.1.orf0.gene.p01	aminoglycoside__ant(2'')-I	aminoglycoside
+X04555.1.orf0.gene.p01	aminoglycoside__ant(2)-I	aminoglycoside
 X05648.1.gene2.p1	aminoglycoside__aph(6)-I	aminoglycoside
-X07753.1.gene1.p1	aminoglycoside__aph(3')-I	aminoglycoside
+X07753.1.gene1.p1	aminoglycoside__aph(3)-I	aminoglycoside
 X13543.1.gene1.p1	aminoglycoside__aac(3)-II	aminoglycoside
 X15100.gene.p01	chloramphenicol__catD	chloramphenicol
-X53527.1.gene1.p1	aminoglycoside__aph(3'')-I	aminoglycoside
+X53527.1.gene1.p1	aminoglycoside__aph(3)-I	aminoglycoside
 X53796.1.gene1.p01	chloramphenicol__catA	chloramphenicol
 X53797.1.gene1.p01	chloramphenicol__catA	chloramphenicol
 X54606.1.gene1.p01	beta-lactam__TEM-2	beta-lactam
 X54723.1.gene1.p01	aminoglycoside__aac(3)-II	aminoglycoside
-X55353.1.gene1.p01	aminoglycoside__aac(6')-I	aminoglycoside
+X55353.1.gene1.p01	aminoglycoside__aac(6)-I	aminoglycoside
 X55652.1.gene2.p01	aminoglycoside__aac(3)-IIIa	aminoglycoside
 X57102.1.gene1.p01	beta-lactam__class B beta-lactamase	beta-lactam
 X57972.1.gene1.p1	beta-lactam__TEM-6	beta-lactam
@@ -2924,7 +2924,7 @@ X75761.gene.p01	tetracycline__tetA	tetracycline
 X77455.1.gene1.p01	beta-lactam__FOX-1	beta-lactam
 X78117.1.gene1.p01	beta-lactam__class C beta-lactamase	beta-lactam
 X82455.1.gene1.p01	chloramphenicol__cat_chloramphenicol acetyltransferase	chloramphenicol
-X90856.1.gene1.p01	aminoglycoside__aph(3')-IIb	aminoglycoside
+X90856.1.gene1.p01	aminoglycoside__aph(3)-IIb	aminoglycoside
 X91840.gene.p01	beta-lactam__CMY-2	beta-lactam
 X92506.gene.p01	beta-lactam__CTX-M-1	beta-lactam
 X92508.1.gene1.p01	beta-lactam__CMY-1	beta-lactam
@@ -2934,8 +2934,8 @@ X95401.1.gene1.p01	beta-lactam__TEM-45	beta-lactam
 X96858.1.gene1.p01	beta-lactam__blaB	beta-lactam
 X97254.1.gene1.p01	beta-lactam__TEM-178	beta-lactam
 X98102.1.gene1.p01	beta-lactam__SHV	beta-lactam
-XP_001893601	aminoglycoside__aph(3')-I	aminoglycoside
-XP_001914640	aminoglycoside__aph(3')-I	aminoglycoside
+XP_001893601	aminoglycoside__aph(3)-I	aminoglycoside
+XP_001914640	aminoglycoside__aph(3)-I	aminoglycoside
 Y00459.1.gene3.p01	aminoglycoside__aph(6)-I	aminoglycoside
 Y08743.gene.p01	multidrug__mdfA	multidrug
 Y10278.1.gene1.p01	beta-lactam__CTX-M	beta-lactam
@@ -2970,7 +2970,7 @@ YP_001058926	multidrug__oprA	multidrug
 YP_001061519	multidrug__mexE	multidrug
 YP_001066168	multidrug__mexX	multidrug
 YP_001066170	multidrug__oprM	multidrug
-YP_001068559	aminoglycoside__aac(2')-I	aminoglycoside
+YP_001068559	aminoglycoside__aac(2)-I	aminoglycoside
 YP_001089504	bacitracin__bacA	bacitracin
 YP_001101924	aminoglycoside__aph(6)-I	aminoglycoside
 YP_001116030	multidrug__opcM	multidrug
@@ -3012,7 +3012,7 @@ YP_001334540	multidrug__mdfA	multidrug
 YP_001334730	multidrug__mdtG	multidrug
 YP_001335662	multidrug__mdtK	multidrug
 YP_001338812	chloramphenicol__cmlA	chloramphenicol
-YP_001338814	aminoglycoside__ant(2'')-I	aminoglycoside
+YP_001338814	aminoglycoside__ant(2)-I	aminoglycoside
 YP_001345920	multidrug__mexA	multidrug
 YP_001345921	multidrug__mexB	multidrug
 YP_001345922	multidrug__oprM	multidrug
@@ -3154,9 +3154,9 @@ YP_001816601	trimethoprim__dfrA17	trimethoprim
 YP_001826640	tetracenomycin_C__tcmA	tetracenomycin_C
 YP_001834888	tetracycline__tetM	tetracycline
 YP_001836040	macrolide-lincosamide-streptogramin__ermB	macrolide-lincosamide-streptogramin
-YP_001844878	aminoglycoside__aph(3')-I	aminoglycoside
+YP_001844878	aminoglycoside__aph(3)-I	aminoglycoside
 YP_001846483	multidrug__adeB	multidrug
-YP_001848841	aminoglycoside__aac(2')-I	aminoglycoside
+YP_001848841	aminoglycoside__aac(2)-I	aminoglycoside
 YP_001871463	multidrug__acrB	multidrug
 YP_001871501	fosmidomycin__rosA	fosmidomycin
 YP_001878864	kasugamycin__kasugamycin resistance protein ksgA	kasugamycin
@@ -3179,7 +3179,7 @@ YP_001966009	tetracycline__tetL	tetracycline
 YP_001966224	chloramphenicol__catA	chloramphenicol
 YP_001966228	trimethoprim__dfrA14	trimethoprim
 YP_001966247	aminoglycoside__aac(3)-II	aminoglycoside
-YP_001966537	aminoglycoside__aph(3')-I	aminoglycoside
+YP_001966537	aminoglycoside__aph(3)-I	aminoglycoside
 YP_001967742	tetracycline__tetA	tetracycline
 YP_001969930	sulfonamide__sul2	sulfonamide
 YP_001972437	beta-lactam__metallo-beta-lactamase	beta-lactam
@@ -3226,7 +3226,7 @@ YP_002100652	multidrug__opcM	multidrug
 YP_002100653	multidrug__mexE	multidrug
 YP_002106217	multidrug__mexX	multidrug
 YP_002110288	multidrug__mexX	multidrug
-YP_002112964	aminoglycoside__aph(3')-I	aminoglycoside
+YP_002112964	aminoglycoside__aph(3)-I	aminoglycoside
 YP_002113107	kasugamycin__kasugamycin resistance protein ksgA	kasugamycin
 YP_002113999	macrolide-lincosamide-streptogramin__macB	macrolide-lincosamide-streptogramin
 YP_002114165	multidrug__mdtH	multidrug
@@ -3403,9 +3403,9 @@ YP_002750791	beta-lactam__class A beta-lactamase	beta-lactam
 YP_002758412	fosfomycin__fosX	fosfomycin
 YP_002773891	fosfomycin__fosB	fosfomycin
 YP_002775228	bacitracin__bacA	bacitracin
-YP_002791392	aminoglycoside__aac(6')-I	aminoglycoside
+YP_002791392	aminoglycoside__aac(6)-I	aminoglycoside
 YP_002791405	trimethoprim__dfrA19	trimethoprim
-YP_002791441	aminoglycoside__aph(3')-I	aminoglycoside
+YP_002791441	aminoglycoside__aph(3)-I	aminoglycoside
 YP_002791715	quinolone__qnrB	quinolone
 YP_002792444	beta-lactam__penA	beta-lactam
 YP_002800019	bacitracin__bacA	bacitracin
@@ -3455,7 +3455,7 @@ YP_080399	bacitracin__bacA	bacitracin
 YP_089932	beta-lactam__class A beta-lactamase	beta-lactam
 YP_098534	beta-lactam__class A beta-lactamase	beta-lactam
 YP_106067	multidrug__mexE	multidrug
-YP_112402	aminoglycoside__aph(3')-I	aminoglycoside
+YP_112402	aminoglycoside__aph(3)-I	aminoglycoside
 YP_151445	multidrug__acrB	multidrug
 YP_152202	multidrug__TolC	multidrug
 YP_185622	bacitracin__bacA	bacitracin
@@ -3528,7 +3528,7 @@ YP_410000	multidrug__emrD	multidrug
 YP_410369	multidrug__mdtO	multidrug
 YP_410370	multidrug__mdtN	multidrug
 YP_416126	bacitracin__bacA	bacitracin
-YP_424819	aminoglycoside__aph(3��)-III	aminoglycoside
+YP_424819	aminoglycoside__aph(3)-III	aminoglycoside
 YP_440294	multidrug__mexE	multidrug
 YP_442964	multidrug__oprA	multidrug
 YP_454364	multidrug__acrB	multidrug
@@ -3551,7 +3551,7 @@ YP_608499	bacitracin__bacA	bacitracin
 YP_608682	multidrug__mexD	multidrug
 YP_621023	multidrug__amrB	multidrug
 YP_622885	multidrug__opcM	multidrug
-YP_637442	aminoglycoside__aac(2')-I	aminoglycoside
+YP_637442	aminoglycoside__aac(2)-I	aminoglycoside
 YP_668451	multidrug__acrB	multidrug
 YP_668774	multidrug__mdfA	multidrug
 YP_670193	polymyxin__arnA	polymyxin
@@ -3596,7 +3596,7 @@ YP_859120	multidrug__mdtF	multidrug
 YP_859822	beta-lactam__class C beta-lactamase	beta-lactam
 YP_878662	bacitracin__bacA	bacitracin
 YP_894098	bacitracin__bacA	bacitracin
-YP_905232	aminoglycoside__aac(2')-I	aminoglycoside
+YP_905232	aminoglycoside__aac(2)-I	aminoglycoside
 YP_932216	bacitracin__bacA	bacitracin
 YP_966872	bacitracin__bacA	bacitracin
 YP_970399	bacitracin__bacA	bacitracin
@@ -3611,7 +3611,7 @@ Z22590.1.gene1.p01	beta-lactam__OXA-11	beta-lactam
 Z28968.gene.p01	beta-lactam__SME-1	beta-lactam
 Z33413.1.gene3.p01	fosfomycin__fosC	fosfomycin
 Z49084.1.gene1.p01	beta-lactam__OXY-2	beta-lactam
-Z54241.1.gene2.p01	aminoglycoside__aac(6')-I	aminoglycoside
+Z54241.1.gene2.p01	aminoglycoside__aac(6)-I	aminoglycoside
 ZP_00051658	bacitracin__bacA	bacitracin
 ZP_00155442	beta-lactam__PBP-1A	beta-lactam
 ZP_00156276	beta-lactam__PBP-1A	beta-lactam
@@ -3805,7 +3805,7 @@ ZP_03217990	multidrug__mdtM	multidrug
 ZP_03221593	multidrug__mdtG	multidrug
 ZP_03222019	multidrug__acrB	multidrug
 ZP_03223548	tetracycline__tetO	tetracycline
-ZP_03224561	aminoglycoside__aph(3')-I	aminoglycoside
+ZP_03224561	aminoglycoside__aph(3)-I	aminoglycoside
 ZP_03225116	bacitracin__bacA	bacitracin
 ZP_03227726	fosfomycin__fosB	fosfomycin
 ZP_03229684	beta-lactam__class A beta-lactamase	beta-lactam
@@ -3840,7 +3840,7 @@ ZP_03612813	multidrug__major_facilitator_superfamily_transporter	multidrug
 ZP_03614478	beta-lactam__class A beta-lactamase	beta-lactam
 ZP_03624201	tetracycline__tetO	tetracycline
 ZP_03790349	multidrug__oprC	multidrug
-ZP_03822933	aminoglycoside__aac(6')-I	aminoglycoside
+ZP_03822933	aminoglycoside__aac(6)-I	aminoglycoside
 ZP_03823621	multidrug__multidrug_transporter	multidrug
 ZP_03823622	multidrug__adeB	multidrug
 ZP_03829223	bacitracin__bacA	bacitracin
