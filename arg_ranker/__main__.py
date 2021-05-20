@@ -7,19 +7,10 @@ import pandas as pd
 ################################################### Decalration #######################################################
 print ("\
 ------------------------------------------------------------------------\n\
-Sample_ranking.py evaluates and assigns the risk and priority levels to environmental samples\n\
-based on their profile of antibiotic resistant genes (ARGs).\n\
-Requirement: python packages (pandas, argparse)\n\
-Requirement: a mothertable of the ARG abundance in all your samples \n\
-annotated by ARGs-OAP v1.0 (see example/All_sample_cellnumber.txt).\n\
+arg_ranker evaluates the risk of ARGs in genomes/metagenomes\n\
+Requirement: blast, diamond, python 3\n\
 Optimal: a table of the metadata of your samples (see example/All_sample_metadata.txt).\n\
-Recommend unit of ARG abundance is copy per cell.\n\n\
-The mother table can be obtained by ARGs-OAP v1.0.\n\
-\'perl dir_to_ARGs_OAP/database/DB/gene_subtype_type_ppm_16s_cellnumber_differentversion.pl dir_to_your_result/extracted.fa.blast6out.txt \
-dir_to_your_result/meta_data_online.txt 25 1e-7 80 output_mothertable_name dir_to_ARGs_OAP/database/DB/other/structure_20160422.list \
-dir_to_ARGs_OAP/database/DB/other/SARG-20160422.mod.fasta\'\n\
-The mother table to input is output_mothertable_name.normalize_cellnumber.gene.tab\n\n\
-Copyright:An-Ni Zhang, Prof. Tong Zhang, University of Hong Kong\n\
+Copyright:An-Ni Zhang, MIT; Prof. Tong Zhang, University of Hong Kong\n\
 Citation:\n\
 1. This study\n\
 2. Yang Y, Jiang X, Chai B, Ma L, Li B, Zhang A, Cole JR, Tiedje JM, Zhang T: ARGs-OAP: online analysis\
@@ -30,108 +21,151 @@ Contact caozhichongchong@gmail.com\n\
 ")
 
 def main():
-    usage = ("usage: arg_ranker -i ARG_in_metagenomes -m metadata_metagenomes ")
+    usage = ("usage: arg_ranker -i metagenomes/ -dm diamond")
     version_string = 'arg_ranker {v}, on Python {pyv[0]}.{pyv[1]}.{pyv[2]}'.format(
         v=arg_ranker.__version__,
         pyv=sys.version_info,
     )
     ############################################ Arguments and declarations ##############################################
     parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument('-i',
-                        default="test",
+    required = parser.add_argument_group('required arguments')
+    optional = parser.add_argument_group('optional arguments')
+    required.parser.add_argument('-i',
+                        default="example",
                         action='store', type=str,
-                        metavar='ARGprofile.txt',
-                        help="input directory or folder of the mother table containing the ARGs abundance of your samples\n"+
-                        "recommend unit of ARG abundance is copy per cell")
-    parser.add_argument('-m',
+                        metavar='metagenomes/',
+                        help="input directory or metagenomes/genomes (.fa, .fastq, .fq, or .fastq)")
+    optional.parser.add_argument('-m',
                         default="None", action='store', type=str, metavar='metadata.txt',
-                        help="input directory or folder of the table containing the metadata of your samples\n"+
+                        help="input table containing the metadata of your samples\n"+
                              "\'None\' for no metadata input")
-    parser.add_argument('-o',
-                        default="ranking", action='store', type=str, metavar='ranking',
-                        help="output directory to store the ranking result")
+    optional.parser.add_argument('-o',
+                        default="arg_ranking", action='store', type=str, metavar='arg_ranking',
+                        help="output directory to store results")
+    parser.add_argument('--t',
+                        help="Optional: set the thread number assigned for running arg_rankers (default 1)",
+                        metavar="1 or more", action='store', default=1, type=int)
+    optional.add_argument('-dm',
+                          help="Optional: complete path to diamond if not in PATH",
+                          metavar="/usr/local/bin/diamond",
+                          action='store', default='diamond', type=str)
+    optional.add_argument('-bl',
+                          help="Optional: complete path to blast if not in PATH",
+                          metavar="/usr/local/bin/blast",
+                          action='store', default='blast', type=str)
     ################################################## Definition ########################################################
     args = parser.parse_args()
+    workingdir = os.path.abspath(os.path.dirname(__file__))
     Metadata=args.m
     Mothertable=args.i
-    if Mothertable == 'test':
+    if Mothertable == 'example':
         Mothertable = os.getcwd()+'/example/ARGprofile_example_1.txt'
         Metadata = os.getcwd()+'/example/metadata.txt'
-    ARGranks=os.path.join(os.path.abspath(os.path.dirname(__file__)),
+    ARGranks=os.path.join(workingdir,
     'data', 'ARG_rank.txt')
+    ARGdatabase = os.path.join(workingdir,
+                            'data', 'SARG.db.fasta')
+    ESSGdatabase = os.path.join(workingdir,
+                               'data', 'all_KO30.pro.fasta')
     try:
         os.mkdir(args.o)
     except OSError:
         pass
     ################################################### Programme #######################################################
-    # set output file
-    infolder, infile=os.path.split(Mothertable)
-    fout=open(os.path.join(args.o, infile + '_sample_ranking_results.txt'),'w')
-
-
-    # input metadata
-    MD=dict()
-    i = 0
-    if Metadata != 'None':
-        for lines in open(Metadata,'r'):
-            lines=str(lines).split('\r')[0].split('\n')[0]
-            # output the lable in output file
-            if i == 0:
-                fout.write('Sample\tRank_I\tRank_II\tRank_III\tRank_IV' +
-                   '\tARGs_unassessed\tTotal_abu\tRank_code\t' +
-                   'Rank_I_risk\tRank_II_risk\tRank_III_risk\tRank_IV_risk' +
-                   '\tARGs_unassessed_risk\t%s\n' % '\t'.join(str(lines).split('\t')[1:]))
-            else:
-                try:
-                    # valid metadata input
-                    MD.setdefault(str(lines).split('\t')[0],'\t'.join(str(lines).split('\t')[1:]))
-                except KeyError:
-                    pass
-            i += 1
-    else:
-        fout.write('Sample\tRank_I\tRank_II\tRank_III\tRank_IV' +
-                   '\tARGs_unassessed\tTotal_abu\tRank_code\t' +
-                   'Rank_I_risk\tRank_II_risk\tRank_III_risk\tRank_IV_risk' +
-                   '\tARGs_unassessed_risk\n')
-
-
-    # input ARG ranks
-    RK=dict()
-    RK_profile={'I':0,'II':1,'III':2,'IV':3,
-    'Unassessed':4}
-    RKN=[0.0,0.0,0.0,0.0,0.0]
-    for lines in open(ARGranks,'r'):
-        lines = str(lines).split('\r')[0].split('\n')[0]
-        RK.setdefault(lines.split('\t')[0],lines.split('\t')[-1])
-        ###RK.setdefault(lines.split('\t')[0].replace('.','_'), lines.split('\t')[-1])
-        Rank_num(lines.split('\t')[-1],RKN, RK_profile)
-
-
-    # input ARG mothertable
-    # transpose the mothertable
-    df=pd.read_csv(Mothertable, index_col=None, header=None, skipinitialspace=True,sep='\t')
-    df.dropna(axis=0, thresh=2, subset=None, inplace=True)
-    df=df.T
-    df.to_csv(str(Mothertable)+'.t', header=None, index=None, sep='\t', mode='a')
-    i = 0
-    for row in df.itertuples(index=True, name='Pandas'):
-        if i == 0:
-            ARGlist = row[2:]
+    # run ARG ranking
+    try:
+        os.mkdir(args.o)
+    except OSError:
+        pass
+    if 'Sample_ARGpresence.txt' in args.i:
+        # set output file
+        infolder, infile=os.path.split(Mothertable)
+        fout=open(os.path.join(args.o, infile + '_sample_ranking_results.txt'),'w')
+        # input metadata
+        MD=dict()
+        i = 0
+        if Metadata != 'None':
+            for lines in open(Metadata,'r'):
+                lines=str(lines).split('\r')[0].split('\n')[0]
+                # output the lable in output file
+                if i == 0:
+                    fout.write('Sample\tRank_I\tRank_II\tRank_III\tRank_IV' +
+                       '\tARGs_unassessed\tTotal_abu\tRank_code\t' +
+                       'Rank_I_risk\tRank_II_risk\tRank_III_risk\tRank_IV_risk' +
+                       '\tARGs_unassessed_risk\t%s\n' % '\t'.join(str(lines).split('\t')[1:]))
+                else:
+                    try:
+                        # valid metadata input
+                        MD.setdefault(str(lines).split('\t')[0],'\t'.join(str(lines).split('\t')[1:]))
+                    except KeyError:
+                        pass
+                i += 1
         else:
-            Level_ranking(row[1:],ARGlist,RK,RKN,fout, RK_profile,MD, Mothertable)
-        i+=1
-    fout.close()
-    print('Finished ranking ARGs\nPlease check your results in ' +
-          str(os.path.join(args.o, infile + '_sample_ranking_results.txt')))
+            fout.write('Sample\tRank_I\tRank_II\tRank_III\tRank_IV' +
+                       '\tARGs_unassessed\tTotal_abu\tRank_code\t' +
+                       'Rank_I_risk\tRank_II_risk\tRank_III_risk\tRank_IV_risk' +
+                       '\tARGs_unassessed_risk\n')
 
-################################################## Function ########################################################
+
+        # input ARG ranks
+        RK=dict()
+        RK_profile={'I':0,'II':1,'III':2,'IV':3,
+        'Unassessed':4}
+        RKN=[0.0,0.0,0.0,0.0,0.0]
+        for lines in open(ARGranks,'r'):
+            lines = str(lines).split('\r')[0].split('\n')[0]
+            RK.setdefault(lines.split('\t')[0],lines.split('\t')[-1])
+            ###RK.setdefault(lines.split('\t')[0].replace('.','_'), lines.split('\t')[-1])
+            Rank_num(lines.split('\t')[-1],RKN, RK_profile)
+
+
+        # input ARG mothertable
+        # transpose the mothertable
+        df=pd.read_csv(Mothertable, index_col=None, header=None, skipinitialspace=True,sep='\t')
+        df.dropna(axis=0, thresh=2, subset=None, inplace=True)
+        df=df.T
+        df.to_csv(str(Mothertable)+'.t', header=None, index=None, sep='\t', mode='a')
+        i = 0
+        for row in df.itertuples(index=True, name='Pandas'):
+            if i == 0:
+                ARGlist = row[2:]
+            else:
+                Level_ranking(row[1:],ARGlist,RK,RKN,fout, RK_profile,MD, Mothertable)
+            i+=1
+        fout.close()
+        print('Finished ranking ARGs\nPlease check your results in ' +
+              str(os.path.join(args.o, infile + '_sample_ranking_results.txt')))
+    # search ARGs in samples
+    else:
+        try:
+            search_output = args.o + '/search_output/'
+            os.mkdir(search_output)
+        except OSError:
+            pass
+        allsamples = glob.glob('%s/*.fa' % (args.i)) +\
+                     glob.glob('%s/*.fasta' % (args.i)) + \
+                     glob.glob('%s/*.fq' % (args.i)) + \
+                     glob.glob('%s/*.fastq' % (args.i))
+        # make database
+        makedatabase(args.bl, ARGdatabase)
+        makedatabase(args.dm, ARGdatabase)
+        makedatabase(args.dm, ESSGdatabase)
+        # search ARGs in all samples
+        cmds = searchARG(allsamples)
+        # sum up cell number in metagenomes
+        cmds += 'python %s/Cell_number_MG.py -i %s -m %s -r %s\n' % (
+            workingdir, search_output,ESSGdatabase.replacE('all_KO30.pro.fasta','all_KO30_name.list'),search_output)
+        # output summary table
+        # risk ranking of ARGs
+        cmds += 'arg_ranker -i %s/Sample_ARGpresence.txt -m %s -o %s\n'%(args.o,args.m,args.o)
+
+            ################################################## Function ########################################################
 def Rank_num(rank,RKN,RK_profile):
     # calculate the nuber of genes in each rank
     try:
         RKN[RK_profile[rank]] += 1.0
     except (KeyError, IndexError, TypeError, ValueError):
         pass
-
 
 def Level_ranking(row,ARGlist,RK,RKN,fout,RK_profile,MD,inputfile):
     Abu=[0.0,0.0,0.0,0.0,0.0]
@@ -191,6 +225,55 @@ def Level_ranking(row,ARGlist,RK,RKN,fout,RK_profile,MD,inputfile):
                        str('-'.join(str("%.1f" % abu) for abu in Abu2)) +
                        '\t' +'\t'.join(str('%.1f' % abu) for abu in Abu2) + '\n')
 
+def makedatabase(search_method,db_file):
+    # aa database
+    if 'blast' in search_method:
+        try:
+            f1 = open("%s.phr" % (db_file), 'r')
+        except IOError:
+            os.system('%s -in %s -dbtype prot' %
+                      (os.path.join(os.path.split(search_method)[0], 'makeblastdb'), db_file))
+    if 'diamond' in search_method:
+        try:
+            f1 = open("%s.dmnd" % (db_file), 'r')
+        except IOError:
+            os.system('%sdiamond makedb --in %s -d %s.dmnd' %
+                      (split_string_last(args.dm, 'diamond'), db_file, db_file))
+
+def setcutoff(sample):
+    if '.fa' in sample or '.fasta' in sample:
+        # genomes fasta
+        return [90,80,1e-5,'T']
+    else:
+        # metagenomes fastq
+        return [80,75,1e-7,'F']
+
+def searchARG(allsamples):
+    cmds = '#!/bin/bash\n'
+    for sample in allsamples:
+        id_ARG, hit_ARG,evalue_ARG,sampletype = setcutoff(sample)
+        samplename = os.path.split(sample)[-1]
+        if sampletype == 'F':
+            # run diamond for metagneomes
+            sampleoutput = os.path.join(search_output, samplename + '.diamond.txt')
+            cmds += "%sdiamond blastx --query %s --db %s.dmnd --out %s --outfmt 6 --max-target-seqs 1 --evalue %s --id %s --query-cover %s --threads %s \n" %(
+                split_string_last(args.dm, 'diamond'),sample,ARGdatabase,sampleoutput,evalue_ARG,id_ARG, hit_ARG,args.t)
+            # extract candidate seqs
+            cmds += 'python %s/bin/Extract.MG.py -p 1 -i %s -f %s -n .usearch.txt -r %s \n'%(workingdir,args.i,samplename,search_output)
+            sample = os.path.join(search_output, samplename + '.diamond.txt.aa')
+            # Search essential single copy genes
+            cmds += 'python %s/undone.MG.py -i %s \n' % (workingdir, sample)
+            sampleoutput = os.path.join(search_output, samplename + '.ESSG.diamond.txt')
+            cmds += "%sdiamond blastx --query %s --db %s.dmnd -o %s --outfmt 6 --threads %s -e 1e-3  --id 45 --max-target-seqs 1 \n" % (
+                split_string_last(args.dm, 'diamond'), sample, ESSGdatabase, sampleoutput, args.t)
+        # run blast
+        sampleoutput = os.path.join(search_output, samplename + '.blast.txt')
+        cmds += "%sblastx -query %s -db %s -out %s -outfmt 6 -evalue %s -num_threads %s \n"%(
+            split_string_last(args.bl, 'blast'),sample,ARGdatabase,sampleoutput,evalue_ARG,args.t)
+        # filter searching result
+        cmds += 'python %s/Filter.MG.py --g %s -i %s -f %s -db %s -dbf 2 -s 1 --ht %s --id %s --e %s \n'%(
+            workingdir,sampletype,search_output,sampleoutput,ARGdatabase,hit_ARG,id_ARG,evalue_ARG)
+    return cmds
 
 if __name__ == '__main__':
     main()
