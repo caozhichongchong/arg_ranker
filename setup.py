@@ -14,7 +14,7 @@ setup(
     long_description=open('README.md').read(),
     long_description_content_type="text/markdown",
     package_dir={'arg_ranker': 'arg_ranker'},
-    package_data={'arg_ranker': ['data/*','bin/*']},
+    package_data={'arg_ranker': ['data/*','bin/*','example/*']},
     entry_points={'console_scripts': ['arg_ranker = arg_ranker.__main__:main']},
     install_requires=[
         'pandas',

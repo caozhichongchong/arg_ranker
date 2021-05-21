@@ -1,76 +1,49 @@
 # arg_ranker
+arg_ranker evaluates the risk of ARGs in genomes and metagenomes
 
 ## Install
 `pip install arg_ranker`
 
-`conda install -c caozhichongchong arg_ranker`
-
-## Test (download examples and use any of these commands)
-`arg_ranker -i example/ARGprofile_example_1.txt -m example/metadata.txt`\
-`arg_ranker -i example/ARGprofile_example_2.txt -m example/metadata.txt`\
-`arg_ranker -i test`
+## Requirement
+* python 3
+* kraken2: `conda install -c bioconda kraken2`\
+download kraken2 database: `kraken2-build --standard --db $KRAKENDB` \
+where $krakenDB is your preferred database name/location\
+* diamond: `conda install -c bioconda diamond`\
+* blast+: `conda install -c bioconda blast`
 
 ## How to use it
-### Prepare your ARG profile
+* put all your genomes (.fa or .fasta) and metagenomes (.fq or .fastq) into one folder ($INPUT)
+* run `arg_ranker -i $INPUT --kkdb $KRAKENDB`
+* run `sh arg_ranking/script_output/arg_ranker.sh`
 
-arg_ranker is suitable for the units of ppm, gene copy per 16S or gene copy per cell
+## Output
+* Sample_ranking_results.txt (Table 1)
 
-#### Option 1: Use our pipeline
+    |Sample|Rank_I_abu|Rank_II_abu|Rank_III_abu|Rank_IV_abu|Unassessed_abu|Total_abu|Rank_code|Rank_I_risk|Rank_II_risk|Rank_III_risk|Rank_IV_risk|ARGs_unassessed_risk|note1|
+    | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: |
+    |WEE300_all-trimmed-decont_1.fastq|2.9E-02|0.0E+00|7.4E-02|7.8E-01|1.2E-01|4.2E-04|1.0-0.0-0.5-1.7-0.3|1.0|0.0|0.5|1.7|0.3|hospital_metagenome|
+    |EsCo_genome.fasta|0.0E+00|0.0E+00|0.0E+00|1.0E+00|0.0E+00|2.0E+00|0.0-0.0-0.0-2.2-0.0|0.0|0.0|0.0|2.2|0.0|E.coli_genome|
 
-1. Use my traits_finder to search ARGs in genomes and metagenomes (in preparation)\
-Now we have both nucleotides and amino acids databases!\
-https://github.com/caozhichongchong/traits_finder
+1. We compute the abundance of ARGs as the copy number of ARGs divided by the 16S copy number in a sample\
+Rank_I - Unassessed_abu: total abundance of ARGs of a risk rank\
+Total_abu: total abundance of all ARGs
+2. We compute the risk of ARGs as the average abundance of ARGs of a risk rank divided the average abundance of all ARGs\
+Rank_I_risk - Unassessed_risk: the risk of ARGs of a risk rank\
+Rank_code: a code of ARG risk from Rank I to Unassessed
 
-2. Run\
-`arg_ranker -i ARG.profile.txt -m metadata.txt`\
-`arg_ranker -i ARG.profile.txt`
+* Sample_ARGpresence.txt:\
+The abundance, the gene family, and the antibiotic of resistance of ARGs detected in the input samples
 
-#### Option 2: Run your own pipeline using our database
+## Test
+run `arg_ranker -i example --kkdb $KRAKENDB`\
+run `sh arg_ranking/script_output/arg_ranker.sh`\
+The arg_ranking/Sample_ranking_results.txt should look like Table 1
 
-1. Search ARGs-OAP v1.0 database (amino acids) in your data using diamond or blast\
-https://github.com/caozhichongchong/arg_ranker/tree/master/arg_ranker/data/SARG.db.fasta*
-
-2. Format your results into example/ARGprofile_example_1.txt or example/ARGprofile_example_2.txt
-
-3. Run\
-`arg_ranker -i ARG.profile.txt -m metadata.txt`\
-`arg_ranker -i ARG.profile.txt`\
-If you see a lot of errors saying: "ARGs in mothertable do not match with the ARGs in ARG_rank.txt.\
-Please check something something in ARG.summary.cell.txt!"\
-It means that the samples are placed as row names instead of colomn names (which arg_ranker expects).\
-Don't worry, please try: `arg_ranker -i ARG.profile.txt.t`\
-As we automatically transpose your table to make it work.
-
-#### Option 3: Use results from ARGs-OAP v1.0 (not recommended)
-
-1. If you have already run the ARGs-OAP v1.0 pipeline\
-    https://github.com/biofuture/Ublastx_stageone/archive/Ublastx_stageone.tar.gz\
-    https://github.com/biofuture/Ublastx_stageone/archive/Ublastx_stageone.zip
-
-2. Check the "extracted.fa.blast6out.txt" and "meta_data_online.txt" in the output_dir
-
-3. Run\
-`arg_ranker -f True -fo output_dir`\
-`arg_ranker -i formated_table.normalize_cellnumber.gene.tab -m metadata.txt`
-
-### Prepare your metadata for your samples (optional)
-
-Format your metadata of metagenomic samples into example/metadata.txt (not necessarily the same)\
-First column matches the sample ID in your ARG profile;\
-Other columns contain the metadata of your samples (such as habitat/eco-type, accession number, group...)
-
-## Introduction
-ARG_ranker evaluates the risk of antibiotic resistance in metagenomes.\
-We designed a framework to rank the risk of ARGs based on three factors: “anthropogenic enrichment”, “mobility”, and “host pathogenicity”, informed by all available bacterial genomes, plasmids, integrons, and 850 metagenomes covering diverse global eco-habitats. The framework prioritizes 3% of ARGs in Rank I (the most at risk of dissemination among pathogens) and 0.3% of ARGs in Rank II (high potential emergence of new resistance in pathogens). 
-
-Requirement: python packages (pandas, argparse)
-
-Requirement: a mothertable of the ARG abundance in all your samples
-annotated by ARGs-OAP v1.0 \
-(see example/All_sample_cellnumber.txt).
-
-Optimal: a table of the metadata of your samples \
-(see example/All_sample_metadata.txt).
+## Metadata for your samples (optional)
+arg_ranker can merge your sample metadata into the results of ARG ranking (i.e. note1 in Table 1).\
+Simply put all information you would like to include into a tab-delimited table\
+Make sure that your sample names are listed as the first column (check example/metadata.txt).
 
 ## Copyright
 Dr. An-Ni Zhang (MIT), Prof. Eric Alm (MIT), Prof. Tong Zhang* (University of Hong Kong)

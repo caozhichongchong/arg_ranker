@@ -1,0 +1,1 @@
+sampleID	note1WEE300_all-trimmed-decont_1.fastq	hospital_metagenomeEsCo_genome.fasta	E.coli_genome
