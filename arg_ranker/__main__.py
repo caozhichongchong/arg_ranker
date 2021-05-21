@@ -71,7 +71,10 @@ def main():
     if args.i == 'example':
         inputfasta = '%s/example/'%(workingdir)
         Metadata = '%s/example/metadata.txt'%(workingdir)
-        os.system('unzip %s/example/WEE300_all-trimmed-decont_1.fastq.zip'%(workingdir))
+        try:
+            f1 = open('%s/example/WEE300_all-trimmed-decont_1.fastq'%(workingdir),'r')
+        except IOError:
+            os.system('unzip %s/example/WEE300_all-trimmed-decont_1.fastq.zip -d %s/example/'%(workingdir,workingdir))
     ARGranks=os.path.join(workingdir,
     'data', 'ARG_rank.txt')
     ARGdatabase = os.path.join(workingdir,
