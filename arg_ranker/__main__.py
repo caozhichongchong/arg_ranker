@@ -8,7 +8,7 @@ import pandas as pd
 print ("\
 ------------------------------------------------------------------------\n\
 arg_ranker evaluates the risk of ARGs in genomes/metagenomes\n\
-Requirement: blast, diamond, python 3\n\
+Requirement: blast, diamond, kraken, python 3\n\
 Optimal: a table of the metadata of your samples (see example/All_sample_metadata.txt).\n\
 Copyright:An-Ni Zhang, MIT; Prof. Tong Zhang, University of Hong Kong\n\
 Citation:\n\
@@ -42,7 +42,7 @@ def main():
     optional.parser.add_argument('-o',
                         default="arg_ranking", action='store', type=str, metavar='arg_ranking',
                         help="output directory to store results")
-    parser.add_argument('--t',
+    parser.add_argument('-t',
                         help="Optional: set the thread number assigned for running arg_rankers (default 1)",
                         metavar="1 or more", action='store', default=1, type=int)
     optional.add_argument('-dm',
@@ -53,13 +53,22 @@ def main():
                           help="Optional: complete path to blast if not in PATH",
                           metavar="/usr/local/bin/blast",
                           action='store', default='blast', type=str)
+    optional.add_argument('-kk',
+                          help="Optional: complete path to kraken2 if not in PATH",
+                          metavar="/usr/local/bin/kraken2",
+                          action='store', default='kraken2', type=str)
+    optional.add_argument('-kkdb',
+                          help="Optional: complete path to kraken2 database if not in PATH",
+                          metavar="/usr/local/bin/kraken2/krakendb",
+                          action='store', default='krakendb', type=str)
+
     ################################################## Definition ########################################################
     args = parser.parse_args()
     workingdir = os.path.abspath(os.path.dirname(__file__))
     Metadata=args.m
-    Mothertable=args.i
-    if Mothertable == 'example':
-        Mothertable = os.getcwd()+'/example/ARGprofile_example_1.txt'
+    inputfasta = args.i
+    if args.i == 'example':
+        inputfasta = os.getcwd()+'/example/'
         Metadata = os.getcwd()+'/example/metadata.txt'
     ARGranks=os.path.join(workingdir,
     'data', 'ARG_rank.txt')
@@ -77,10 +86,11 @@ def main():
         os.mkdir(args.o)
     except OSError:
         pass
-    if 'Sample_ARGpresence.txt' in args.i:
+    if 'Sample_ARGpresence.txt' in inputfasta:
         # set output file
+        Mothertable = inputfasta
         infolder, infile=os.path.split(Mothertable)
-        fout=open(os.path.join(args.o, infile + '_sample_ranking_results.txt'),'w')
+        fout=open(os.path.join(args.o, 'Sample_ranking_results.txt'),'w')
         # input metadata
         MD=dict()
         i = 0
@@ -105,8 +115,6 @@ def main():
                        '\tARGs_unassessed\tTotal_abu\tRank_code\t' +
                        'Rank_I_risk\tRank_II_risk\tRank_III_risk\tRank_IV_risk' +
                        '\tARGs_unassessed_risk\n')
-
-
         # input ARG ranks
         RK=dict()
         RK_profile={'I':0,'II':1,'III':2,'IV':3,
@@ -117,8 +125,6 @@ def main():
             RK.setdefault(lines.split('\t')[0],lines.split('\t')[-1])
             ###RK.setdefault(lines.split('\t')[0].replace('.','_'), lines.split('\t')[-1])
             Rank_num(lines.split('\t')[-1],RKN, RK_profile)
-
-
         # input ARG mothertable
         # transpose the mothertable
         df=pd.read_csv(Mothertable, index_col=None, header=None, skipinitialspace=True,sep='\t')
@@ -142,24 +148,29 @@ def main():
             os.mkdir(search_output)
         except OSError:
             pass
-        allsamples = glob.glob('%s/*.fa' % (args.i)) +\
-                     glob.glob('%s/*.fasta' % (args.i)) + \
-                     glob.glob('%s/*.fq' % (args.i)) + \
-                     glob.glob('%s/*.fastq' % (args.i))
+        try:
+            scripts_output = args.o + '/script_output/'
+            os.mkdir(scripts_output)
+        except OSError:
+            pass
+        allsamples = glob.glob('%s/*.fa' % (inputfasta)) +\
+                     glob.glob('%s/*.fasta' % (inputfasta)) + \
+                     glob.glob('%s/*.fq' % (inputfasta)) + \
+                     glob.glob('%s/*.fastq' % (inputfasta))
         # make database
         makedatabase(args.bl, ARGdatabase)
         makedatabase(args.dm, ARGdatabase)
         makedatabase(args.dm, ESSGdatabase)
         # search ARGs in all samples
         cmds = searchARG(allsamples)
-        # sum up cell number in metagenomes
-        cmds += 'python %s/Cell_number_MG.py -i %s -m %s -r %s\n' % (
-            workingdir, search_output,ESSGdatabase.replacE('all_KO30.pro.fasta','all_KO30_name.list'),search_output)
         # output summary table
         # risk ranking of ARGs
-        cmds += 'arg_ranker -i %s/Sample_ARGpresence.txt -m %s -o %s\n'%(args.o,args.m,args.o)
+        cmds += 'arg_ranker -i %s/Sample_ARGpresence.txt -m %s -o %s\n'%(args.o,Metadata,args.o)
+        f1 = open('%s/arg_ranker.sh'%(scripts_output),'w')
+        f1.write(cmds)
+        f1.close()
 
-            ################################################## Function ########################################################
+################################################## Function ########################################################
 def Rank_num(rank,RKN,RK_profile):
     # calculate the nuber of genes in each rank
     try:
@@ -256,23 +267,32 @@ def searchARG(allsamples):
         if sampletype == 'F':
             # run diamond for metagneomes
             sampleoutput = os.path.join(search_output, samplename + '.diamond.txt')
-            cmds += "%sdiamond blastx --query %s --db %s.dmnd --out %s --outfmt 6 --max-target-seqs 1 --evalue %s --id %s --query-cover %s --threads %s \n" %(
-                split_string_last(args.dm, 'diamond'),sample,ARGdatabase,sampleoutput,evalue_ARG,id_ARG, hit_ARG,args.t)
-            # extract candidate seqs
-            cmds += 'python %s/bin/Extract.MG.py -p 1 -i %s -f %s -n .usearch.txt -r %s \n'%(workingdir,args.i,samplename,search_output)
+            try:
+                f1 = open(sampleoutput,'r')
+            except IOError:
+                cmds += "%sdiamond blastx --query %s --db %s.dmnd --out %s --outfmt 6 --max-target-seqs 1 --evalue %s --id %s --query-cover %s --threads %s \n" %(
+                    split_string_last(args.dm, 'diamond'),sample,ARGdatabase,sampleoutput,evalue_ARG,id_ARG, hit_ARG,args.t)
+                # extract candidate seqs
+                cmds += 'python %s/bin/Extract.MG.py -p 1 -i %s -f %s -n .usearch.txt -r %s \n' % (
+                workingdir, inputfasta, samplename, search_output)
+            # compute taxonomy
+            try:
+                f1 = open(sampleoutput,'r')
+            except IOError:
+                sampleoutput = os.path.join(search_output, samplename + '.kraken')
+                cmds += '%skraken2 --db %s %s --output %s --report %s.kreport --threads %s' % (
+                    split_string_last(args.kk, 'kraken'),args.kkdb, sample,sampleoutput,sampleoutput,args.t)
             sample = os.path.join(search_output, samplename + '.diamond.txt.aa')
-            # Search essential single copy genes
-            cmds += 'python %s/undone.MG.py -i %s \n' % (workingdir, sample)
-            sampleoutput = os.path.join(search_output, samplename + '.ESSG.diamond.txt')
-            cmds += "%sdiamond blastx --query %s --db %s.dmnd -o %s --outfmt 6 --threads %s -e 1e-3  --id 45 --max-target-seqs 1 \n" % (
-                split_string_last(args.dm, 'diamond'), sample, ESSGdatabase, sampleoutput, args.t)
         # run blast
         sampleoutput = os.path.join(search_output, samplename + '.blast.txt')
-        cmds += "%sblastx -query %s -db %s -out %s -outfmt 6 -evalue %s -num_threads %s \n"%(
-            split_string_last(args.bl, 'blast'),sample,ARGdatabase,sampleoutput,evalue_ARG,args.t)
-        # filter searching result
-        cmds += 'python %s/Filter.MG.py --g %s -i %s -f %s -db %s -dbf 2 -s 1 --ht %s --id %s --e %s \n'%(
-            workingdir,sampletype,search_output,sampleoutput,ARGdatabase,hit_ARG,id_ARG,evalue_ARG)
+        try:
+            f1 = open(sampleoutput, 'r')
+        except IOError:
+            cmds += "%sblastx -query %s -db %s -out %s -outfmt 6 -evalue %s -num_threads %s \n"%(
+                split_string_last(args.bl, 'blast'),sample,ARGdatabase,sampleoutput,evalue_ARG,args.t)
+            # filter searching result
+            cmds += 'python %s/Filter.MG.py --g %s -i %s -f %s -db %s -dbf 2 -s 1 --ht %s --id %s --e %s \n'%(
+                workingdir,sampletype,search_output,sampleoutput,ARGdatabase,hit_ARG,id_ARG,evalue_ARG)
     return cmds
 
 if __name__ == '__main__':
