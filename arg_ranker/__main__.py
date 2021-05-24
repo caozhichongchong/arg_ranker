@@ -67,13 +67,15 @@ def main():
     args = parser.parse_args()
     workingdir = os.path.abspath(os.path.dirname(__file__))
     Metadata=args.m
-    inputfasta = args.i
+    inputfasta = os.path.abspath(args.i)
+    output_dir = os.path.abspath(args.o)
     if args.i == 'example':
         inputfasta = '%s/example/'%(workingdir)
         Metadata = '%s/example/metadata.txt'%(workingdir)
         try:
             f1 = open('%s/example/WEE300_all-trimmed-decont_1.fastq'%(workingdir),'r')
         except IOError:
+            print('loading example files')
             os.system('unzip %s/example/WEE300_all-trimmed-decont_1.fastq.zip -d %s/example/'%(workingdir,workingdir))
     ARGranks=os.path.join(workingdir,
     'data', 'ARG_rank.txt')
@@ -84,7 +86,7 @@ def main():
     ESSGdatabase = os.path.join(workingdir,
                                'data', 'all_KO30.pro.fasta')
     try:
-        os.mkdir(args.o)
+        os.mkdir(output_dir)
     except OSError:
         pass
     ################################################## Function ########################################################
@@ -189,9 +191,9 @@ def main():
                         workingdir, inputfasta, samplename, search_output)
                 # compute taxonomy
                 try:
+                    sampleoutput = os.path.join(search_output, samplename + '.kraken')
                     f1 = open(sampleoutput, 'r')
                 except IOError:
-                    sampleoutput = os.path.join(search_output, samplename + '.kraken')
                     cmds += '%skraken2 --db %s %s --output %s --report %s.kreport --threads %s\n' % (
                         split_string_last(args.kk, 'kraken'), args.kkdb, sample, sampleoutput, sampleoutput, args.t)
                 sample = os.path.join(search_output, samplename + '.diamond.txt.aa')
@@ -210,7 +212,7 @@ def main():
     def ranking_arg(inputfasta,Metadata):
         # set output file
         Mothertable = inputfasta
-        fout = open(os.path.join(args.o, 'Sample_ranking_results.txt'), 'w')
+        fout = open(os.path.join(output_dir, 'Sample_ranking_results.txt'), 'w')
         # input metadata
         MD = dict()
         i = 0
@@ -219,10 +221,10 @@ def main():
                 lines = str(lines).split('\r')[0].split('\n')[0]
                 # output the lable in output file
                 if i == 0:
-                    fout.write('Sample\tRank_I\tRank_II\tRank_III\tRank_IV' +
-                               '\tARGs_unassessed\tTotal_abu\tRank_code\t' +
+                    fout.write('Sample\tRank_I_per\tRank_II_per\tRank_III_per\tRank_IV_per' +
+                               '\tUnassessed_per\tTotal_abu\tRank_code\t' +
                                'Rank_I_risk\tRank_II_risk\tRank_III_risk\tRank_IV_risk' +
-                               '\tARGs_unassessed_risk\t%s\n' % '\t'.join(str(lines).split('\t')[1:]))
+                               '\tUnassessed_risk\t%s\n' % '\t'.join(str(lines).split('\t')[1:]))
                 else:
                     try:
                         # valid metadata input
@@ -231,8 +233,8 @@ def main():
                         pass
                 i += 1
         else:
-            fout.write('Sample\tRank_I_abu\tRank_II_abu\tRank_III_abu\tRank_IV_abu' +
-                       '\tUnassessed_abu\tTotal_abu\tRank_code\t' +
+            fout.write('Sample\tRank_I_per\tRank_II_per\tRank_III_per\tRank_IV_per' +
+                       '\tUnassessed_per\tTotal_abu\tRank_code\t' +
                        'Rank_I_risk\tRank_II_risk\tRank_III_risk\tRank_IV_risk' +
                        '\tUnassessed_risk\n')
         # input ARG ranks
@@ -248,7 +250,7 @@ def main():
         # transpose the mothertable
         df = pd.read_csv(Mothertable, index_col=None, header=None, skipinitialspace=True, sep='\t')
         df.dropna(axis=0, thresh=2, subset=None, inplace=True)
-        os.system('rm %s/Sample_ARGpresence.txt.t'%(args.o))
+        os.system('rm %s/Sample_ARGpresence.txt.t'%(output_dir))
         df = df.T
         df.to_csv(str(Mothertable) + '.t', header=None, index=None, sep='\t', mode='a')
         i = 0
@@ -259,14 +261,14 @@ def main():
                 Level_ranking(row[1:], ARGlist, RK, RKN, fout, RK_profile, MD, Mothertable)
             i += 1
         fout.close()
-        os.system('rm %s/Sample_ARGpresence.txt.t' % (args.o))
+        os.system('rm %s/Sample_ARGpresence.txt.t' % (output_dir))
         print('Finished ranking ARGs\nPlease check your results in ' +
-              str(os.path.join(args.o, 'Sample_ranking_results.txt')))
+              str(os.path.join(output_dir, 'Sample_ranking_results.txt')))
 
     ################################################### Programme #######################################################
     # run ARG ranking
     try:
-        os.mkdir(args.o)
+        os.mkdir(output_dir)
     except OSError:
         pass
     if 'Sample_ARGpresence.txt' in inputfasta:
@@ -274,12 +276,12 @@ def main():
     # search ARGs in samples
     else:
         try:
-            search_output = args.o + '/search_output/'
+            search_output = output_dir + '/search_output/'
             os.mkdir(search_output)
         except OSError:
             pass
         try:
-            scripts_output = args.o + '/script_output/'
+            scripts_output = output_dir + '/script_output/'
             os.mkdir(scripts_output)
         except OSError:
             pass
@@ -297,7 +299,7 @@ def main():
         # output summary table
         cmds += 'python %s/bin/ARG_table.sum.py -i %s -d %s\n' % (workingdir,search_output,ARGdatabase_mapping)
         # risk ranking of ARGs
-        cmds += 'arg_ranker -i %s/Sample_ARGpresence.txt -m %s -o %s\n'%(args.o,Metadata,args.o)
+        cmds += 'arg_ranker -i %s/Sample_ARGpresence.txt -m %s -o %s\n'%(output_dir,Metadata,output_dir)
         f1 = open('%s/arg_ranker.sh'%(scripts_output),'w')
         f1.write(cmds)
         f1.close()

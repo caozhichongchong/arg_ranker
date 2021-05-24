@@ -20,13 +20,14 @@ where $krakenDB is your preferred database name/location\
 ## Output
 * Sample_ranking_results.txt (Table 1)
 
-    |Sample|Rank_I_abu|Rank_II_abu|Rank_III_abu|Rank_IV_abu|Unassessed_abu|Total_abu|Rank_code|Rank_I_risk|Rank_II_risk|Rank_III_risk|Rank_IV_risk|ARGs_unassessed_risk|note1|
+    |Sample|Rank_I_per|Rank_II_per|Rank_III_per|Rank_IV_per|Unassessed_per|Total_abu|Rank_code|Rank_I_risk|Rank_II_risk|Rank_III_risk|Rank_IV_risk|ARGs_unassessed_risk|note1|
     | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: |
-    |WEE300_all-trimmed-decont_1.fastq|2.9E-02|0.0E+00|7.4E-02|7.8E-01|1.2E-01|4.2E-04|1.0-0.0-0.5-1.7-0.3|1.0|0.0|0.5|1.7|0.3|hospital_metagenome|
+    |WEE300_all-trimmed-decont_1.fastq|4.6E-02|0.0E+00|6.8E-02|7.5E-01|1.3E-01|5.4E-04|1.0-0.0-0.5-1.7-0.3|1.0|0.0|0.5|1.7|0.3|hospital_metagenome|
     |EsCo_genome.fasta|0.0E+00|0.0E+00|0.0E+00|1.0E+00|0.0E+00|2.0E+00|0.0-0.0-0.0-2.2-0.0|0.0|0.0|0.0|2.2|0.0|E.coli_genome|
 
 1. We compute the abundance of ARGs as the copy number of ARGs divided by the 16S copy number in a sample\
-Rank_I - Unassessed_abu: total abundance of ARGs of a risk rank\
+For metagenomes, the copy number of ARGs and 16S were computed as the number of reads mapped to them divided by their gene length.\
+Rank_I_per - Unassessed_per: percentage of ARGs of a risk rank\
 Total_abu: total abundance of all ARGs
 2. We compute the risk of ARGs as the average abundance of ARGs of a risk rank divided the average abundance of all ARGs\
 Rank_I_risk - Unassessed_risk: the risk of ARGs of a risk rank\
