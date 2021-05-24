@@ -23,8 +23,17 @@ def load_ARG_mapping():
         ARG_mapping.setdefault(ARG,'%s\t%s\t%s'%(ARG,genotype,phenotype))
     return ARG_mapping
 
+def load_ARG_length():
+    ARG_length = dict()
+    for lines in open(args.d.replace('.structure.txt','.db.fasta.length.txt'),'r'):
+        lines_set = lines.split('\n')[0].split('\t')
+        ARG,ARG2,genelength = lines_set[0:3]
+        ARG_length.setdefault(ARG,int(genelength)*3) # AA to DNA
+    return ARG_length
+
 def sum_ARG(allsearchoutput):
     ARG_mapping = load_ARG_mapping()
+    ARG_length = load_ARG_length()
     allsampleARG = []
     allsamplename = []
     for searchoutput in allsearchoutput:
@@ -46,7 +55,10 @@ def sum_ARG(allsearchoutput):
             lines_set = lines.split('\n')[0].split('\t')
             ARG = lines_set[1]
             sampleARG.setdefault(ARG,0)
-            sampleARG[ARG] += 1.0/copy_16S
+            if copy_16S == 1: # genomes
+                sampleARG[ARG] += 1.0 / copy_16S
+            else: # metagenomes
+                sampleARG[ARG] += 1.0/copy_16S/ARG_length[ARG]*1550 # normalize against ARG length and 16S length
         allsampleARG.append(sampleARG)
     # sum ARG blast results
     alloutput = []
