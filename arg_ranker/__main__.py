@@ -104,9 +104,9 @@ def main():
         for ARG in ARGlist:
             rank = RK.get(ARG, 'None')
             if rank == 'None':
-                pass
-                print ('ARGs in mothertable do not match with the ARGs in ARG_rank.txt.\nPlease check ' \
-                       + ARG + ' in ' + inputfile + '!\n')
+                if ARG != 'Reference':
+                    print ('ARGs in mothertable do not match with the ARGs in ARG_rank.txt.\nPlease check ' \
+                           + ARG + ' in ' + inputfile + '!\n')
             else:
                 try:
                     Abu[RK_profile[rank]] += float(row[ARGposition])
