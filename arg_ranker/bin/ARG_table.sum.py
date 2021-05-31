@@ -10,6 +10,11 @@ parser.add_argument("-i",
 parser.add_argument("-d",
                     help="database mapping file",
                      type=str, default='SARG.structure.txt ',metavar='SARG.structure.txt')
+optional.add_argument('-kkdbtype',
+                          help="Optional: type of kraken2 database (default = standard)",
+                          choice = ['standard','16S'],
+                          metavar="standard or 16S",
+                          action='store', default='standard', type=str)
 
 ################################################## Definition ########################################################
 args = parser.parse_args()
@@ -41,6 +46,7 @@ def sum_ARG(allsearchoutput):
         # load kraken results
         kraken = glob.glob(searchoutput.replace('.blast.txt.filter','.kraken.kreport'))
         copy_16S = 1
+        gene_length = 1550 # 16S
         if kraken!= []:
             # metagenomes
             for lines in open(kraken[0],'r'):
@@ -48,6 +54,13 @@ def sum_ARG(allsearchoutput):
                 if 'Bacteria' in lines:
                     copy_16S = float(lines_set[1])*2 # pair end
                     break
+        if args.kkdbtype != '16S':
+            # load average genome size
+            AGS_result = glob.glob(searchoutput.replace('.blast.txt.filter', '.AGS.txt'))[0]
+            for lines in open(AGS_result,'r'):
+                if lines.startswith('average_genome_size'):
+                    lines_set = lines.split('\n')[0].split('\t')
+                    gene_length = float(lines_set[1])
         # load ARG blast results
         samplename = os.path.split(searchoutput)[-1].split('.blast.txt.filter')[0]
         allsamplename.append(samplename)
@@ -58,7 +71,7 @@ def sum_ARG(allsearchoutput):
             if copy_16S == 1: # genomes
                 sampleARG[ARG] += 1.0 / copy_16S
             else: # metagenomes
-                sampleARG[ARG] += 1.0/copy_16S/ARG_length[ARG]*1550 # normalize against ARG length and 16S length
+                sampleARG[ARG] += 1.0 / copy_16S / ARG_length[ARG] * gene_length  # normalize against ARG length and 16S/genome length
         allsampleARG.append(sampleARG)
     # sum ARG blast results
     alloutput = []

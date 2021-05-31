@@ -54,6 +54,10 @@ def main():
                           help="Optional: complete path to blast if not in PATH",
                           metavar="/usr/local/bin/blast",
                           action='store', default='blast', type=str)
+    optional.add_argument('-mc',
+                          help="Optional: complete path to MicrobeCensus if not in PATH",
+                          metavar="/usr/local/bin/run_microbe_census.py",
+                          action='store', default='run_microbe_census.py', type=str)
     optional.add_argument('-kk',
                           help="Optional: complete path to kraken2 if not in PATH",
                           metavar="/usr/local/bin/kraken2",
@@ -62,6 +66,11 @@ def main():
                           help="Optional: complete path to kraken2 database if not in PATH",
                           metavar="/usr/local/bin/kraken2/krakendb",
                           action='store', default='krakendb', type=str)
+    optional.add_argument('-kkdbtype',
+                          help="Optional: type of kraken2 database (default = standard)",
+                          choice = ['standard','16S'],
+                          metavar="standard or 16S",
+                          action='store', default='standard', type=str)
 
     ################################################## Definition ########################################################
     args = parser.parse_args()
@@ -191,11 +200,19 @@ def main():
                         workingdir, inputfasta, samplename, search_output)
                 # compute taxonomy
                 try:
-                    sampleoutput = os.path.join(search_output, samplename + '.kraken')
+                    sampleoutput = os.path.join(search_output, samplename + '.kraken.kreport')
                     f1 = open(sampleoutput, 'r')
                 except IOError:
                     cmds += '%skraken2 --db %s %s --output %s --report %s.kreport --threads %s\n' % (
                         split_string_last(args.kk, 'kraken'), args.kkdb, sample, sampleoutput, sampleoutput, args.t)
+                # compute average genome size
+                if args.kkdbtype != '16S':
+                    try:
+                        sampleoutput = os.path.join(search_output, samplename + '.AGS.txt')
+                        f1 = open(sampleoutput, 'r')
+                    except IOError:
+                        cmds += '%run_microbe_census.py -t %s %s %s \n' % (
+                            split_string_last(args.mc, 'run_microbe_census'),args.t, sample, sampleoutput)
                 sample = os.path.join(search_output, samplename + '.diamond.txt.aa')
             # run blast
             sampleoutput = os.path.join(search_output, samplename + '.blast.txt')
@@ -297,7 +314,7 @@ def main():
         # search ARGs in all samples
         cmds = searchARG(allsamples)
         # output summary table
-        cmds += 'python %s/bin/ARG_table.sum.py -i %s -d %s\n' % (workingdir,search_output,ARGdatabase_mapping)
+        cmds += 'python %s/bin/ARG_table.sum.py -i %s -d %s -kkdbtype %s\n' % (workingdir,search_output,ARGdatabase_mapping,args.kkdbtype)
         # risk ranking of ARGs
         cmds += 'arg_ranker -i %s/Sample_ARGpresence.txt -m %s -o %s\n'%(output_dir,Metadata,output_dir)
         f1 = open('%s/arg_ranker.sh'%(scripts_output),'w')
