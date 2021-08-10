@@ -61,8 +61,7 @@ Make sure that your sample names are listed as the first column (check example/m
 Dr. An-Ni Zhang (MIT), Prof. Eric Alm (MIT), Prof. Tong Zhang* (University of Hong Kong)
 
 ## Citation
-1. Zhang AN, ..., Alm EJ, Zhang T: Choosing Your Battles: Which Resistance Genes Warrant Global Action? (bioRxiv coming soon)
-2. Yang Y, ..., Tiedje JM, Zhang T: ARGs-OAP: online analysis pipeline for antibiotic resistance genes detection from metagenomic data using an integrated structured ARG-database. Bioinformatics 2016.
+Zhang, AN., Gaston, J.M., Dai, C.L. et al. An omics-based framework for assessing the health risk of antimicrobial resistance genes. Nat Commun 12, 4765 (2021). https://doi.org/10.1038/s41467-021-25096-3
 
 ## Contact
 anniz44@mit.edu or caozhichongchong@gmail.com
