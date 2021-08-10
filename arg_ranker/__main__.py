@@ -12,11 +12,6 @@ arg_ranker evaluates the risk of ARGs in genomes/metagenomes\n\
 Requirement: blast, diamond, kraken, python 3\n\
 Optimal: a table of the metadata of your samples (see example/All_sample_metadata.txt).\n\
 Copyright:An-Ni Zhang, MIT; Prof. Tong Zhang, University of Hong Kong\n\
-Citation:\n\
-1. This study\n\
-2. Yang Y, Jiang X, Chai B, Ma L, Li B, Zhang A, Cole JR, Tiedje JM, Zhang T: ARGs-OAP: online analysis\
-pipeline for antibiotic resistance genes detection from metagenomic data using an integrated \
-structured ARG-database. Bioinformatics 2016. (optional: antibiotic resistance database)\n\
 Contact caozhichongchong@gmail.com\n\
 ------------------------------------------------------------------------\n\
 ")
