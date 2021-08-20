@@ -10,7 +10,6 @@ print ("\
 ------------------------------------------------------------------------\n\
 arg_ranker evaluates the risk of ARGs in genomes/metagenomes\n\
 Requirement: blast, diamond, kraken, python 3\n\
-Optimal: a table of the metadata of your samples (see example/All_sample_metadata.txt).\n\
 Copyright:An-Ni Zhang, MIT; Prof. Tong Zhang, University of Hong Kong\n\
 Contact caozhichongchong@gmail.com\n\
 ------------------------------------------------------------------------\n\
