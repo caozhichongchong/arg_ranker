@@ -10,9 +10,8 @@ parser.add_argument("-i",
 parser.add_argument("-d",
                     help="database mapping file",
                      type=str, default='SARG.structure.txt ',metavar='SARG.structure.txt')
-optional.add_argument('-kkdbtype',
+parser.add_argument('-kkdbtype',
                           help="Optional: type of kraken2 database (default = standard)",
-                          choice = ['standard','16S'],
                           metavar="standard or 16S",
                           action='store', default='standard', type=str)
 
