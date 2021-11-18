@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name="arg_ranker",
     packages=['arg_ranker'],
-    version="2.8.3",
+    version="2.8.4",
     description="Ranking the risk of antibiotic resistance for genomes/metagenomes",
     author='An-Ni Zhang',
     author_email='anniz44@mit.edu',
@@ -20,7 +20,8 @@ setup(
         'pandas',
         'argparse',
         'glob2',
-        'statistics'
+        'statistics',
+        'biopython'
         ],
     classifiers=[
         "Programming Language :: Python :: 3"
