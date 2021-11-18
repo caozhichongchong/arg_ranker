@@ -204,7 +204,7 @@ def main():
                         sampleoutput = os.path.join(search_output, samplename + '.AGS.txt')
                         f1 = open(sampleoutput, 'r')
                     except IOError:
-                        cmds += '%run_microbe_census.py -t %s %s %s \n' % (
+                        cmds += '%srun_microbe_census.py -t %s %s %s \n' % (
                             split_string_last(args.mc, 'run_microbe_census'),args.t, sample, sampleoutput)
                 sample = os.path.join(search_output, samplename + '.diamond.txt.aa')
             # run blast
