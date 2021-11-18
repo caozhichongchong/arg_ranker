@@ -55,11 +55,12 @@ def sum_ARG(allsearchoutput):
                     break
         if args.kkdbtype != '16S':
             # load average genome size
-            AGS_result = glob.glob(searchoutput.replace('.blast.txt.filter', '.AGS.txt'))[0]
-            for lines in open(AGS_result,'r'):
-                if lines.startswith('average_genome_size'):
-                    lines_set = lines.split('\n')[0].split('\t')
-                    gene_length = float(lines_set[1])
+            AGS_result = glob.glob(searchoutput.replace('.blast.txt.filter', '.AGS.txt'))
+            if AGS_result!= []:
+                for lines in open(AGS_result[0],'r'):
+                    if lines.startswith('average_genome_size'):
+                        lines_set = lines.split('\n')[0].split('\t')
+                        gene_length = float(lines_set[1])
         # load ARG blast results
         samplename = os.path.split(searchoutput)[-1].split('.blast.txt.filter')[0]
         allsamplename.append(samplename)
