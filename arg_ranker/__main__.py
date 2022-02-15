@@ -29,7 +29,7 @@ def main():
                         default="example",
                         action='store', type=str,
                         metavar='metagenomes/',
-                        help="input directory or metagenomes/genomes (.fa, .fasta, .fq, or .fastq)")
+                        help="path for input directory/folder for metagenomes/genomes (.fa, .fasta, .fq, or .fastq)")
     optional.add_argument('-m',
                         default="None", action='store', type=str, metavar='metadata.txt',
                         help="input table containing the metadata of your samples\n"+
