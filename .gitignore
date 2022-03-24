@@ -1,5 +1,5 @@
 arg_ranker/example/WEE300_all-trimmed-decont_1.fastq
 arg_ranker/example/
 *~
-#arg_ranker/data/*
+arg_ranker/data/*
 .DS_Store
