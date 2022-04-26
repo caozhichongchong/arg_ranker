@@ -3,6 +3,9 @@ arg_ranker evaluates the risk of ARGs in genomes and metagenomes
 
 ## Install
 `pip install arg_ranker`
+### Please make sure to install arg_ranker >= v2.8.8
+To check installed version `pip show arg_ranker`\
+To upgrade `pip install arg_ranker --upgrade`
 
 ## Requirement
 * python 3

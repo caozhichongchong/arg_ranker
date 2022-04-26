@@ -3,3 +3,5 @@ arg_ranker/example/
 *~
 arg_ranker/data/*
 .DS_Store
+*/.DS_Store
+*/*/.DS_Store
