@@ -193,7 +193,7 @@ def main():
                         workingdir, inputfasta, samplename, search_output)
                 # compute taxonomy
                 try:
-                    sampleoutput = os.path.join(search_output, samplename + '.kraken.kreport')
+                    sampleoutput = os.path.join(search_output, samplename + '.kraken')
                     f1 = open(sampleoutput, 'r')
                 except IOError:
                     cmds += '%skraken2 --db %s %s --output %s --report %s.kreport --threads %s\n' % (
