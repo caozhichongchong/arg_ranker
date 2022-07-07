@@ -6,10 +6,12 @@ arg_ranker evaluates the risk of ARGs in genomes and metagenomes
 ### Please make sure to install arg_ranker >= v3
 To all users,\
 We have noticed an error of arg_ranker.v2 when reporting the total ARG abundance in metagenomes.\
-Please update arg_ranker to v3 and re-run your metagenomes if the total abundance is used in your research.\
-Alternatively, you can replace the original ARG_table.sum.py with [ARG_table.sum.py](https://github.com/caozhichongchong/arg_ranker/tree/v2.0/arg_ranker/bin_v2only/ARG_table.sum.py)\
+If the total abundance is used in your research, please update arg_ranker to v3 and re-run your metagenomes (`arg_ranker -i $INPUT -kkdb $KRAKENDB`).\
+Alternatively, you can fix arg_ranker.v2 by replacing its original ARG_table.sum.py with [ARG_table.sum.py](https://github.com/caozhichongchong/arg_ranker/tree/v2.0/arg_ranker/bin_v2only/ARG_table.sum.py)\
 and re-run the last two commands in arg_ranker.sh `python $PATH_to_arg_ranker/bin/ARG_table.sum.py -i ...` and `arg_ranker -i ...`.\
 You can find the path to ARG_table.sum.py in arg_ranker.sh.\
+Note that this [ARG_table.sum.py](https://github.com/caozhichongchong/arg_ranker/tree/v2.0/arg_ranker/bin_v2only/ARG_table.sum.py) is only meant for fixing arg_ranker.v2 and the results of arg_ranker.v2.\
+Please do not replace ARG_table.sum.py in arg_ranker.v3 with this [ARG_table.sum.py](https://github.com/caozhichongchong/arg_ranker/tree/v2.0/arg_ranker/bin_v2only/ARG_table.sum.py).\
 We are really sorry about this inconvenience.\
 Please feel free to reach out to anniz44@mit.edu if you have any questions.
 
