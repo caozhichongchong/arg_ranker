@@ -31,7 +31,8 @@ def load_ARG_length():
     ARG_length = dict()
     for lines in open(args.d.replace('.structure.txt','.db.fasta.length'),'r'):
         lines_set = lines.split('\n')[0].split('\t')
-        ARG,ARG2,genelength = lines_set[0:3]
+        ARG = lines_set[0]
+        genelength = lines_set[-1]
         ARG_length.setdefault(ARG,int(genelength)*3) # AA to DNA
     return ARG_length
 
