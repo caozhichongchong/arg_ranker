@@ -260,7 +260,11 @@ def main():
         # transpose the mothertable
         df = pd.read_csv(Mothertable, index_col=None, header=None, skipinitialspace=True, sep='\t')
         df.dropna(axis=0, thresh=2, subset=None, inplace=True)
-        os.system('rm %s/Sample_ARGpresence.txt.t'%(output_dir))
+        try:
+            f1 = open('%s/Sample_ARGpresence.txt.t'%(output_dir),'w')
+            os.system('rm %s/Sample_ARGpresence.txt.t'%(output_dir))
+        except IOError:
+            pass
         df = df.T
         df.to_csv(str(Mothertable) + '.t', header=None, index=None, sep='\t', mode='a')
         i = 0
