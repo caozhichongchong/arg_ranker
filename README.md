@@ -44,8 +44,8 @@ To upgrade `pip install arg_ranker --upgrade`
 
     |Sample|Rank_I_per|Rank_II_per|Rank_III_per|Rank_IV_per|Unassessed_per|Total_abu|Rank_code|Rank_I_risk|Rank_II_risk|Rank_III_risk|Rank_IV_risk|ARGs_unassessed_risk|note1|
     | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: |
-    |WEE300_all-trimmed-decont_1.fastq|4.6E-02|0.0E+00|6.8E-02|7.5E-01|1.3E-01|5.4E-04|1.0-0.0-0.5-1.7-0.3|1.0|0.0|0.5|1.7|0.3|hospital_metagenome|
-    |EsCo_genome.fasta|0.0E+00|0.0E+00|0.0E+00|1.0E+00|0.0E+00|2.0E+00|0.0-0.0-0.0-2.2-0.0|0.0|0.0|0.0|2.2|0.0|E.coli_genome|
+    |WEE300_all-trimmed-decont_1.fastq|4.6E-02|0.0E+00|6.8E-02|7.5E-01|1.3E-01|1.9E+00|1.5-0.0-0.4-1.7-0.4|1.5|0.0|0.4|1.7|0.4|hospital_metagenome|
+    |EsCo_genome.fasta|0.0E+00|0.0E+00|2.4E-01|7.6E-01|0.0E+00|2.1E+01|0.0-0.0-1.6-1.7-0.0|0.0|0.0|1.6|1.7|0.0|E.coli_genome|
 
 1. Rank_I_per - Unassessed_per: percentage of ARGs of a risk Rank\
 Total_abu: total abundance of all ARGs
