@@ -20,7 +20,7 @@ To upgrade `pip install arg_ranker --upgrade`
 
 ## Requirement
 * python 3
-* diamond: `conda install -c bioconda diamond` (https://github.com/bbuchfink/diamond)
+* diamond: `conda install -c bioconda diamond=0.9.36` (https://github.com/bbuchfink/diamond)
 * blast+: `conda install -c bioconda blast` (https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/)
 * For metagenomes:
     * kraken2: `conda install -c bioconda kraken2`(https://github.com/DerrickWood/kraken2/wiki)
