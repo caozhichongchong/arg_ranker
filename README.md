@@ -2,7 +2,10 @@
 arg_ranker evaluates the risk of ARGs in genomes and metagenomes
 
 ## Install
-`pip install arg_ranker`
+experimental version using SARGv3\
+`pip install arg_ranker`\
+Long term support version using SARGv1\
+`pip install arg-ranker==3.0.2`
 ### Please make sure to install arg_ranker >= v3
 To all users,\
 We have noticed an error of arg_ranker.v2 when reporting the total ARG abundance in metagenomes.\
@@ -40,8 +43,13 @@ To upgrade `pip install arg_ranker --upgrade`
 * run `sh arg_ranking/script_output/arg_ranker.sh`
 
 ## Output
-* Sample_ranking_results.txt (Table 1)
-
+* Sample_ranking_results.txt (Table 1) - LTS SARGv1 version
+    * arg_ranker = 3.0.2
+    * python >= 3.5
+    * diamond = 0.9.36
+    * blast = 2.13.0
+    * kraken2 = 2.1.2
+   
     |Sample|Rank_I_per|Rank_II_per|Rank_III_per|Rank_IV_per|Unassessed_per|Total_abu|Rank_code|Rank_I_risk|Rank_II_risk|Rank_III_risk|Rank_IV_risk|ARGs_unassessed_risk|note1|
     | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: |
     |WEE300_all-trimmed-decont_1.fastq|4.6E-02|0.0E+00|6.8E-02|7.5E-01|1.3E-01|1.9E+00|1.5-0.0-0.4-1.7-0.4|1.5|0.0|0.4|1.7|0.4|hospital_metagenome|
