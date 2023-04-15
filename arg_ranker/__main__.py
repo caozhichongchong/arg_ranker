@@ -126,7 +126,7 @@ def main():
             Num_all = sum(RKN[0:5])  # considering un-assessed ARGs
             if total_abu_I_IV > 0:
                 for abu in range(0, 5):  # considering un-assessed ARGs
-                    Abu2.append((Abu[abu] / RKN[abu]) / (total_abu_all / Num_all))  # considering un-assessed ARGs
+                    Abu2.append((Abu[abu] / max(RKN[abu],1.0)) / (total_abu_all / Num_all))  # considering un-assessed ARGs
             else:
                 Abu2 = [0.0, 0.0, 0.0, 0.0, 0.0]  # considering un-assessed ARGs
             # output results

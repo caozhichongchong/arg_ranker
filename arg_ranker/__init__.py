@@ -1,3 +1,3 @@
 import arg_ranker
 
-__version__ = "3.1"
+__version__ = "3.3"
