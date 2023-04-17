@@ -2,9 +2,9 @@
 arg_ranker evaluates the risk of ARGs in genomes and metagenomes
 
 ## Install
-experimental version using SARGv3\
+experimental version using most updated ARG database (SARGv3)\
 `pip install arg_ranker`\
-Long term support version using SARGv1\
+Long term support version using the same ARG database in the publication (SARGv1)\
 `pip install arg-ranker==3.0.2`
 ### Please make sure to install arg_ranker >= v3
 To all users,\
@@ -23,7 +23,7 @@ To upgrade `pip install arg_ranker --upgrade`
 
 ## Requirement
 * python 3
-* diamond: `conda install -c bioconda diamond=0.9.36` (https://github.com/bbuchfink/diamond)
+* diamond: `conda install -c bioconda diamond=2.1.6` (https://github.com/bbuchfink/diamond)
 * blast+: `conda install -c bioconda blast` (https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/)
 * For metagenomes:
     * kraken2: `conda install -c bioconda kraken2`(https://github.com/DerrickWood/kraken2/wiki)
@@ -43,17 +43,29 @@ To upgrade `pip install arg_ranker --upgrade`
 * run `sh arg_ranking/script_output/arg_ranker.sh`
 
 ## Output
-* Sample_ranking_results.txt (Table 1) - LTS SARGv1 version
-    * arg_ranker = 3.0.2
+* Sample_ranking_results.txt (Table 1)
+    * arg_ranker = 3.3 (SARGv3)
     * python >= 3.5
-    * diamond = 0.9.36
+    * diamond = 2.1.6 - recommended
     * blast = 2.13.0
-    * kraken2 = 2.1.2
+    * kraken2 = 2.1.2 - 16Gb database
+   
+    |Sample|Rank_I_per|Rank_II_per|Rank_III_per|Rank_IV_per|Unassessed_per|Total_abu|Rank_code|Rank_I_risk|Rank_II_risk|Rank_III_risk|Rank_IV_risk|ARGs_unassessed_risk|note1|
+    | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: |
+    |WEE300_all-trimmed-decont_1.fastq|6.6E-02|2.1E-02|2.2E-01|6.9E-01|0.0E+00|5.5E+00|3.1-1.3-1.1-0.9-0.0|3.1|1.3|1.1|0.9|0.0|hospital_metagenome|
+    |EsCo_genome.fasta|7.1E-02|0.0E+00|2.1E-01|7.1E-01|0.0E+00|1.4E+01|3.3-0.0-1.1-0.9-0.0|3.3|0.0|1.1|0.9|0.0|E.coli_genome|
+* Sample_ranking_results.txt (Table 1)
+    * arg_ranker = 3.0.2 (SARGv1)
+    * python >= 3.5
+    * diamond = 0.9.36 - not recommended
+    * blast = 2.13.0
+    * kraken2 = 2.1.2 - 16Gb database
    
     |Sample|Rank_I_per|Rank_II_per|Rank_III_per|Rank_IV_per|Unassessed_per|Total_abu|Rank_code|Rank_I_risk|Rank_II_risk|Rank_III_risk|Rank_IV_risk|ARGs_unassessed_risk|note1|
     | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: |
     |WEE300_all-trimmed-decont_1.fastq|4.6E-02|0.0E+00|6.8E-02|7.5E-01|1.3E-01|1.9E+00|1.5-0.0-0.4-1.7-0.4|1.5|0.0|0.4|1.7|0.4|hospital_metagenome|
     |EsCo_genome.fasta|0.0E+00|0.0E+00|2.4E-01|7.6E-01|0.0E+00|2.1E+01|0.0-0.0-1.6-1.7-0.0|0.0|0.0|1.6|1.7|0.0|E.coli_genome|
+* Please note that minor changes within ~two-fold of the Total_abu caused by different diamond and kraken versions can be considered reasonable :)
 
 1. Rank_I_per - Unassessed_per: percentage of ARGs of a risk Rank\
 Total_abu: total abundance of all ARGs
@@ -85,5 +97,9 @@ Dr. An-Ni Zhang (MIT), Prof. Eric Alm (MIT), Prof. Tong Zhang* (University of Ho
 ## Citation
 Zhang, AN., Gaston, J.M., Dai, C.L. et al. An omics-based framework for assessing the health risk of antimicrobial resistance genes. Nat Commun 12, 4765 (2021). https://doi.org/10.1038/s41467-021-25096-3\
 Correction: bacA is a bacitracin resistance gene, not a beta-lactamase (Fig 3).
+
 ## Contact
 anniz44@mit.edu or caozhichongchong@gmail.com
+
+## Acknowledgement
+Special thanks to LeabaeL for their great help in testing various versions of arg_ranker and diamond!
