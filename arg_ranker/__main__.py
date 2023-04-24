@@ -258,7 +258,7 @@ def main():
             Rank_num(lines.split('\t')[-1], RKN, RK_profile)
         # input ARG mothertable
         # transpose the mothertable
-        df = pd.read_csv(Mothertable, index_col=None, header=None, skipinitialspace=True, sep='\t')
+        df = pd.read_csv(Mothertable, index_col=None, header=None, skipinitialspace=True, sep='\t',low_memory=False)
         df.dropna(axis=0, thresh=2, subset=None, inplace=True)
         try:
             f1 = open('%s/Sample_ARGpresence.txt.t'%(output_dir),'w')
