@@ -95,7 +95,7 @@ Make sure that your sample names are listed as the first column (check example/m
 Dr. An-Ni Zhang (MIT), Prof. Eric Alm (MIT), Prof. Tong Zhang* (University of Hong Kong)
 
 ## Citation
-Zhang, AN., Gaston, J.M., Dai, C.L. et al. An omics-based framework for assessing the health risk of antimicrobial resistance genes. Nat Commun 12, 4765 (2021). https://doi.org/10.1038/s41467-021-25096-3\
+Zhang, AN., Gaston, J.M., Dai, C.L. et al. An omics-based framework for assessing the health risk of antimicrobial resistance genes. Nat Commun 12, 4765 (2021). https://doi.org/10.1038/s41467-021-25096-3
 Correction: bacA is a bacitracin resistance gene, not a beta-lactamase (Fig 3).
 
 ## Contact
