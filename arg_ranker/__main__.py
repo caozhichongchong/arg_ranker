@@ -196,8 +196,8 @@ def main():
                     sampleoutput = os.path.join(search_output, samplename + '.kraken')
                     f1 = open(sampleoutput, 'r')
                 except IOError:
-                    cmds += '%skraken2 --db %s %s --output %s --report %s.kreport --threads %s\n' % (
-                        split_string_last(args.kk, 'kraken'), args.kkdb, sample, sampleoutput, sampleoutput, args.t)
+                    cmds += '%skraken2 --db %s --gzip-compressed %s --output %s --report %s.kreport --threads %s\n' % (
+                            split_string_last(args.kk, 'kraken'), args.kkdb, sample, sampleoutput, sampleoutput, args.t)
                 # compute average genome size
                 if args.kkdbtype != '16S':
                     try:
@@ -301,8 +301,8 @@ def main():
             pass
         allsamples = glob.glob('%s/*.fa' % (inputfasta)) +\
                      glob.glob('%s/*.fasta' % (inputfasta)) + \
-                     glob.glob('%s/*.fq' % (inputfasta)) + \
-                     glob.glob('%s/*.fastq' % (inputfasta))
+                     glob.glob('%s/*.fq*' % (inputfasta)) + \
+                     glob.glob('%s/*.fastq*' % (inputfasta))
         print(allsamples,inputfasta,workingdir)
         # make database
         makedatabase(args.bl, ARGdatabase)
