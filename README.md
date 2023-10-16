@@ -44,7 +44,7 @@ To upgrade `pip install arg_ranker --upgrade`
 
 ## Output
 * Sample_ranking_results.txt (Table 1)
-    * arg_ranker = 3.3 (SARGv3)
+    * arg_ranker = 3.4 (SARGv3)
     * python >= 3.5
     * diamond = 2.1.6 - recommended
     * blast = 2.13.0
