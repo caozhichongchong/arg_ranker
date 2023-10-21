@@ -173,50 +173,134 @@ def main():
             # genomes fasta
             return [90, 80, 1e-5, 'T']
 
-    def searchARG(allsamples):
-        cmds = '#!/bin/bash\n'
-        #cmds += 'source ~/.bashrc\npy37\nexport LD_LIBRARY_PATH=/scratch/users/anniz44/bin/pro/lib/gsl-2.6:/scratch/users/anniz44/bin/pro/lib/glibc-2.14-build:/scratch/users/anniz44/bin/pro/lib/:/scratch/users/anniz44/bin/miniconda3/lib:$LD_LIBRARY_PATH\n'
+    def pairingsamples(allsamples):
+        allsamples_others = []
+        allsamples_fastq1 = []
+        allsamples_fastq2 = []
         for sample in allsamples:
-            id_ARG, hit_ARG, evalue_ARG, sampletype = setcutoff(sample)
-            samplename = os.path.split(sample)[-1]
-            if sampletype == 'F':
-                # run diamond for metagneomes
-                sampleoutput = os.path.join(search_output, samplename + '.diamond.txt')
-                try:
-                    f1 = open(sampleoutput, 'r')
-                except IOError:
-                    cmds += "%sdiamond blastx --query %s --db %s.dmnd --out %s --outfmt 6 --max-target-seqs 1 --evalue %s --id %s --query-cover %s --threads %s \n" % (
-                        split_string_last(args.dm, 'diamond'), sample, ARGdatabase, sampleoutput, evalue_ARG, id_ARG,
-                        hit_ARG, args.t)
-                    # extract candidate seqs
-                    cmds += 'python %s/bin/Extract.MG.py -p 1 -i %s -f %s -n .diamond.txt -r %s\n' % (
-                        workingdir, inputfasta, samplename, search_output)
-                # compute taxonomy
-                try:
-                    sampleoutput = os.path.join(search_output, samplename + '.kraken')
-                    f1 = open(sampleoutput, 'r')
-                except IOError:
-                    cmds += '%skraken2 --db %s --gzip-compressed %s --output %s --report %s.kreport --threads %s\n' % (
-                            split_string_last(args.kk, 'kraken'), args.kkdb, sample, sampleoutput, sampleoutput, args.t)
-                # compute average genome size
-                if args.kkdbtype != '16S':
-                    try:
-                        sampleoutput = os.path.join(search_output, samplename + '.AGS.txt')
-                        f1 = open(sampleoutput, 'r')
-                    except IOError:
-                        cmds += '%srun_microbe_census.py -t %s %s %s \n' % (
-                            split_string_last(args.mc, 'run_microbe_census'),args.t, sample, sampleoutput)
-                sample = os.path.join(search_output, samplename + '.diamond.txt.aa')
-            # run blast
-            sampleoutput = os.path.join(search_output, samplename + '.blast.txt')
+            if '_1.fq' in sample or '_1.fastq' in sample:
+                sample2 = sample.replace('_1.fq','_2.fq').replace('_1.fastq','_2.fastq')
+                if sample2 in allsamples:
+                    allsamples_fastq1.append(sample)
+                    allsamples_fastq2.append(sample2)
+            if sample not in allsamples_fastq1 and sample not in allsamples_fastq2:
+                allsamples_others.append(sample)
+        return [allsamples_others,allsamples_fastq1]
+
+    def process_sample_nonpaired(sample):
+        cmds = ''
+        id_ARG, hit_ARG, evalue_ARG, sampletype = setcutoff(sample)
+        samplename = os.path.split(sample)[-1]
+        if sampletype == 'F':
+            # run diamond for metagneomes
+            sampleoutput = os.path.join(search_output, samplename + '.diamond.txt')
             try:
                 f1 = open(sampleoutput, 'r')
             except IOError:
-                cmds += "%sblastx -query %s -db %s -out %s -outfmt 6 -evalue %s -num_threads %s\n" % (
-                    split_string_last(args.bl, 'blast'), sample, ARGdatabase, sampleoutput, evalue_ARG, args.t)
-                # filter searching result
-                cmds += 'python %s/bin/Filter.MG.py --g %s -i %s -f %s -db %s -dbf 2 -s 1 --ht %s --id %s --e %s \n' % (
-                    workingdir, sampletype, search_output, sampleoutput, ARGdatabase, hit_ARG, id_ARG, evalue_ARG)
+                cmds += "%sdiamond blastx --query %s --db %s.dmnd --out %s --outfmt 6 --max-target-seqs 1 --evalue %s --id %s --query-cover %s --threads %s \n" % (
+                    split_string_last(args.dm, 'diamond'), sample, ARGdatabase, sampleoutput, evalue_ARG, id_ARG,
+                    hit_ARG, args.t)
+                # extract candidate seqs
+                cmds += 'python %s/bin/Extract.MG.py -p 1 -i %s -f %s -n .diamond.txt -r %s\n' % (
+                    workingdir, inputfasta, samplename, search_output)
+            # compute taxonomy
+            try:
+                sampleoutput = os.path.join(search_output, samplename + '.kraken')
+                f1 = open(sampleoutput, 'r')
+            except IOError:
+                cmds += '%skraken2 --db %s %s --output %s --report %s.kreport --threads %s\n' % (
+                    split_string_last(args.kk, 'kraken'), args.kkdb, sample, sampleoutput, sampleoutput, args.t)
+            # compute average genome size
+            if args.kkdbtype != '16S':
+                try:
+                    sampleoutput = os.path.join(search_output, samplename + '.AGS.txt')
+                    f1 = open(sampleoutput, 'r')
+                except IOError:
+                    cmds += '%srun_microbe_census.py -t %s %s %s \n' % (
+                        split_string_last(args.mc, 'run_microbe_census'), args.t, sample, sampleoutput)
+            sample = os.path.join(search_output, samplename + '.diamond.txt.aa')
+        # run blast
+        sampleoutput = os.path.join(search_output, samplename + '.blast.txt')
+        try:
+            f1 = open(sampleoutput, 'r')
+        except IOError:
+            cmds += "%sblastx -query %s -db %s -out %s -outfmt 6 -evalue %s -num_threads %s\n" % (
+                split_string_last(args.bl, 'blast'), sample, ARGdatabase, sampleoutput, evalue_ARG, args.t)
+            # filter searching result
+            cmds += 'python %s/bin/Filter.MG.py --g %s -i %s -f %s -db %s -dbf 2 -s 1 --ht %s --id %s --e %s \n' % (
+                workingdir, sampletype, search_output, sampleoutput, ARGdatabase, hit_ARG, id_ARG, evalue_ARG)
+        return cmds
+
+    def process_sample_paired(sample):
+        sample2 = sample.replace('_1.fq','_2.fq').replace('_1.fastq','_2.fastq')
+        cmds = ''
+        id_ARG, hit_ARG, evalue_ARG, sampletype = setcutoff(sample)
+        samplename = os.path.split(sample)[-1].split('_1.fq')[0].split('_1.fastq')[0]
+        samplename2 = os.path.split(sample2)[-1]
+        if sampletype == 'F':
+            # run diamond for metagneomes
+            sampleoutput = os.path.join(search_output, samplename + '.diamond.txt')
+            sampleoutput2 = os.path.join(search_output, samplename2 + '.diamond.txt')
+            try:
+                f1 = open(sampleoutput, 'r')
+            except IOError:
+                cmds += "%sdiamond blastx --query %s --db %s.dmnd --out %s --outfmt 6 --max-target-seqs 1 --evalue %s --id %s --query-cover %s --threads %s \n" % (
+                    split_string_last(args.dm, 'diamond'), sample, ARGdatabase, sampleoutput, evalue_ARG, id_ARG,
+                    hit_ARG, args.t)
+                cmds += "%sdiamond blastx --query %s --db %s.dmnd --out %s --outfmt 6 --max-target-seqs 1 --evalue %s --id %s --query-cover %s --threads %s \n" % (
+                    split_string_last(args.dm, 'diamond'), sample2, ARGdatabase, sampleoutput2, evalue_ARG, id_ARG,
+                    hit_ARG, args.t)
+                # extract candidate seqs
+                cmds += 'python %s/bin/Extract.MG.py -p 1 -i %s -f %s -n .diamond.txt -r %s\n' % (
+                    workingdir, inputfasta, samplename, search_output)
+                cmds += 'python %s/bin/Extract.MG.py -p 1 -i %s -f %s -n .diamond.txt -r %s\n' % (
+                    workingdir, inputfasta, samplename2, search_output)
+            # compute taxonomy
+            try:
+                sampleoutput = os.path.join(search_output, samplename + '.kraken')
+                f1 = open(sampleoutput, 'r')
+            except IOError:
+                cmds += '%skraken2 --db %s --paired %s %s --output %s --report %s.kreport --threads %s\n' % (
+                    split_string_last(args.kk, 'kraken'), args.kkdb, sample, sample2, sampleoutput, sampleoutput, args.t)
+            # compute average genome size
+            if args.kkdbtype != '16S':
+                try:
+                    sampleoutput = os.path.join(search_output, samplename + '.AGS.txt')
+                    f1 = open(sampleoutput, 'r')
+                except IOError:
+                    cmds += '%srun_microbe_census.py -t %s,%s %s %s \n' % (
+                        split_string_last(args.mc, 'run_microbe_census'), args.t, sample,sample2, sampleoutput)
+            sample = os.path.join(search_output, samplename + '.diamond.txt.aa')
+            sample2 = os.path.join(search_output, samplename2 + '.diamond.txt.aa')
+        # run blast
+        sampleoutput = os.path.join(search_output, samplename + '.blast.txt')
+        sampleoutput2 = os.path.join(search_output, samplename2 + '.blast.txt')
+        try:
+            f1 = open(sampleoutput, 'r')
+        except IOError:
+            cmds += "%sblastx -query %s -db %s -out %s -outfmt 6 -evalue %s -num_threads %s\n" % (
+                split_string_last(args.bl, 'blast'), sample, ARGdatabase, sampleoutput, evalue_ARG, args.t)
+            cmds += "%sblastx -query %s -db %s -out %s -outfmt 6 -evalue %s -num_threads %s\n" % (
+                split_string_last(args.bl, 'blast'), sample2, ARGdatabase, sampleoutput2, evalue_ARG, args.t)
+            # filter searching result
+            cmds += 'python %s/bin/Filter.MG.py --g %s -i %s -f %s -db %s -dbf 2 -s 1 --ht %s --id %s --e %s \n' % (
+                workingdir, sampletype, search_output, sampleoutput, ARGdatabase, hit_ARG, id_ARG, evalue_ARG)
+            cmds += 'python %s/bin/Filter.MG.py --g %s -i %s -f %s -db %s -dbf 2 -s 1 --ht %s --id %s --e %s \n' % (
+                workingdir, sampletype, search_output, sampleoutput2, ARGdatabase, hit_ARG, id_ARG, evalue_ARG)
+            # merge blast results of _1 and _2 files
+            cmds += 'cat %s.filter %s.filter > %s.filtermerge\n'%(sampleoutput,sampleoutput2,sampleoutput)
+            cmds += 'mv %s.filtermerge %s.filter\n' % (sampleoutput, sampleoutput)
+            cmds += 'rm %s.filter\n' % (sampleoutput2)
+        return cmds
+
+    def searchARG(allsamples):
+        cmds = '#!/bin/bash\n'
+        #cmds += 'source ~/.bashrc\npy37\nexport LD_LIBRARY_PATH=/scratch/users/anniz44/bin/pro/lib/gsl-2.6:/scratch/users/anniz44/bin/pro/lib/glibc-2.14-build:/scratch/users/anniz44/bin/pro/lib/:/scratch/users/anniz44/bin/miniconda3/lib:$LD_LIBRARY_PATH\n'
+        allsamples_others, allsamples_fastq1 = pairingsamples(allsamples)
+        for sample in allsamples_others:
+            cmds += process_sample_nonpaired(sample)
+        for sample in allsamples_fastq1:
+            cmds += process_sample_paired(sample)
         return cmds
 
     def ranking_arg(inputfasta,Metadata):
