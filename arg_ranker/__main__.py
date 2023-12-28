@@ -174,6 +174,7 @@ def main():
             return [90, 80, 1e-5, 'T']
 
     def pairingsamples(allsamples):
+        allsamples.sort()
         allsamples_others = []
         allsamples_fastq1 = []
         allsamples_fastq2 = []
@@ -197,6 +198,9 @@ def main():
             try:
                 f1 = open(sampleoutput, 'r')
             except IOError:
+                if '.gz' in sample:
+                    cmds += 'gunzip -c %s > %s\n'%(sample,sample.replace('.gz',''))
+                    sample = sample.replace('.gz','')
                 cmds += "%sdiamond blastx --query %s --db %s.dmnd --out %s --outfmt 6 --max-target-seqs 1 --evalue %s --id %s --query-cover %s --threads %s \n" % (
                     split_string_last(args.dm, 'diamond'), sample, ARGdatabase, sampleoutput, evalue_ARG, id_ARG,
                     hit_ARG, args.t)
@@ -231,28 +235,34 @@ def main():
                 workingdir, sampletype, search_output, sampleoutput, ARGdatabase, hit_ARG, id_ARG, evalue_ARG)
         return cmds
 
-    def process_sample_paired(sample):
-        sample2 = sample.replace('_1.fq','_2.fq').replace('_1.fastq','_2.fastq')
+    def process_sample_paired(sample1):
+        sample2 = sample1.replace('_1.fq','_2.fq').replace('_1.fastq','_2.fastq')
         cmds = ''
-        id_ARG, hit_ARG, evalue_ARG, sampletype = setcutoff(sample)
-        samplename = os.path.split(sample)[-1].split('_1.fq')[0].split('_1.fastq')[0]
+        id_ARG, hit_ARG, evalue_ARG, sampletype = setcutoff(sample1)
+        samplename1 = os.path.split(sample1)[-1]
+        samplename = samplename1.split('_1.fq')[0].split('_1.fastq')[0]
         samplename2 = os.path.split(sample2)[-1]
         if sampletype == 'F':
             # run diamond for metagneomes
-            sampleoutput = os.path.join(search_output, samplename + '.diamond.txt')
+            sampleoutput = os.path.join(search_output, samplename1 + '.diamond.txt')
             sampleoutput2 = os.path.join(search_output, samplename2 + '.diamond.txt')
             try:
                 f1 = open(sampleoutput, 'r')
             except IOError:
+                if '.gz' in sample1:
+                    cmds += 'gunzip -c %s > %s\n'%(sample1,sample1.replace('.gz',''))
+                    sample1 = sample1.replace('.gz','')
+                    cmds += 'gunzip -c %s > %s\n' % (sample2, sample2.replace('.gz', ''))
+                    sample2 = sample2.replace('.gz', '')
                 cmds += "%sdiamond blastx --query %s --db %s.dmnd --out %s --outfmt 6 --max-target-seqs 1 --evalue %s --id %s --query-cover %s --threads %s \n" % (
-                    split_string_last(args.dm, 'diamond'), sample, ARGdatabase, sampleoutput, evalue_ARG, id_ARG,
+                    split_string_last(args.dm, 'diamond'), sample1, ARGdatabase, sampleoutput, evalue_ARG, id_ARG,
                     hit_ARG, args.t)
                 cmds += "%sdiamond blastx --query %s --db %s.dmnd --out %s --outfmt 6 --max-target-seqs 1 --evalue %s --id %s --query-cover %s --threads %s \n" % (
                     split_string_last(args.dm, 'diamond'), sample2, ARGdatabase, sampleoutput2, evalue_ARG, id_ARG,
                     hit_ARG, args.t)
                 # extract candidate seqs
                 cmds += 'python %s/bin/Extract.MG.py -p 1 -i %s -f %s -n .diamond.txt -r %s\n' % (
-                    workingdir, inputfasta, samplename, search_output)
+                    workingdir, inputfasta, samplename1, search_output)
                 cmds += 'python %s/bin/Extract.MG.py -p 1 -i %s -f %s -n .diamond.txt -r %s\n' % (
                     workingdir, inputfasta, samplename2, search_output)
             # compute taxonomy
@@ -261,36 +271,35 @@ def main():
                 f1 = open(sampleoutput, 'r')
             except IOError:
                 cmds += '%skraken2 --db %s --paired %s %s --output %s --report %s.kreport --threads %s\n' % (
-                    split_string_last(args.kk, 'kraken'), args.kkdb, sample, sample2, sampleoutput, sampleoutput, args.t)
+                    split_string_last(args.kk, 'kraken'), args.kkdb, sample1, sample2, sampleoutput, sampleoutput, args.t)
             # compute average genome size
             if args.kkdbtype != '16S':
                 try:
                     sampleoutput = os.path.join(search_output, samplename + '.AGS.txt')
                     f1 = open(sampleoutput, 'r')
                 except IOError:
-                    cmds += '%srun_microbe_census.py -t %s,%s %s %s \n' % (
-                        split_string_last(args.mc, 'run_microbe_census'), args.t, sample,sample2, sampleoutput)
-            sample = os.path.join(search_output, samplename + '.diamond.txt.aa')
+                    cmds += '%srun_microbe_census.py -t %s %s,%s %s \n' % (
+                        split_string_last(args.mc, 'run_microbe_census'), args.t, sample1,sample2, sampleoutput)
+            sample1 = os.path.join(search_output, samplename1 + '.diamond.txt.aa')
             sample2 = os.path.join(search_output, samplename2 + '.diamond.txt.aa')
         # run blast
         sampleoutput = os.path.join(search_output, samplename + '.blast.txt')
+        sampleoutput1 = os.path.join(search_output, samplename1 + '.blast.txt')
         sampleoutput2 = os.path.join(search_output, samplename2 + '.blast.txt')
         try:
-            f1 = open(sampleoutput, 'r')
+            f1 = open(sampleoutput1, 'r')
         except IOError:
             cmds += "%sblastx -query %s -db %s -out %s -outfmt 6 -evalue %s -num_threads %s\n" % (
-                split_string_last(args.bl, 'blast'), sample, ARGdatabase, sampleoutput, evalue_ARG, args.t)
+                split_string_last(args.bl, 'blast'), sample1, ARGdatabase, sampleoutput1, evalue_ARG, args.t)
             cmds += "%sblastx -query %s -db %s -out %s -outfmt 6 -evalue %s -num_threads %s\n" % (
                 split_string_last(args.bl, 'blast'), sample2, ARGdatabase, sampleoutput2, evalue_ARG, args.t)
             # filter searching result
             cmds += 'python %s/bin/Filter.MG.py --g %s -i %s -f %s -db %s -dbf 2 -s 1 --ht %s --id %s --e %s \n' % (
-                workingdir, sampletype, search_output, sampleoutput, ARGdatabase, hit_ARG, id_ARG, evalue_ARG)
+                workingdir, sampletype, search_output, sampleoutput1, ARGdatabase, hit_ARG, id_ARG, evalue_ARG)
             cmds += 'python %s/bin/Filter.MG.py --g %s -i %s -f %s -db %s -dbf 2 -s 1 --ht %s --id %s --e %s \n' % (
                 workingdir, sampletype, search_output, sampleoutput2, ARGdatabase, hit_ARG, id_ARG, evalue_ARG)
             # merge blast results of _1 and _2 files
-            cmds += 'cat %s.filter %s.filter > %s.filtermerge\n'%(sampleoutput,sampleoutput2,sampleoutput)
-            cmds += 'mv %s.filtermerge %s.filter\n' % (sampleoutput, sampleoutput)
-            cmds += 'rm %s.filter\n' % (sampleoutput2)
+            cmds += 'cat %s.filter %s.filter > %s.filter\n'%(sampleoutput1,sampleoutput2,sampleoutput)
         return cmds
 
     def searchARG(allsamples):
