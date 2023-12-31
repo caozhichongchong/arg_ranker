@@ -173,19 +173,36 @@ def main():
             # genomes fasta
             return [90, 80, 1e-5, 'T']
 
+    def find_samplename(IDtoSample, sample):
+        samplename = os.path.basename(sample)
+        if sample in IDtoSample:
+            return IDtoSample[sample]
+        return IDtoSample.get(samplename,'None')
+
     def pairingsamples(allsamples):
+        IDtoSample = read_metadata(Metadata)
         allsamples.sort()
-        allsamples_others = []
+        allsamples_others = set()
         allsamples_fastq1 = []
         allsamples_fastq2 = []
         for sample in allsamples:
-            if '_1.fq' in sample or '_1.fastq' in sample:
-                sample2 = sample.replace('_1.fq','_2.fq').replace('_1.fastq','_2.fastq')
-                if sample2 in allsamples:
-                    allsamples_fastq1.append(sample)
-                    allsamples_fastq2.append(sample2)
-            if sample not in allsamples_fastq1 and sample not in allsamples_fastq2:
-                allsamples_others.append(sample)
+            Metasample = find_samplename(IDtoSample, sample)
+            if Metasample == 'None':
+                allsamples_others.add(sample)
+            else:
+                if '_1.fq' in sample or '_1.fastq' in sample:
+                    sample2 = sample.replace('_1.fq','_2.fq').replace('_1.fastq','_2.fastq')
+                    Metasample2 = find_samplename(IDtoSample, sample2)
+                    if sample2 in allsamples and Metasample2 == Metasample:
+                        allsamples_fastq1.append(sample)
+                        allsamples_fastq2.append(sample2)
+                    else:
+                        allsamples_others.add(sample)
+                        allsamples_others.add(sample2)
+                if sample not in allsamples_fastq1 and sample not in allsamples_fastq2:
+                    allsamples_others.add(sample)
+        print('others',allsamples_others)
+        print('fastq1',allsamples_fastq1)
         return [allsamples_others,allsamples_fastq1]
 
     def process_sample_nonpaired(sample):
@@ -311,6 +328,17 @@ def main():
         for sample in allsamples_fastq1:
             cmds += process_sample_paired(sample)
         return cmds
+
+    def read_metadata(Metadata):
+        IDtoSample = dict()
+        if Metadata != 'None':
+            for lines in open(Metadata, 'r'):
+                lines = str(lines).split('\r')[0].split('\n')[0]
+                lines_set = str(lines).split('\t')
+                sample = lines_set[1]
+                ID = lines_set[0]
+                IDtoSample.setdefault(ID, sample)
+        return IDtoSample
 
     def ranking_arg(inputfasta,Metadata):
         # set output file
