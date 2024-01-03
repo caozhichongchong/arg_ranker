@@ -229,8 +229,8 @@ def main():
                 sampleoutput = os.path.join(search_output, samplename + '.kraken')
                 f1 = open(sampleoutput, 'r')
             except IOError:
-                cmds += '%skraken2 --db %s %s --output %s --report %s.kreport --threads %s\n' % (
-                    split_string_last(args.kk, 'kraken'), args.kkdb, sample, sampleoutput, sampleoutput, args.t)
+                cmds += '%skraken2 --db %s --output %s --report %s.kreport --threads %s %s\n' % (
+                    split_string_last(args.kk, 'kraken'), args.kkdb, sampleoutput, sampleoutput, args.t, sample)
             # compute average genome size
             if args.kkdbtype != '16S':
                 try:
@@ -287,8 +287,8 @@ def main():
                 sampleoutput = os.path.join(search_output, samplename + '.kraken')
                 f1 = open(sampleoutput, 'r')
             except IOError:
-                cmds += '%skraken2 --db %s --paired %s %s --output %s --report %s.kreport --threads %s\n' % (
-                    split_string_last(args.kk, 'kraken'), args.kkdb, sample1, sample2, sampleoutput, sampleoutput, args.t)
+                cmds += '%skraken2 --db %s --paired --output %s --report %s.kreport --threads %s %s %s \n' % (
+                    split_string_last(args.kk, 'kraken'), args.kkdb, sampleoutput, sampleoutput, args.t, sample1, sample2)
             # compute average genome size
             if args.kkdbtype != '16S':
                 try:
