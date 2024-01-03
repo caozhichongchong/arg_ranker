@@ -18,7 +18,16 @@ parser.add_argument('-kkdbtype',
 ################################################## Definition ########################################################
 args = parser.parse_args()
 allsearchoutput = glob.glob(os.path.join(args.i,'*.blast.txt.filter'))
+scripts_output = args.i + '../script_output/arg_ranker.sh'
+
 ################################################### Function #######################################################
+def searching_paired_samples():
+    paired_sample = []
+    for lines in open(scripts_output,'r'):
+        if '--paired ' in lines:
+            paired_sample.append(lines.split('--report ')[1].split(' --')[0])
+    return paired_sample
+
 def load_ARG_mapping():
     ARG_mapping = dict()
     for lines in open(args.d,'r'):
@@ -36,7 +45,7 @@ def load_ARG_length():
         ARG_length.setdefault(ARG,int(genelength)*3) # AA to DNA
     return ARG_length
 
-def sum_ARG(allsearchoutput):
+def sum_ARG(allsearchoutput,paired_sample):
     ARG_mapping = load_ARG_mapping()
     ARG_length = load_ARG_length()
     allsampleARG = []
@@ -52,7 +61,9 @@ def sum_ARG(allsearchoutput):
             for lines in open(kraken[0],'r'):
                 lines_set = lines.split('\n')[0].split('\t')
                 if 'Bacteria' in lines:
-                    copy_16S = float(lines_set[1])*2 # pair end
+                    copy_16S = float(lines_set[1])
+                    if kraken[0] in paired_sample:
+                        copy_16S = copy_16S*2 # paired end
                     break
         if args.kkdbtype != '16S':
             # load average genome size
@@ -90,4 +101,5 @@ def sum_ARG(allsearchoutput):
     f1.close()
 
 ################################################### Programme #######################################################
-sum_ARG(allsearchoutput)
+paired_sample = searching_paired_samples()
+sum_ARG(allsearchoutput,paired_sample)
