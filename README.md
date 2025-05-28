@@ -30,7 +30,7 @@ To upgrade `pip install arg_ranker --upgrade`
         * to compute the abundance of ARGs as copy number of ARGs per bacterial cell (recommended)
             * download the kraken2 standard database (50 GB of disk space): `kraken2-build --standard --db $KRAKENDB` \
             where $KRAKENDB is your preferred database name/location
-            * MicrobeCensu: `git clone https://github.com/snayfach/MicrobeCensus && cd MicrobeCensus && python setup.py install` to estimate the average genome size for metagenomes.
+            * MicrobeCensu: `pip install MicrobeCensus` or `git clone https://github.com/snayfach/MicrobeCensus && cd MicrobeCensus && python setup.py install` to estimate the average genome size for metagenomes.
             (https://github.com/snayfach/MicrobeCensus)
         * to compute the abundance of ARGs as copy number of ARGs per 16S
             * download the kraken2 16S database (73.2 MB of disk space): `kraken2-build --db $DBNAME --special greengenes`
@@ -49,7 +49,7 @@ To upgrade `pip install arg_ranker --upgrade`
     * diamond = 2.1.6 - recommended
     * blast = 2.13.0
     * kraken2 = 2.1.2 - 16Gb database
-   
+
     |Sample|Rank_I_per|Rank_II_per|Rank_III_per|Rank_IV_per|Unassessed_per|Total_abu|Rank_code|Rank_I_risk|Rank_II_risk|Rank_III_risk|Rank_IV_risk|ARGs_unassessed_risk|note1|
     | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: |
     |WEE300_all-trimmed-decont_1.fastq|6.6E-02|2.1E-02|2.2E-01|6.9E-01|0.0E+00|5.5E+00|3.1-1.3-1.1-0.9-0.0|3.1|1.3|1.1|0.9|0.0|hospital_metagenome|
@@ -60,7 +60,7 @@ To upgrade `pip install arg_ranker --upgrade`
     * diamond = 0.9.36 - not recommended
     * blast = 2.13.0
     * kraken2 = 2.1.2 - 16Gb database
-   
+
     |Sample|Rank_I_per|Rank_II_per|Rank_III_per|Rank_IV_per|Unassessed_per|Total_abu|Rank_code|Rank_I_risk|Rank_II_risk|Rank_III_risk|Rank_IV_risk|ARGs_unassessed_risk|note1|
     | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: | :--------: |
     |WEE300_all-trimmed-decont_1.fastq|4.6E-02|0.0E+00|6.8E-02|7.5E-01|1.3E-01|1.9E+00|1.5-0.0-0.4-1.7-0.4|1.5|0.0|0.4|1.7|0.4|hospital_metagenome|
