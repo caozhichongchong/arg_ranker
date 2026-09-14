@@ -16,7 +16,7 @@ You can find the path to ARG_table.sum.py in arg_ranker.sh.\
 Note that this [ARG_table.sum.py](https://github.com/caozhichongchong/arg_ranker/tree/v2.0/arg_ranker/bin_v2only/ARG_table.sum.py) is only meant for fixing arg_ranker.v2 and the results of arg_ranker.v2.\
 Please do not replace ARG_table.sum.py in arg_ranker.v3 with this [ARG_table.sum.py](https://github.com/caozhichongchong/arg_ranker/tree/v2.0/arg_ranker/bin_v2only/ARG_table.sum.py).\
 We are really sorry about this inconvenience.\
-Please feel free to reach out to anniz44@mit.edu if you have any questions.
+Please feel free to reach out to caozhichongchong@gmail.com if you have any questions.
 
 To check installed version `pip show arg_ranker`\
 To upgrade `pip install arg_ranker --upgrade`
@@ -67,7 +67,7 @@ To upgrade `pip install arg_ranker --upgrade`
     |EsCo_genome.fasta|0.0E+00|0.0E+00|2.4E-01|7.6E-01|0.0E+00|2.1E+01|0.0-0.0-1.6-1.7-0.0|0.0|0.0|1.6|1.7|0.0|E.coli_genome|
 * Please note that minor changes within ~two-fold of the Total_abu caused by different diamond and kraken versions can be considered reasonable :)
 
-1. Rank_I_per - Unassessed_per: percentage of ARGs of a risk Rank\
+1. Rank_I_per - Unassessed_per: proportion of ARGs of a risk Rank, e.g., 0.03 means 3%.\
 Total_abu: total abundance of all ARGs
 2. For genomes, we output the copy number of ARGs detected in each genome.
 3. For metagenomes, we compute the abundance of ARGs as the copy number of ARGs divided by the bacterial cell number or 16S copy number in the same metagenome.\
