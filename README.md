@@ -99,7 +99,7 @@ Zhang, AN., Gaston, J.M., Dai, C.L. et al. An omics-based framework for assessin
 Correction: bacA is a bacitracin resistance gene, not a beta-lactamase (Fig 3).
 
 ## Contact
-anniz44@mit.edu or caozhichongchong@gmail.com
+caozhichongchong@gmail.com
 
 ## Acknowledgement
 Special thanks to LeabaeL for their great help in testing various versions of arg_ranker and diamond!
