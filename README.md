@@ -97,6 +97,8 @@ Dr. An-Ni Zhang (MIT), Prof. Eric Alm (MIT), Prof. Tong Zhang* (University of Ho
 ## Citation
 Zhang, AN., Gaston, J.M., Dai, C.L. et al. An omics-based framework for assessing the health risk of antimicrobial resistance genes. Nat Commun 12, 4765 (2021). https://doi.org/10.1038/s41467-021-25096-3
 Correction: bacA is a bacitracin resistance gene, not a beta-lactamase (Fig 3).
+The link https://github.com/caozhichongchong/arg_ranker/archive/refs/tags/v2.0.zip contains the original risk rank table for the 2021 manuscript.
+The current arg_ranker risk table has been updated to match the SARG database version 3 (where many ARG sequences were re-characterized into different functional subgroups and groups, and many new genes were added).
 
 ## Contact
 caozhichongchong@gmail.com
